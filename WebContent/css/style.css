@@ -14,60 +14,63 @@
 		margin: 0 auto;
 	}
 	
+	body{
+		
+	}
+	
 	header#page_header{
 		border: solid 0px orange;
-		padding-bottom: 50px;
+		padding-bottom: 10px;
 		overflow: hidden;
+		width: 100%;
 	}
 	
 	div#logo{
 		border: solid 0px black;
 		float: left;
 		display: inline-block;
+		margin-top: 20px;
 	}
 	
-	div#logo{
-		border: solid 0px blue;
-		margin-top: 10px;
-	}
-	
-	ul{
+	ul#menu{
 		border: solid 0px red;
 		list-style-type: none;
-		margin-top: 50px;
-		margin-right: 10px;
+		margin-top: 40px;
+		margin-left: 12%;
 		float: left;
 	}
 	
-	ul li{
+	ul#menu li{
 		border: solid 0px blue;
 		display: inline-block;
-		padding: 0 36px;
+		padding: 0 20px;
 		
 	}
 	
-	ul li a{
+	ul#menu > li a{
 		text-decoration: none;
-		color: navy;
+		color: #222222;
 		font-weight: bold;
-		font-size: 15pt;
+		font-size: 13pt;
 	}
 	
-	div#loginBtn{
-		border: solid 0px yellow;
-		margin-top: 10px;
+	div#div_search{
+		border: solid 0px red;
+		border-bottom: solid 1px black;
+		margin-top: 35px;
 		float: right;
+		
 	}
 	
-	div#search{
-		margin-top: 50px;
+	div#div_search span{
+		padding-right: 80px;
+		font-size: 12pt;
 	}
 	
 	footer#page_footer{
-		background-color: #cccccc;
-		
+		background-color: #222222;
 		clear: both;
-		height: 80px;
+		height: 120px;
 	}
 	
 	footer#page_footer p{
@@ -75,5 +78,6 @@
 		padding-top: 25px;
 		text-align: center;
 		font-size: 9pt;
+		color: #9d9d9d;
 		line-height: 0px;
 	}

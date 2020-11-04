@@ -66,6 +66,7 @@
     <br>
     <button type="button" class="btn btn-default loginBtn">로그인</button>
     <br>
+    
     <button type="button" class="btn btn-default loginBtn">카카오 로그인</button>
     <button type="button" class="btn btn-default loginBtn">네이버 로그인</button>
   </form>
