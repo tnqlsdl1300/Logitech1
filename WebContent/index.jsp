@@ -24,11 +24,18 @@
 		background-color: #222222;
 	}
 	
-	h3#bestItemTitle{
+	div#bestItemTitle{
 		text-align: center;
-		font-weight: bold;
 		border: solid 1px #cccccc;
-		padding: 20px 0;
+		margin-bottom: 2%;
+	}
+	
+	div#bestItemTitle h3{
+		font-weight: bold;
+	}
+	
+	div#bestItemTitle p{
+		font-size: 9pt;
 	}
 	
 	
@@ -137,9 +144,12 @@
 	<div id="wrap">
 	  
 	  <br>
-	 <div class="row" style="width: 90% auto;">
-	  
-	  <h3 id="bestItemTitle">인기제품</h3>
+	 <div class="row">
+	  	<div id="bestItemTitle">
+	  		<h3>인기제품</h3>
+	    	<p>카테고리별 BEST 3 아이템</p>
+	  	</div>
+	    
 	    <div class="col-sm-3" style="text-align: center; border-right: solid 1px #cccccc;">
 	      <p style="text-align: center; font-weight: bold; font-size: 12pt;">마우스</p>
 	      <div>
@@ -187,8 +197,10 @@
 	      	<br>
 	      </div>
 	    </div>
-	
 	  </div>
+	  
+	  <br><br>
+	  
   </div>
  </div>
   

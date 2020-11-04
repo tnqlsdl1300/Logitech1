@@ -12,22 +12,16 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css"
-	href="<%=ctxPath%>/css/style.css" />
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="<%=ctxPath%>/css/style.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
-<link rel="stylesheet" type="text/css"
-	href="<%=ctxPath%>/jquery-ui-1.11.4.custom/jquery-ui.css" />
-<script type="text/javascript"
-	src="<%=ctxPath%>/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="<%=ctxPath%>/jquery-ui-1.11.4.custom/jquery-ui.css" />
+<script type="text/javascript" src="<%=ctxPath%>/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
 
 <style type="text/css">
 	nav.navbar {
@@ -69,6 +63,10 @@
 	
 	div#menuWrap{
 		background-color: #d4d4d4;
+	}
+	
+	div#footerWrap{
+		background-color: #222222;
 	}
 </style>
 
@@ -120,8 +118,7 @@
 		<div id="wrap">
 			<header id="page_header">
 				<div id="logo">
-					<img alt="daum" src="<%=ctxPath%>/images/logitech_logo.png"
-						width="170px">
+					<a href="./"><img alt="daum" src="<%=ctxPath%>/images/logitech_logo.png" width="170px"></a>
 				</div>
 
 				<ul id="menu">
