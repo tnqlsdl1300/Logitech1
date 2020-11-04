@@ -39,19 +39,19 @@
 	    <div class="carousel-inner">
 	      
 	      <div class="item active" data-toggle="modal" data-target="#eventModal">
-	        <img src="<%= ctxPath %>/images/동원.png" alt="야외 풀장" style="width:100%;">
+	        <img src="<%= ctxPath %>/images/headsetmain.png" alt="야외 풀장" style="width:100%;">
 	      </div>
 	
 	      <div class="item" data-toggle="modal" data-target="#eventModal">
-	        <img src="<%= ctxPath %>/images/레노보.png" alt="디럭스룸" style="width:100%;">
+	        <img src="<%= ctxPath %>/images/keyboardmain.png" alt="디럭스룸" style="width:100%;">
 	      </div>
 	    
 	      <div class="item" data-toggle="modal" data-target="#eventModal">
-	        <img src="<%= ctxPath %>/images/미샤.png" alt="레스토랑" style="width:100%;">
+	        <img src="<%= ctxPath %>/images/mousemain.png" alt="레스토랑" style="width:100%;">
 	      </div>
 	      
 	      <div class="item" data-toggle="modal" data-target="#eventModal">
-	        <img src="<%= ctxPath %>/images/원더플레이스.png" alt="레스토랑" style="width:100%;">
+	        <img src="<%= ctxPath %>/images/speakerProduct.png" alt="레스토랑" style="width:100%;">
 	      </div>
 	      
 	      <%-- 
