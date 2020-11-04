@@ -15,34 +15,20 @@
 		width: 80%;
 		margin: 0 auto;
 	}
-	
-	.emailText{
-		list-style-type: none;
-	}
-	
-	.loginBtn{
+
+	.submitBtn{
 		display: block;
-		width: 100%;
+		width: 30%;
 		margin: 0 auto;
 	}
 	
-	
-	#accountFind{
-		list-style-type: none;
-		float: left;
+	#titleText{
+		font-size: 20pt;
+		font-weight: bold;
 	}
 	
-	#accountFind li{
-		display: inline-block;
-		padding-right: 50px;
-	}
-	
-	#accountFind li:last-child {
-		padding-right: 0;
-	}
-	
-	#email{
-		width: 100%;
+	#comment{
+		resize: none;
 	}
 	
 </style>
@@ -51,10 +37,12 @@
 <div class="container">
   
   <form action="/action_page.php">
-  	<label for="name">이름</label>
+ 	<label id="titleText">화장품 무료 증정 이벤트(이벤트명)</label>
+    <br><br>
+  	<label>이름</label>
     <input id="name" type="text" class="form-control" name="name" placeholder="이름" disabled >
     <br>
-    <label for="mobile">전화번호</label>
+    <label>전화번호</label>
     <input id="mobile" type="text" class="form-control" name="mobile" placeholder="전화번호" disabled >
     <br>
     <label for="comment">이벤트 참여 이유</label>
@@ -62,8 +50,7 @@
     
     <br>
     
-    <button type="submit" class="btn btn-default loginBtn">카카오 로그인</button>
-    <button type="submit" class="btn btn-default loginBtn">네이버 로그인</button>
+    <button type="submit" class="btn btn-default submitBtn">참여하기</button>
   </form>
   
   
