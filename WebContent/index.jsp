@@ -187,27 +187,6 @@
   </div>
 </div>
 
-<%-- 회원가입 Modal --%>
-<div id="registerModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">회원가입</h4>
-      </div>
-      <div class="modal-body">
-        <div id="register">
-             <iframe style="border: none; width: 100%; height: 500px;" src="/Logitech/agreeRegister.jsp">
-             </iframe>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
 <%-- 이벤트 Modal --%>
 <div id="eventModal" class="modal fade" role="dialog">
   <div class="modal-dialog">

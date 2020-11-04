@@ -1,18 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<!DOCTYPE html>
+<%
+	String ctxPath = request.getContextPath();
+%>
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<jsp:include page="header.jsp" />
 
 <style>
 	
 	.container{
-		width: 80%;
+		width: 40%;
 		margin: 0 auto; 
 	}
 	
@@ -64,7 +62,7 @@
 
 
 	<div id="btnWrapper">
-	    <button type="button" class="btn btn-default registerBtn" id="submitBtn">동의하고 회원가입</button>
+	    <button type="button" class="btn btn-default registerBtn" id="submitBtn"><a href="/Logitech/memberRegister.jsp">동의하고 회원가입</a></button>
 	    <button type="button" class="btn btn-default registerBtn" id="cancelBtn">처음으로</button>
     </div>
   </form>
@@ -72,4 +70,5 @@
   
 </div>
 
+<jsp:include page="footer.jsp" />
     

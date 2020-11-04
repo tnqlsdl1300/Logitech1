@@ -64,10 +64,10 @@
     	<li><a href="#">회원가입</a></li>
     </ul>
     <br>
-    <button type="submit" class="btn btn-default loginBtn">로그인</button>
+    <button type="button" class="btn btn-default loginBtn">로그인</button>
     <br>
-    <button type="submit" class="btn btn-default loginBtn">카카오 로그인</button>
-    <button type="submit" class="btn btn-default loginBtn">네이버 로그인</button>
+    <button type="button" class="btn btn-default loginBtn">카카오 로그인</button>
+    <button type="button" class="btn btn-default loginBtn">네이버 로그인</button>
   </form>
   
   

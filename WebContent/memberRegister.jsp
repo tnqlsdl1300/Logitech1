@@ -1,19 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<!DOCTYPE html>
+<%
+	String ctxPath = request.getContextPath();
+%>
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<jsp:include page="header.jsp" />
 
 <style>
+	
+	h2{
+		font-weight: bold;
+	}
 	
 	.container{
 		width: 80%;
 		margin: 0 auto;
+		text-align: center;
+		margin-bottom: 30px;
 	}
 	
 	.emailText{
@@ -31,20 +35,19 @@
 		margin: 0 auto;
 	}
 	
-	#accountFind{
-		list-style-type: none;
-		
-	}
-	
-	#accountFind li{
+	.innerContainer{
+		width: 50%;
 		display: inline-block;
-		padding-right: 50px;
 	}
 	
-	#accountFind li:last-child {
-		padding-right: 0;
+	.form-group{
+		text-align: left;
 	}
 	
+	.form-control{
+		height: 50px;
+	}
+
 	#birthText{
 		padding-right: 10%;
 	}
@@ -63,27 +66,40 @@
 		margin-right: 5%;
 	}
 	
+	#birthday{
+		height: 40px;
+		font-size: 12pt;
+	}
+	
+	#birthText{
+		font-size: 12pt;
+	}
+	
 </style>
 
 <%-- Modal 로 띄울 페이지 - 회원가입 --%>
 <div class="container">
+  <div class="innerContainer">
   
+  <h2>회원가입</h2>
+  <br>
   <form action="/action_page.php">
+  
     <div class="form-group">
       <input type="text" class="form-control input-group" id="name" placeholder="이름" name="name">
-      <label>이름을 입력하시지 않았습니다.</label>
+      <label class="errorText">이름을 입력하시지 않았습니다.</label>
     </div>
     <div class="form-group">
       <input type="text" class="form-control" id="userid" placeholder="아이디" name="userid">
-      <label>띄어쓰기 없이 영문자+숫자 6~15글자 이하로 입력해주세요.</label>
+      <label class="errorText">띄어쓰기 없이 영문자+숫자 6~15글자 이하로 입력해주세요.</label>
     </div>
     <div class="form-group">
       <input type="password" class="form-control" id="pwd" placeholder="비밀번호" name="pwd">
-      <label>영문자+숫자+특수문자 조합 6~15글자로 설정해주세요.</label>
+      <label class="errorText">영문자+숫자+특수문자 조합 6~15글자로 설정해주세요.</label>
     </div>
     <div class="form-group">
       <input type="password" class="form-control" id="pwd" placeholder="비밀번호 확인" name="pwd">
-      <label>비밀번호가 일치하지 않습니다.</label>
+      <label class="errorText">비밀번호가 일치하지 않습니다.</label>
     </div>
     
     <div class="form-group">
@@ -98,20 +114,22 @@
     <br>
     <div class="form-group">
       <input type="text" class="form-control" id="email" placeholder="이메일 주소" name="email">
-      <label>이메일 형식에 맞춰 입력해주세요.</label>
+      <label class="errorText">이메일 형식에 맞춰 입력해주세요.</label>
     </div>
     <div class="form-group">
       <label id="birthText">생년월일</label>
       <input type="date" id="birthday" name="birthday">
     </div>
 
+	<br><br>
 	<div id="btnWrapper">
 	    <button type="button" class="btn btn-default registerBtn" id="submitBtn">회원가입</button>
 	    <button type="button" class="btn btn-default registerBtn" id="cancelBtn">처음으로</button>
     </div>
   </form>
-  
+   </div>
   
 </div>
 
+<jsp:include page="footer.jsp" />
     

@@ -20,8 +20,27 @@
 <link rel="stylesheet" type="text/css" href="<%= ctxPath%>/jquery-ui-1.11.4.custom/jquery-ui.css" />
 <script type="text/javascript" src="<%= ctxPath%>/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
 
+<style type="text/css">
+
+
+</style>
+
 </head>
 <body>
+
+<script type="text/javascript">
+
+	$(document).ready(function() {
+		// 로그아웃 상태
+		$("button#logoutBtn").hide();
+		
+		// 로그인일 때 
+		// $("button#logoutBtn").show();
+		// $("button#loginBtn").text("마이페이지");
+	});
+	
+
+</script>
 
 <div id="wrap">
 		
@@ -39,10 +58,11 @@
 			<li><a href="service.html">고객센터</a></li>
 		</ul>
 		
+		<%-- 내계정 버튼을 2개 만들어서 로그인/로그아웃 상태에 따라 스왚하는 형식 => css 쪽이 꼬여서 잘 봐야함--%>
 		<%-- c:if 로 로그인시(마이페이지), 로그아웃시(로그인, 회원가입) 상태 구분 --%>
 		<div id="loginBtn">
-			<button type="button" class="btn btn-default" id="loginBtn" data-toggle="modal" data-target="#loginModal">로그인</button>
-			<button type="button" class="btn btn-default" id="registerBtn" data-toggle="modal" data-target="#registerModal">회원가입</button>
+			<button type="button" class="btn btn-default" id="loginBtn" data-toggle="modal" data-target="#loginModal">내계정</button>
+			<button type="button" class="btn btn-default" id="logoutBtn">로그아웃</button>
 		</div>
 		
 		<div id="search">
