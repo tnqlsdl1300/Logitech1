@@ -48,7 +48,7 @@
 	<header id="page_header">
 		<div id="logo">
 			<img alt="daum" src="<%= ctxPath %>/images/daum.png" width="170px">
-		</div>
+		</div> 
 		
 		<ul id="menu">
 			<li><a href="mouse.html">마우스</a></li>
