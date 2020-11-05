@@ -26,7 +26,7 @@
 	
 	#submitBtn {
 		width: 140px;
-		margin-right: 5%;
+		margin-right: 5%; 
 	}
 	
 </style>
