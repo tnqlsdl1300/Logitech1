@@ -135,3 +135,50 @@
 			</header>
 		</div>
 	</div>
+
+
+<%-- 아래는 Modal --%>
+
+	
+	<%-- 로그인 Modal --%>
+<div id="loginModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">로그인</h4>
+      </div>
+      <div class="modal-body">
+        <div id="login">
+             <iframe style="border: none; width: 100%; height: 300px;" src="/Logitech/login.jsp">
+             </iframe>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<%-- 검색 Modal --%>
+<div id="searchModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">제품 검색</h4>
+      </div>
+      <div class="modal-body">
+        <div id="register">
+             <iframe style="border: none; width: 100%; height: 500px;" src="/Logitech/searchModal.jsp">
+             </iframe>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+	
