@@ -14,7 +14,7 @@
 	.container{
 		width: 80%;
 		margin: 0 auto;
-		padding-top: 15%;
+		padding-top: 5%;
 	}
 	
 	.emailText{
@@ -41,6 +41,13 @@
 	#accountFind li:last-child {
 		padding-right: 0;
 	}
+
+	h4#loginTitle{
+		font-size: 20pt;
+		font-weight: bold;
+		text-align: center;
+		padding: 20px 0;
+	}
 	
 </style>
 
@@ -48,6 +55,9 @@
 <div class="container">
   
   <form action="/action_page.php">
+  
+	<h4 id="loginTitle">로그인</h4>
+
     <div class="input-group">
       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
       <input id="email" type="text" class="form-control" name="email" placeholder="아이디">

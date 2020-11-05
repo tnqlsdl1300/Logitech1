@@ -14,62 +14,78 @@
 	.container{
 		width: 80%;
 		margin: 0 auto;
-		padding-top: 15%;
+		padding-top: 5%;
 	}
-	
-	.emailText{
-		list-style-type: none;
-	}
-	
-	.loginBtn{
+
+	.idFindBtn{
 		display: block;
 		width: 100%;
+		line-height: 30px;
 		margin: 0 auto;
 	}
 	
-	
-	#accountFind{
-		list-style-type: none;
-		float: left;
+	div#titleText{
+		font-size: 20pt;
+		font-weight: bold;
+		text-align: center;
 	}
 	
-	#accountFind li{
-		display: inline-block;
-		padding-right: 50px;
+	div#resultDiv{
+		text-align: center;
+		font-size: 15pt;
+		font-weight: bold;
 	}
 	
-	#accountFind li:last-child {
-		padding-right: 0;
+	div#resultDiv span{
+		color: blue;
 	}
 	
 </style>
 
-<%-- Modal 로 띄울 페이지 - 로그인 --%>
+<script type="text/javascript">
+	
+	$(document).ready(function() {
+		
+		// 찾은 아이디 보여주기/숨기기
+		var bFlag = false;
+		$(".idFindBtn").click(function() {
+			if(!bFlag){
+				$("div#resultDiv").hide();
+				bFlag = true;
+			}else{
+				$("div#resultDiv").show();
+				bFlag = false;
+			}
+			
+		});
+		
+	});
+	
+</script>
+
+<%-- Modal 로 띄울 페이지 - 아이디 찾기 --%>
 <div class="container">
   
   <form action="/action_page.php">
-    <div class="input-group">
-      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-      <input id="email" type="text" class="form-control" name="email" placeholder="아이디">
-    </div>
-    <div class="input-group">
-      <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-      <input id="password" type="password" class="form-control" name="password" placeholder="비밀번호">
-    </div>
-    <div class="checkbox">
-      <label><input type="checkbox" name="remember"> 아이디 저장</label>
-    </div>
-    <ul id="accountFind">
-    	<li><a href="#">아이디 찾기</a></li>
-    	<li><a href="#">비밀번호 찾기</a></li>
-    	<li><a href="#">회원가입</a></li>
-    </ul>
+  	<div id="titleText">
+ 		<label>아이디 찾기</label>
+ 	</div>
+    <br><br>
+  	<label>이름</label>
+    <input id="name" type="text" class="form-control" name="name" placeholder="이름" >
     <br>
-    <button type="button" class="btn btn-default loginBtn">로그인</button>
-    <br>
+    <label>이메일</label>
+    <input id="email" type="text" class="form-control" name="email" placeholder="이메일" >
+
+	<br><br><br>
+
+	<div id="resultDiv">
+		회원님의 아이디는 <span>tnqlsdl1300</span> 입니다.
+	</div>
+
+    <br><br><br>
     
-    <button type="button" class="btn btn-default loginBtn">카카오 로그인</button>
-    <button type="button" class="btn btn-default loginBtn">네이버 로그인</button>
+    <button type="button" class="btn btn-default idFindBtn">찾기</button>
   </form>
   
   
