@@ -35,7 +35,7 @@
 <div class="container">
   
   <form action="/action_page.php">
-  
+  	<%-- ** 전체동의 체크 시 다른 체크박스 컨트롤 구현!!!!, 회사소개 페이지 구현 --%>
   	<div class="checkbox">
 	  <label><input type="checkbox" value="">전체동의</label>
 	</div>

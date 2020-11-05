@@ -42,10 +42,16 @@
 	
 	.form-group{
 		text-align: left;
+		padding-bottom: 2%;
 	}
 	
 	.form-control{
 		height: 50px;
+	}
+	
+	.errorText{
+		color: red;
+		display: none; <%-- 일단 에러메세지 안보이게함 --%>
 	}
 
 	#birthText{
