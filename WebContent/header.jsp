@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="<%=ctxPath%>/css/style.css" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -68,6 +69,118 @@
 	div#footerWrap{
 		background-color: #222222;
 	}
+
+.label-container{
+	position:fixed;
+	bottom:48px;
+	right:105px;
+	display:table;
+	visibility: hidden;
+}
+
+.label-text{
+	color:#FFF;
+	background:rgba(51,51,51,0.5);
+	display:table-cell;
+	vertical-align:middle;
+	padding:10px;
+	border-radius:3px;
+}
+
+.label-arrow{
+	display:table-cell;
+	vertical-align:middle;
+	color:#333;
+	opacity:0.5;
+}
+
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color: #00ead0;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+	z-index:1000;
+	animation: bot-to-top 2s ease-out;
+}
+
+ul.floatingBtnBox{
+	position:fixed;
+	right:40px;
+	padding-bottom:20px;
+	bottom:80px;
+	z-index:100;
+}
+
+ul.floatingBtnBox li{
+	list-style:none;
+	margin-bottom:10px;
+}
+
+ul.floatingBtnBox li a{
+	background-color: #00ead0;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+	width:60px;
+	height:60px;
+	display:block;
+}
+
+ul.floatingBtnBox:hover{
+	visibility:visible!important;
+	opacity:1!important;
+}
+
+
+.my-float{
+	font-size:24px;
+	margin-top:18px;
+}
+
+a#menu-share + ul{
+  visibility: hidden;
+}
+
+a#menu-share:hover + ul{
+  visibility: visible;
+  animation: scale-in 0.5s;
+}
+
+a#menu-share i{
+	animation: rotate-in 0.5s;
+}
+
+a#menu-share:hover > i{
+	animation: rotate-out 0.5s;
+}
+
+@keyframes bot-to-top {
+    0%   {bottom:-40px}
+    50%  {bottom:40px}
+}
+
+@keyframes scale-in {
+    from {transform: scale(0);opacity: 0;}
+    to {transform: scale(1);opacity: 1;}
+}
+
+@keyframes rotate-in {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}
+
+@keyframes rotate-out {
+    from {transform: rotate(360deg);}
+    to {transform: rotate(0deg);}
+}
+
 </style>
 
 </head>
@@ -87,6 +200,7 @@
 			 */
 
 		});
+
 	</script>
 	<div class="totalWrap" id="navWrap">
 		<div id="wrap">
@@ -142,7 +256,7 @@
 	
 	<%-- 로그인 Modal --%>
 <div id="loginModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+  <div class="modal-dialog" style="">
 
     <!-- Modal content-->
     <div class="modal-content">
@@ -152,7 +266,7 @@
       </div>
       <div class="modal-body">
         <div id="login">
-             <iframe style="border: none; width: 100%; height: 300px;" src="/Logitech/login.jsp">
+             <iframe style="border: none; width: 100%; height: 500px;" src="/Logitech/login.jsp">
              </iframe>
         </div>
       </div>
@@ -181,4 +295,14 @@
 
   </div>
 </div>
-	
+
+<%-- 플로팅 아이콘 --%>
+<a href="#" class="float" id="menu-share"> <i
+	class="fa fa-plus my-float"></i>
+</a>
+<ul class="floatingBtnBox">
+	<li><a href="#" class="floatingBtn"> <i class="fa fa-history my-float"></i>
+	</a></li>
+	<li><a href="#" class="floatingBtn"> <i class="fa fa-user my-float"></i>
+	</a></li>
+</ul>

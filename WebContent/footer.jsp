@@ -7,9 +7,10 @@
 		font-weight: bold;
 		font-size: 12pt;
 	}
-</style>
-    
+	
 
+</style>
+   
 <div class="totalWrap" id="footerWrap">
 	<div id="wrap">
 		<footer id="page_footer">
