@@ -62,7 +62,15 @@
 			
 		});
 		
+
+		
 	});
+	
+	// 임시 버튼(삭제 요망)
+	function gotoChangeBtn(){       
+		location.href="/Logitech/pwdChange.jsp"
+
+	}
 	
 </script>
 
@@ -93,7 +101,7 @@
     <br><br>
     
     <button type="button" id="testBtn" class="btn btn-default pwdFindBtn">찾기</button>
-    <button type="button" id="pwdChangeBtn" class="btn btn-default pwdFindBtn">비밀번호 변경</button>
+    <button type="button" id="pwdChangeBtn" class="btn btn-default pwdFindBtn" onclick="gotoChangeBtn()">비밀번호 변경</button>
   </form>
   
   

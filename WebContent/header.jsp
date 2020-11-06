@@ -192,6 +192,7 @@ a#menu-share:hover > i{
 		// 전체 모달 닫기(전역함수인듯)
 		window.closeModal = function(){
 		    $('.modal').modal('hide');
+		    javascript:history.go(0);
 		};
 		
 		// 임시 Modal을 위한 페이지 이동 함수(전역)
@@ -212,7 +213,6 @@ a#menu-share:hover > i{
 			$("li#logoutBtn").show();
 			$("li#mypageBtn").show();
 			 */
-
 		});
 
 	</script>
@@ -267,15 +267,17 @@ a#menu-share:hover > i{
 
 <%-- 아래는 Modal --%>
 
+	<%-- data-keyboard="false" data-backdrop="static" 는 esc와 바깥 클릭으로 modal이 닫히는 것을 방지 => 새로고침 적용때문에 넣음 --%>
+
 	
 	<%-- 로그인 Modal --%>
-<div id="loginModal" class="modal fade" role="dialog">
+<div id="loginModal" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
   <div class="modal-dialog" style="">
 
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button type="button" class="close" data-dismiss="modal" onclick="window.closeModal()">&times;</button>
         <h4 class="modal-title">내계정</h4>
       </div>
       <div class="modal-body">
@@ -291,7 +293,7 @@ a#menu-share:hover > i{
 </div>
 
 <%-- 검색 Modal --%>
-<div id="searchModal" class="modal fade" role="dialog">
+<div id="searchModal" class="modal fade" role="dialog"  data-keyboard="false" data-backdrop="static">
   <div class="modal-dialog">
 
     <!-- Modal content-->

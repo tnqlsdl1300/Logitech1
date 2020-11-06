@@ -54,11 +54,12 @@
 <script type="text/javascript">
 
 	$(document).ready(function() {
+		
 		$("a#registerBtn").click(function() {
 			window.parent.closeModal();
 			window.parent.href("/Logitech/agreeRegister.jsp");
 		});
-	});
+	});	
 	
 </script>
 
@@ -81,8 +82,8 @@
       <label><input type="checkbox" name="remember"> 아이디 저장</label>
     </div>
     <ul id="accountFind">
-    	<li><a href="#">아이디 찾기</a></li>
-    	<li><a href="#">비밀번호 찾기</a></li>
+    	<li><a href="/Logitech/idFind.jsp">아이디 찾기</a></li>
+    	<li><a href="/Logitech/pwdFind.jsp">비밀번호 찾기</a></li>
     	<li><a href="#" id="registerBtn">회원가입</a></li>
     </ul>
     <br>

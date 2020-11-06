@@ -46,14 +46,16 @@
 	
 	$(document).ready(function() {
 		
+		$("div#resultDiv").hide();
+		
 		// 찾은 아이디 보여주기/숨기기
 		var bFlag = false;
 		$(".idFindBtn").click(function() {
 			if(!bFlag){
-				$("div#resultDiv").hide();
+				$("div#resultDiv").show();
 				bFlag = true;
 			}else{
-				$("div#resultDiv").show();
+				$("div#resultDiv").hide();
 				bFlag = false;
 			}
 			

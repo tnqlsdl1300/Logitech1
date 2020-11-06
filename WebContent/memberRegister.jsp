@@ -13,8 +13,9 @@
 
 	}
 	
-	h2{
+	h2#h2_registerTitle{
 		font-weight: bold;
+		text-align: center;
 	}
 	
 	.emailText{
@@ -87,7 +88,7 @@
 		<%-- .innerContainer은 form 중앙 배치를 위한 div --%>
 		<div class="innerContainer">
 		  
-		  <h2>회원가입</h2>
+		  <h2 id="h2_registerTitle">회원가입</h2>
 		  <br>
 		  <form action="/action_page.php">
 		  
