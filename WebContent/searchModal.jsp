@@ -17,9 +17,17 @@
 		margin: 0 auto;
 	}
 	
+	div#searchRankingBox{
+		padding-top: 30px;
+	}
+	
+	div#searchRankingBox h3{
+		font-weight: bold;
+	}
+	
 	div.input-group{
 		
-		margin-bottom: 30%;
+		margin-bottom: 0;
 	}
 	
 </style>
@@ -38,13 +46,17 @@
 		    </div>
 	    </div>
 	    
-    
-    	<div class="list-group">
-		  <a href="#" class="list-group-item">1. 인체공학</a>
-		  <a href="#" class="list-group-item">2. 게이밍</a>
-		  <a href="#" class="list-group-item">3. 무선</a>
-		  <a href="#" class="list-group-item">4. 블루투스</a>
-		  <a href="#" class="list-group-item">5. 업무용</a>
+    	<div id="searchRankingBox">
+    		
+    		<h3>인기검색어</h3>
+    	
+	    	<div class="list-group">
+			  <a href="#" class="list-group-item">1. 인체공학</a>
+			  <a href="#" class="list-group-item">2. 게이밍</a>
+			  <a href="#" class="list-group-item">3. 무선</a>
+			  <a href="#" class="list-group-item">4. 블루투스</a>
+			  <a href="#" class="list-group-item">5. 업무용</a>
+			</div>
 		</div>
     </div>
     

@@ -11,6 +11,7 @@
 	
 	div#companyInfoWrap{
 		background-color: #f6f6f6;
+		padding-bottom: 5%;
 	}
 	
 	div#companyInfoContainer{
@@ -52,7 +53,7 @@
 		<div class="innerContainer" id="companyInfoContainer">
 		
 			<div class="row text-center">
-			  <h1 id="companyInfoTitle">Logitech</h1>
+			  <h1 id="companyInfoTitle">What's Logitech?</h1>
 			  <br><br>
 			
 		      <div class="col-sm-4">
@@ -60,7 +61,8 @@
 		          <img src="/Logitech/images/companyInfoImg1.jpg" alt="Paris" width="400" height="300">
 		          <h3 class="companyInfoSmallTitle">회사소개1</h3>
 		          <p class="companyInfoText">할말이 없다.할말이 없다.할말이 없다.할말이 없다.할말이 없다.할말이 없다.할말이 없다.할말이 없다.할말이 없다.할말이 없다.</p>
-		          <button class="btn" data-toggle="modal" data-target="#myModal">Buy Tickets</button>
+		          <p class="companyInfoText">할말이 없다.할말이 없다.할말이 없다.할말이 없다.할말이 없다.할말이 없다.할말이 없다.할말이 없다.할말이 없다.할말이 없다.</p>
+		          
 		        </div>
 		      </div>
 		      <div class="col-sm-4">
@@ -68,7 +70,7 @@
 		          <img src="/Logitech/images/companyInfoImg2.jpg" alt="New York" width="400" height="300">
 		          <h3 class="companyInfoSmallTitle">회사소개2</h3>
 		          <p class="companyInfoText">할말이 없다.할말이 없다.할말이 없다.할말이 없다.할말이 없다.할말이 없다.할말이 없다.할말이 없다.할말이 없다.할말이 없다.</p>
-		          <button class="btn" data-toggle="modal" data-target="#myModal">Buy Tickets</button>
+		          <p class="companyInfoText">할말이 없다.할말이 없다.할말이 없다.할말이 없다.할말이 없다.할말이 없다.할말이 없다.할말이 없다.할말이 없다.할말이 없다.</p>
 		        </div>
 		      </div>
 		      <div class="col-sm-4">
@@ -76,7 +78,7 @@
 		          <img src="/Logitech/images/companyInfoImg3.jpg" alt="San Francisco" width="400" height="300">
 		          <h3 class="companyInfoSmallTitle">회사소개3</h3>
 		          <p class="companyInfoText">할말이 없다.할말이 없다.할말이 없다.할말이 없다.할말이 없다.할말이 없다.할말이 없다.할말이 없다.할말이 없다.할말이 없다.</p>
-		          <button class="btn" data-toggle="modal" data-target="#myModal">Buy Tickets</button>
+		          <p class="companyInfoText">할말이 없다.할말이 없다.할말이 없다.할말이 없다.할말이 없다.할말이 없다.할말이 없다.할말이 없다.할말이 없다.할말이 없다.</p>
 		        </div>
 		      </div>
 		    </div>

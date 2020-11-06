@@ -25,21 +25,30 @@
 	}
 	
 	div#bestItemWrap{
-		background-color: #f6f6f6;
+		background-color: #f1f1f1;
+	}
+	
+	div#indexBestItemBox{
+		padding: 4% 0;
 	}
 	
 	div#bestItemTitle{
 		text-align: center;
-		border: solid 1px #cccccc;
-		margin-bottom: 2%;
+		padding-bottom: 4%;
 	}
 	
-	div#bestItemTitle h3{
+	div#bestItemTitle h1{
 		font-weight: bold;
 	}
 	
 	div#bestItemTitle p{
-		font-size: 9pt;
+		font-style: italic;
+		font-weight: bold;
+		font-size: 10pt;
+	}
+	
+	div.indexBestItem{
+		padding-bottom: 30px;
 	}
 	
 	
@@ -147,22 +156,23 @@
   <div class="totalWrap" id="bestItemWrap">
 	<div id="wrap">
 	  
-	  <br>
-	 <div class="row">
+	 <div class="row" id="indexBestItemBox">
 	  	<div id="bestItemTitle">
-	  		<h3>인기제품</h3>
-	    	<p>카테고리별 BEST 3 아이템</p>
+	  		<h1>카테고리별 BEST 3</h1>
+	    	<p></p>
 	  	</div>
-	    
 	    <div class="col-sm-3" style="text-align: center; border-right: solid 1px #cccccc;">
 	      <p style="text-align: center; font-weight: bold; font-size: 12pt;">마우스</p>
 	      <div>
-	      	<a href="#"><img src="<%= ctxPath %>/images/동원.png" class="img-thumbnail" class="img-rounded" style="width:100%;" alt="Image"><p>1. 마우스</p></a>
-	      	<br>
-	      	<a href="#"><img src="<%= ctxPath %>/images/미샤.png" class="img-thumbnail" class="img-rounded" style="width:100%;" alt="Image"><p>2. 마우스</p></a>
-	      	<br>
-	      	<a href="#"><img src="<%= ctxPath %>/images/레노보.png" class="img-thumbnail" class="img-rounded" style="width:100%;" alt="Image"><p>3. 마우스</p></a>
-	      	<br>
+	      	<div class="indexBestItem">
+	      		<a href="#"><img src="<%= ctxPath %>/images/동원.png" class="img-thumbnail" class="img-rounded" style="width:100%;" alt="Image"><p>1. 마우스</p></a>
+	      	</div>
+	      	<div class="indexBestItem">
+	      		<a href="#"><img src="<%= ctxPath %>/images/미샤.png" class="img-thumbnail" class="img-rounded" style="width:100%;" alt="Image"><p>1. 마우스</p></a>
+	      	</div>
+	      	<div class="indexBestItem">
+	      		<a href="#"><img src="<%= ctxPath %>/images/레노보.png" class="img-thumbnail" class="img-rounded" style="width:100%;" alt="Image"><p>1. 마우스</p></a>
+	      	</div>
 	      </div>
 	    </div>
 	    
@@ -201,10 +211,8 @@
 	      	<br>
 	      </div>
 	    </div>
-	  </div>
-	  
-	  <br><br>
-	  
+	 </div> 
+	 
   </div>
  </div>
   
