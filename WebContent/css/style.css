@@ -8,6 +8,17 @@
 		word-break: break-all;
 	}
 	
+	.innerContainer{
+		width: 50%;
+		display: block;
+		padding: 20px;
+		margin: 0 auto; 
+	}
+	
+	.errorText{
+		color: red;
+	}
+	
 	div#wrap{
 		border: solid 0px blue;
 		width: 1150px;

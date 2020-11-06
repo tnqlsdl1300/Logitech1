@@ -188,7 +188,20 @@ a#menu-share:hover > i{
 <body>
 
 	<script type="text/javascript">
+	
+		// 전체 모달 닫기(전역함수인듯)
+		window.closeModal = function(){
+		    $('.modal').modal('hide');
+		};
+		
+		// 임시 Modal을 위한 페이지 이동 함수(전역)
+		window.href = function(loc) {
+			location.href = loc;
+		};
+
+		
 		$(document).ready(function() {
+			
 			// 로그아웃 상태
 			$("li#logoutBtn").hide();
 			$("li#mypageBtn").hide();

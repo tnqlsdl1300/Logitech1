@@ -51,6 +51,17 @@
 	
 </style>
 
+<script type="text/javascript">
+
+	$(document).ready(function() {
+		$("a#registerBtn").click(function() {
+			window.parent.closeModal();
+			window.parent.href("/Logitech/agreeRegister.jsp");
+		});
+	});
+	
+</script>
+
 <%-- Modal 로 띄울 페이지 - 로그인 --%>
 <div class="container">
   
@@ -72,7 +83,7 @@
     <ul id="accountFind">
     	<li><a href="#">아이디 찾기</a></li>
     	<li><a href="#">비밀번호 찾기</a></li>
-    	<li><a href="#">회원가입</a></li>
+    	<li><a href="#" id="registerBtn">회원가입</a></li>
     </ul>
     <br>
     <button type="button" class="btn btn-default loginBtn">로그인</button>

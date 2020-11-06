@@ -10,7 +10,7 @@
 <style>
 	
 	div#registerWrap{
-		text-align: center;
+
 	}
 	
 	h2{
@@ -32,12 +32,6 @@
 		margin: 0 auto;
 	}
 	
-	.innerContainer{
-		width: 50%;
-		display: inline-block;
-		padding: 20px;
-	}
-	
 	.form-group{
 		text-align: left;
 		padding-bottom: 2%;
@@ -45,11 +39,6 @@
 	
 	.form-control{
 		height: 50px;
-	}
-	
-	.errorText{
-		color: red;
-		display: none; <%-- 일단 에러메세지 안보이게함 --%>
 	}
 
 	#birthText{
@@ -80,6 +69,16 @@
 	}
 	
 </style>
+
+<script type="text/javascript">
+	
+	$(document).ready(function() {
+		
+		$("label.errorText").hide();
+		
+	});
+	
+</script>
  
 <%-- Modal 로 띄울 페이지 - 회원가입 --%>
 <div class="totalWrap" id="registerWrap">
@@ -93,7 +92,7 @@
 		  <form action="/action_page.php">
 		  
 		    <div class="form-group">
-		      <input type="text" class="form-control input-group" id="name" placeholder="이름" name="name" required>
+		      <input type="text" class="form-control input-group" id="name" placeholder="이름" name="name">
 		      <label class="errorText">이름을 입력하시지 않았습니다.</label>
 		    </div>
 		    <div class="form-group">
