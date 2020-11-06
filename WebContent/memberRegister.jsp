@@ -82,7 +82,7 @@
 	}
 	
 </style>
-
+ 
 <%-- Modal 로 띄울 페이지 - 회원가입 --%>
 <div class="container">
   <div class="innerContainer">
