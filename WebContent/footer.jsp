@@ -3,7 +3,7 @@
     
 <style type="text/css">
 	p.footerLink a{
-		color: white;
+		color: #d4d4d4;
 		font-weight: bold;
 		font-size: 12pt;
 	}

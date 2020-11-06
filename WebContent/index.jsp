@@ -24,6 +24,10 @@
 		background-color: #222222;
 	}
 	
+	div#bestItemWrap{
+		background-color: #f6f6f6;
+	}
+	
 	div#bestItemTitle{
 		text-align: center;
 		border: solid 1px #cccccc;
