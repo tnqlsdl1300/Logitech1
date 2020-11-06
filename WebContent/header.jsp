@@ -293,13 +293,13 @@ a#menu-share:hover > i{
 </div>
 
 <%-- 검색 Modal --%>
-<div id="searchModal" class="modal fade" role="dialog"  data-keyboard="false" data-backdrop="static">
+<div id="searchModal" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
   <div class="modal-dialog">
 
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button type="button" class="close" data-dismiss="modal" onclick="window.closeModal()">&times;</button>
         <h4 class="modal-title">제품 검색</h4>
       </div>
       <div class="modal-body">

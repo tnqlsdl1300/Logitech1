@@ -42,6 +42,11 @@
 	$(document).ready(function() {
 		// 에러메세지 일단 숨겨둠
 		$("label.error").hide();
+		
+		$("button.pwdChangeBtn").click(function() {
+			window.parent.closeModal();
+		});
+		
 	});
 	
 </script>
