@@ -32,15 +32,32 @@
 	
 </style>
 
+<script type="text/javascript">
+
+	$(document).ready(function() {
+		
+		// 검색시 검색결과 페이지로 이동(임시구현)
+		$("button#M_searchBtn").click(function() {
+			
+			window.parent.closeModal();
+			window.parent.href("/Logitech/searchResult.jsp");
+			
+		});
+		
+	});
+
+</script>
+
   
   <form action="/action_page.php">
   	
     <div class="container">
     	
 	   	<div class="input-group">
+	   		<input hidden="hidden" /><%-- 엔터 누를 시 자동 submit 방지 --%>
 	  	 	<input type="text" class="form-control" placeholder="Search">
 		    	<div class="input-group-btn">
-		       	 <button class="btn btn-default" type="submit">
+		       	 <button class="btn btn-default" type="button" id="M_searchBtn">
 		       	 <i class="glyphicon glyphicon-search"></i>
 		      </button>
 		    </div>
