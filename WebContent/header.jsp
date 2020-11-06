@@ -268,7 +268,7 @@ a#menu-share:hover > i{
       <div class="modal-body">
         <div id="login">
         <%-- 임시 모달 꼭 변경 --%>
-             <iframe style="border: none; width: 100%; height: 500px;" src="/Logitech/pwdChange.jsp">
+             <iframe style="border: none; width: 100%; height: 500px;" src="/Logitech/login.jsp">
              </iframe>
         </div>
       </div>
