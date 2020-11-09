@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 		description = "사용자가 웹에서 *.up 을 했을 경우 이 서블릿이 먼저 응답을 해주도록 한다.", 
 		urlPatterns = { "*.up" }, 
 		initParams = { 
-				@WebInitParam(name = "propertyConfig", value = "C:/Users/Subin/workspace(jsp)/MyMVC/WebContent/WEB-INF/Command.properties", description = "*.up 에 대한 클래스의 매핑파일")
+				@WebInitParam(name = "propertyConfig", value = "C:/Users/Subin/workspace(jsp)/Logitech/WebContent/WEB-INF/Command.properties", description = "*.up 에 대한 클래스의 매핑파일")
 		})
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -100,7 +100,7 @@ public class FrontController extends HttpServlet {
 		}catch (ClassNotFoundException e) {
 			System.out.println(">>> 문자열로 명명되어진 클래스가 존재하지 않습니다. <<<");
 		} catch (FileNotFoundException e) {
-			System.out.println(">>> C:/Users/Subin/workspace(jsp)/MyMVC/WebContent/WEB-INF/Command.properties 파일이 없습니다");
+			System.out.println(">>> C:/Users/Subin/workspace(jsp)/Logitech/WebContent/WEB-INF/Command.properties 파일이 없습니다");
 			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

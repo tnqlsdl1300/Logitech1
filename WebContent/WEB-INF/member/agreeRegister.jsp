@@ -5,7 +5,7 @@
 	String ctxPath = request.getContextPath();
 %>
 
-<jsp:include page="header.jsp" />
+<jsp:include page="../header.jsp" />
 
 <style>
 	
@@ -56,9 +56,17 @@
 				$("label.errorText").show();
 				return false;
 			}
+
 		});
 		
 	});
+	
+	function goRegister() {
+		var frm = document.registerAgreeFrm;
+		frm.action = "memberRegister.up";
+		frm.method = "post";
+		frm.submit();
+	}
 	
 
 </script>
@@ -67,7 +75,7 @@
 <div class="totalWrap" id="agreeRegisterWrap">
 	<div id="wrap">
 		<div class="innerContainer">
-			<form action="/action_page.php">
+			<form name="registerAgreeFrm">
 			  	<%-- ** 전체동의 체크 시 다른 체크박스 컨트롤 구현!!!!, 회사소개 페이지 구현 --%>
 			  	<div class="checkbox">
 				  <label><input type="checkbox" class="checkAll" value="">전체동의</label>
@@ -85,16 +93,16 @@
 				<br>
 				<label>선택 동의 항목</label><br>
 				<div class="checkbox">
-				  <label><input type="checkbox" class="checkAgree" value="">개인정보 제3자 제공 동의</label><label><a href="/Logitech/iframeAgree/agree.html" target="_blank">약관 전체보기</a></label><br>
-				  <label><input type="checkbox" class="checkAgree" value="">이메일 수신 동의</label><br>
-				  <label><input type="checkbox" class="checkAgree" value="">SMS 수신 동의</label>
+				  <label><input type="checkbox" class="checkAgree" name="agreethird" value="1">개인정보 제3자 제공 동의</label><label><a href="/Logitech/iframeAgree/agree.html" target="_blank">약관 전체보기</a></label><br>
+				  <label><input type="checkbox" class="checkAgree" name="agreesms" value="1">이메일 수신 동의</label><br>
+				  <label><input type="checkbox" class="checkAgree" name="agreeemail" value="1">SMS 수신 동의</label>
 				</div>
 				
 				<label>단, 거래정보-결제/교환/환불 등과 관련된 내용은 거래안전을 위해 수신 동의와 관련없이 전송됩니다.</label><br>
 				
 	
 				<div id="btnWrapper">
-				    <button type="button" class="btn btn-default registerBtn" id="submitBtn"><a href="/Logitech/memberRegister.jsp">동의하고 회원가입</a></button>
+				    <button type="button" class="btn btn-default registerBtn" id="submitBtn" onclick="goRegister()">동의하고 회원가입</button>
 				    <button type="button" class="btn btn-default registerBtn" id="cancelBtn">처음으로</button>
 			    </div>
 			  </form>
@@ -103,5 +111,5 @@
 </div>
 
 
-<jsp:include page="footer.jsp" />
+<jsp:include page="../footer.jsp" />
     

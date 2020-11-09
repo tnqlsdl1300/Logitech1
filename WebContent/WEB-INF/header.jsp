@@ -272,7 +272,7 @@ a#menu-share:hover > i{
 	
 	<%-- 로그인 Modal --%>
 <div id="loginModal" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">
-  <div class="modal-dialog" style="">
+  <div class="modal-dialog">
 
     <!-- Modal content-->
     <div class="modal-content">
@@ -283,7 +283,7 @@ a#menu-share:hover > i{
       <div class="modal-body">
         <div id="login">
         <%-- 임시 모달 꼭 변경 --%>
-             <iframe style="border: none; width: 100%; height: 500px;" src="/Logitech/login.jsp">
+             <iframe style="border: none; width: 100%; height: 500px;" src="<%= request.getContextPath() %>/login/login.up">
              </iframe>
         </div>
       </div>
