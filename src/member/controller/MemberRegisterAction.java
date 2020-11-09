@@ -31,49 +31,13 @@ public class MemberRegisterAction extends AbstractController {
 				agreeemail = "0";
 			}
 			
-			String name = request.getParameter("name");
-			String userid = request.getParameter("userid");
-			String pwd = request.getParameter("pwd");
-			String mobile = request.getParameter("mobile");
-			String email = request.getParameter("email");
-			String birthday = request.getParameter("birthday");
+			request.setAttribute("agreethird", agreethird);
+			request.setAttribute("agreesms", agreesms);
+			request.setAttribute("agreeemail", agreeemail);
 			
-			
-			System.out.println(name);
-			System.out.println(userid);
-			System.out.println(pwd);
-			System.out.println(mobile);
-			System.out.println(email);
-			System.out.println(birthday);
-			
-			MemberVO member = new MemberVO();
-			member.setName(name);
-			member.setUserid(userid);
-			member.setPwd(pwd);
-			member.setMobile(mobile);
-			member.setEmail(email);
-			member.setBirthday(birthday);
-			member.setAgreethird(agreethird);
-			member.setAgreesms(agreesms);
-			member.setAgreeemail(agreeemail);
-			
-			InterMemberDAO mdao = new MemberDAO();
-			int n = mdao.registerMember(member);
-			String message = "";
-			String loc = "";
-			if (n == 1) {
-				message = "회원가입을 축하드립니다!";
-				loc = request.getContextPath() + "/index.up";
-			}else {
-				message = "회원가입에 실패했습니다.";
-				loc = "javascript:history.back()";
-			}
-			
-			request.setAttribute("message", message);
-			request.setAttribute("loc", loc);
 			
 			super.setRedirect(false);	// forward 방식
-			super.setViewPage("/WEB-INF/msg.jsp");
+			super.setViewPage("/WEB-INF/member/memberRegister.jsp");
 			
 			
 		}else {

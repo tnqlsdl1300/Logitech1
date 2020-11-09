@@ -216,7 +216,7 @@
 		
 		if(!bFlagRequiredInfo){
 			var frm = document.registerFrm;
-			frm.action = "memberRegister.up";
+			frm.action = "memberRegisterDB.up";
 			frm.method = "post";
 			frm.submit();
 		}
@@ -273,6 +273,10 @@
 			    <button type="button" class="btn btn-default registerBtn" id="submitBtn" onclick="goRegister()">회원가입</button>
 			    <button type="button" class="btn btn-default registerBtn" id="cancelBtn">처음으로</button>
 		    </div>
+		    
+		    <input type="hidden" name="agreethird" value="${ agreethird }">
+		    <input type="hidden" name="agreesms" value="${ agreesms }">
+		    <input type="hidden" name="agreeemail" value="${ agreeemail }">
 		  </form>
 		  
 		</div>
