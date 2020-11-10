@@ -214,6 +214,15 @@ a#menu-share:hover > i{
 			$("li#mypageBtn").show();
 			 */
 		});
+		
+		function goMemberRegister() {
+			closeModal();
+			location.href="/Logitech/member/memberRegister.up";
+		}
+		
+		function parentCall() {
+			alert("부모창 함수 호출함");
+		}
 
 	</script>
 	<div class="totalWrap" id="navWrap">

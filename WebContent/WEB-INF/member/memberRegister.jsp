@@ -84,8 +84,38 @@
 		
 	});
 	
-	// 이메일 중복검사 버튼
+	// 아이디 중복검사 버튼
 	function isExistUseridCheck() {
+
+		// 버튼을 눌렀을 때 ajax(비동기)를 통해 data를 url 페이지로 post방식으로 보내준다
+  		 $.ajax({
+  			url:"<%= ctxPath %>/member/useridDuplicateCheck.up",	// 보낼 주소
+  			data:{"userid":$("input#userid").val()},				// 보낼 데이터(키:밸류)
+  			type:"post",										// 메서드(post/get)
+  			dataType:"json",									// "/MyMVC/member/idDuplicateCheck.up" 로부터 실행되어진 결과물을 받아오는 데이터 타입을 말한다
+  			success:function(json){								// 성공했을 때 실행할 것	(data)는 결과물 json 객체를 말함(). 객체명은 아무거나 써도 객체는 들어옴
+  				if(json.isExists){	// 객체명.key값 == value값
+  					// 입력한 userid가 이미 사용중 이라면
+  					//$("span#idcheckResult").html($("input#userid").val() + "은 사용불가능한 아이디입니다").css({"color":"red"});
+  					alert("사용불가능 아이디");
+  					$("input#userid").val("");
+  					$("input#userid").focus();
+  					useridFlag = false;
+  				}else{
+  					// 입력한 userid 가 DB 테이블에 존재하지 않는 경우라면
+  					//$("span#idcheckResult").html("사용가능한 아이디입니다.").css({"color":"navy"});
+  					alert("사용가능 아이디");
+  					useridFlag = true;
+  				}
+  			},
+  			error: function(request, status, error){			// 실패했을 때 실행할 것(코딩 개떡같이 했을 때 => 정상적으로 받아온 데이터 true/false와 상관없음)
+               alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+           }									
+  		 });
+	}
+	
+	// 이메일 중복검사 버튼
+	function isExistEmailCheck() {
 
 		// 버튼을 눌렀을 때 ajax(비동기)를 통해 data를 url 페이지로 post방식으로 보내준다
   		 $.ajax({

@@ -9,7 +9,8 @@ SELECT * FROM USER_SEQUENCES;
 drop table abc purge;
 
 select *
-from member;
+from member
+order by memberno;
 
 insert into member (memberno, userid, pwd, name, email, mobile, birthday, agreethird, agreesms, agreeemail)
 values(member_seq.nextval, 'userid', 'pwd', 'name', 'email', 'mobile', 'birthday', 1, 1, 1);
