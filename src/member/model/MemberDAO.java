@@ -191,6 +191,109 @@ public class MemberDAO implements InterMemberDAO {
 		return result;
 	}
 
+	// 아이디, 비밀번호로 회원 하나 검색하는 메서드 (로그인에서 사용)
+	@Override
+	public MemberVO selectOneMember(Map<String, String> paraMap) throws SQLException {
+		
+		MemberVO member = null;
+		
+		try {
+			
+			conn = ds.getConnection();
+			
+			String sql = "select memberno, userid, name, email, mobile, birthday, postcode, address, detailaddress, extraaddress, point, registerday, pwdchangegap\n"+
+					"        , nvl(lastlogingap, trunc(months_between(sysdate, registerday))) as lastlogingap\n"+
+					"from \n"+
+					"(\n"+
+					"    select memberno, userid, name, email, mobile, birthday, postcode, address, detailaddress, extraaddress, point, registerday\n"+
+					"            , trunc(months_between(sysdate, lastpwdchangeday)) as pwdchangegap\n"+
+					"    from member\n"+
+					"    where status = 0 and userid = ? and pwd = ?\n"+
+					") M\n"+
+					"cross join\n"+
+					"(\n"+
+					"    select trunc(months_between(sysdate, max(logindate))) as lastlogingap\n"+
+					"    from loginhistory\n"+
+					"    where fk_userid = ?\n"+
+					") H";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, paraMap.get("userid"));
+			pstmt.setString(2, Sha256.encrypt(paraMap.get("pwd")));
+			pstmt.setString(3, paraMap.get("userid"));
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				member = new MemberVO();
+				
+				if (rs.getString(8) == null) {
+					member.setMemberno(rs.getInt(1));
+					member.setUserid(rs.getString(2));
+					member.setName(rs.getString(3));
+					member.setEmail(rs.getString(4));
+					member.setMobile(rs.getString(5));
+					member.setBirthday(rs.getString(6));
+					member.setPoint(rs.getInt(7));
+					member.setPoint(rs.getInt(11));
+					member.setRegisterday(rs.getString(12));
+				}else {
+					member.setMemberno(rs.getInt(1));
+					member.setUserid(rs.getString(2));
+					member.setName(rs.getString(3));
+					member.setEmail(rs.getString(4));
+					member.setMobile(rs.getString(5));
+					member.setBirthday(rs.getString(6));
+					member.setPoint(rs.getInt(7));
+					member.setAddress(rs.getString(8));
+					member.setDetailaddress(rs.getString(9));
+					member.setExtraaddress(rs.getString(10));
+					member.setPoint(rs.getInt(11));
+					member.setRegisterday(rs.getString(12));
+				}
+				
+				if (rs.getInt(13) >= 3) {
+					member.setRequirePwdChange(true);
+				}
+				
+				// 휴면대상일 경우
+				if (rs.getInt(14) >= 12) {
+					member.setIdle(1);
+					
+					// === tbl_member 테이블의 idle 컬럼의 값은 1로 변경하기 === //
+					sql = "update member set idle = 1 \n"+
+							"where userid= ?";
+					
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, paraMap.get("userid"));
+					
+					pstmt.executeUpdate();
+				}
+				
+				// 휴면대상이 아닐경우
+				if(member.getIdle() == 0) {
+					// === tbl_loginhistory(로그인 기록 테이블) 테이블에 insert 하기 === //
+					sql = "insert into loginhistory(fk_userid, clientip)\n"+
+							"values(?, ?)";
+					
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, paraMap.get("userid"));
+					pstmt.setString(2, paraMap.get("clientip"));
+					
+					pstmt.executeUpdate();
+				}
+				
+				
+			}
+			
+		} finally {
+			close();
+		}
+		
+		
+		return member;
+	}
+
 	
 
 }

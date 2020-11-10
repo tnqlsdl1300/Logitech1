@@ -17,6 +17,9 @@ public interface InterMemberDAO {
 	// 아이디 찾기 메서드
 	String findUserid(Map<String, String> paraMap) throws SQLException;
 
+	// 아이디, 비밀번호로 회원 하나 검색하는 메서드 (로그인에서 사용)
+	MemberVO selectOneMember(Map<String, String> paraMap) throws SQLException;
+
 	
 	
 }

@@ -59,28 +59,81 @@
 
 	$(document).ready(function() {
 		
+		var loginUserid = localStorage.getItem("saveid");
+		
+		if (loginUserid != null) {
+			// session 아이디가 저장되어 있을 때
+			$("input#userid").val(loginUserid);
+			$("input#saveid").prop("checked", true);
+		}else{
+			// session 아이디가 저장되어 없을 때
+			$("input#userid").val("");
+			$("input#saveid").prop("checked", false);
+		}
+		
+		$("button#loginBtn").click(function() {
+			goLogin();
+		});
+		
+		$("input#password").keyup(function() {
+			// 암호 입력란에 엔터를 입력했을 경우 goLogin() 함수 실행
+			if(event.keyCode == 13){
+				goLogin();
+			}	
+		});
 		
 	});	
+	
+	function goLogin() {
+		var loginUserid = $("input[name=userid]").val();
+		var loginPwd = $("input[name=password]").val();
+
+		if (loginUserid == "") {
+			alert("아이디를 입력해주세요.");
+			$("input[name=email]").focus();
+			$("input[name=email]").val("");
+			return false;
+		}else if (loginPwd == "") {
+			alert("비밀번호를 입력해주세요.");
+			$("input[name=password]").focus();
+			$("input[name=password]").val("");
+			return false;
+		}
+		
+		if($("input#saveid:checked").length == 1){
+			localStorage.setItem("saveid", $("input[name=userid]").val());
+		}else{
+			localStorage.removeItem("saveid");
+		}
+		
+		var frm = document.loginFrm;
+		frm.action = "login.sg";
+		frm.method = "POST";
+		frm.submit();
+		
+		
+	}
 	
 </script>
 
 <%-- Modal 로 띄울 페이지 - 로그인 --%>
 <div class="container">
   
-  <form action="/action_page.php">
+  <form name="loginFrm">
   
 	<h4 id="loginTitle">로그인</h4>
 
     <div class="input-group">
       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-      <input id="email" type="text" class="form-control" name="email" placeholder="아이디">
+      <input id="userid" type="text" class="form-control" name="userid" placeholder="아이디">
     </div>
     <div class="input-group">
       <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
       <input id="password" type="password" class="form-control" name="password" placeholder="비밀번호">
     </div>
+    
     <div class="checkbox">
-      <label><input type="checkbox" name="remember"> 아이디 저장</label>
+      <label><input type="checkbox" id="saveid" name="saveid">아이디 저장</label>
     </div>
     <ul id="accountFind">
     	<li><a href="<%= request.getContextPath() %>/login/idFind.sg">아이디 찾기</a></li>
@@ -88,7 +141,7 @@
         <li id="loginRegisterBtn" onclick="window.parent.goMemberRegister()">회원가입</li>
     </ul>
     <br>
-    <button type="button" class="btn btn-default loginBtn">로그인</button>
+    <button type="button" class="btn btn-default loginBtn" id="loginBtn">로그인</button>
     <br>
     
     
