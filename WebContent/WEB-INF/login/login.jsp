@@ -83,9 +83,9 @@
       <label><input type="checkbox" name="remember"> 아이디 저장</label>
     </div>
     <ul id="accountFind">
-    	<li><a href="/Logitech/idFind.jsp">아이디 찾기</a></li>
-    	<li><a href="/Logitech/pwdFind.jsp">비밀번호 찾기</a></li>
-        <li id="loginRegisterBtn" style="" onclick="window.parent.goMemberRegister()">회원가입</li>
+    	<li><a href="<%= request.getContextPath() %>/login/idFind.sg">아이디 찾기</a></li>
+    	<li><a href="">비밀번호 찾기</a></li>
+        <li id="loginRegisterBtn" onclick="window.parent.goMemberRegister()">회원가입</li>
     </ul>
     <br>
     <button type="button" class="btn btn-default loginBtn">로그인</button>

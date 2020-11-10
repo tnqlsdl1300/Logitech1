@@ -46,29 +46,46 @@
 	
 	$(document).ready(function() {
 		
-		$("div#resultDiv").hide();
-		
-		// 찾은 아이디 보여주기/숨기기
-		var bFlag = false;
-		$(".idFindBtn").click(function() {
-			if(!bFlag){
-				$("div#resultDiv").show();
-				bFlag = true;
-			}else{
-				$("div#resultDiv").hide();
-				bFlag = false;
-			}
-			
-		});
+		if ("${ method }" == "POST") {
+			$("input[name=name]").val("${ name }");
+			$("input[name=email]").val("${ email }");
+		}
 		
 	});
+	
+	// 아이디찾기 버튼 클릭
+	function idFind() {
+		
+		var name = $("input[name=name]").val().trim();
+		var email = $("input[name=email]").val().trim();
+		
+		if (name == "") {
+			alert("아이디를 입력해주세요.");
+			$("input[name=name]").val("");
+			$("input[name=name]").focus();
+			return false;
+		}
+		
+		if (email == "") {
+			alert("이메일을 입력해주세요.");
+			$("input[name=email]").val("");
+			$("input[name=email]").focus();
+			return false;
+		}
+
+		var frm = document.idFindFrm;
+		frm.action = "<%= request.getContextPath() %>/login/idFind.sg";
+		frm.method = "POST";
+		frm.submit();
+		
+	}
 	
 </script>
 
 <%-- Modal 로 띄울 페이지 - 아이디 찾기 --%>
 <div class="container">
   
-  <form action="/action_page.php">
+  <form name="idFindFrm">
   	<div id="titleText">
  		<label>아이디 찾기</label>
  	</div>
@@ -82,12 +99,12 @@
 	<br><br><br>
 
 	<div id="resultDiv">
-		회원님의 아이디는 <span>tnqlsdl1300</span> 입니다.
+		<span>${ message }</span>
 	</div>
 
     <br><br><br>
     
-    <button type="button" class="btn btn-default idFindBtn">찾기</button>
+    <button type="button" class="btn btn-default idFindBtn" onclick="idFind()">찾기</button>
   </form>
   
   

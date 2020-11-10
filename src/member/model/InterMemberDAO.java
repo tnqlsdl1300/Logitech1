@@ -1,6 +1,7 @@
 package member.model;
 
 import java.sql.SQLException;
+import java.util.Map;
 
 public interface InterMemberDAO {
 
@@ -12,6 +13,9 @@ public interface InterMemberDAO {
 
 	// 회원가입 메서드 (가입한 회원의 정보를 DB에 넣는다)
 	int registerMember(MemberVO member) throws SQLException;
+
+	// 아이디 찾기 메서드
+	String findUserid(Map<String, String> paraMap) throws SQLException;
 
 	
 	

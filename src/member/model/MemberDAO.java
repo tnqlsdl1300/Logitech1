@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Map;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -150,6 +151,42 @@ public class MemberDAO implements InterMemberDAO {
 		} finally {
 			close();
 		}
+		
+		return result;
+	}
+
+	// 아이디 찾기 메서드
+	@Override
+	public String findUserid(Map<String, String> paraMap) throws SQLException {
+		
+		String result = "";
+
+		try {
+			
+			conn = ds.getConnection();
+			
+			String sql = "select userid\n"+
+					"from member\n"+
+					"where status = 0 and name = ? and email = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, paraMap.get("name"));
+			pstmt.setString(2, aes.encrypt(paraMap.get("email")));
+			
+			rs = pstmt.executeQuery();
+			
+			// 행이 있으면(중복) true, 없으면(중복x) false 반환
+			if (rs.next()) {
+				result = rs.getString(1);
+			};
+			
+		} catch (UnsupportedEncodingException | GeneralSecurityException  e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		
+		
 		
 		return result;
 	}
