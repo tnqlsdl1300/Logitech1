@@ -63,7 +63,7 @@
 	
 	function goRegister() {
 		var frm = document.registerAgreeFrm;
-		frm.action = "memberRegister.up";
+		frm.action = "memberRegister.sg";
 		frm.method = "post";
 		frm.submit();
 	}

@@ -54,7 +54,7 @@ public class MemberRegisterDBAction extends AbstractController {
 			String loc = "";
 			if (n == 1) {
 				message = "회원가입을 축하드립니다!";
-				loc = request.getContextPath() + "/index.up";
+				loc = request.getContextPath() + "/index.sg";
 			}else {
 				message = "회원가입에 실패했습니다.";
 				loc = "javascript:history.back()";

@@ -89,7 +89,7 @@
 
 		// 버튼을 눌렀을 때 ajax(비동기)를 통해 data를 url 페이지로 post방식으로 보내준다
   		 $.ajax({
-  			url:"<%= ctxPath %>/member/useridDuplicateCheck.up",	// 보낼 주소
+  			url:"<%= ctxPath %>/member/useridDuplicateCheck.sg",	// 보낼 주소
   			data:{"userid":$("input#userid").val()},				// 보낼 데이터(키:밸류)
   			type:"post",										// 메서드(post/get)
   			dataType:"json",									// "/MyMVC/member/idDuplicateCheck.up" 로부터 실행되어진 결과물을 받아오는 데이터 타입을 말한다
@@ -119,7 +119,7 @@
 
 		// 버튼을 눌렀을 때 ajax(비동기)를 통해 data를 url 페이지로 post방식으로 보내준다
   		 $.ajax({
-  			url:"<%= ctxPath %>/member/useridDuplicateCheck.up",	// 보낼 주소
+  			url:"<%= ctxPath %>/member/useridDuplicateCheck.sg",	// 보낼 주소
   			data:{"userid":$("input#userid").val()},				// 보낼 데이터(키:밸류)
   			type:"post",										// 메서드(post/get)
   			dataType:"json",									// "/MyMVC/member/idDuplicateCheck.up" 로부터 실행되어진 결과물을 받아오는 데이터 타입을 말한다
@@ -246,7 +246,7 @@
 		
 		if(!bFlagRequiredInfo){
 			var frm = document.registerFrm;
-			frm.action = "memberRegisterDB.up";
+			frm.action = "memberRegisterDB.sg";
 			frm.method = "post";
 			frm.submit();
 		}

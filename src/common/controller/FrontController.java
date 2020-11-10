@@ -14,9 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(
 		description = "사용자가 웹에서 *.up 을 했을 경우 이 서블릿이 먼저 응답을 해주도록 한다.", 
-		urlPatterns = { "*.up" }, 
+		urlPatterns = { "*.sg" }, 
 		initParams = { 
-				@WebInitParam(name = "propertyConfig", value = "C:/Users/Subin/workspace(jsp)/Logitech/WebContent/WEB-INF/Command.properties", description = "*.up 에 대한 클래스의 매핑파일")
+				@WebInitParam(name = "propertyConfig", value = "C:/Users/Subin/workspace(jsp)/Logitech/WebContent/WEB-INF/Command.properties", description = "*.sg 에 대한 클래스의 매핑파일")
 		})
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;

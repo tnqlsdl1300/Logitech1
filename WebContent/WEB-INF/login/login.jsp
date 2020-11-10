@@ -81,7 +81,7 @@
     <ul id="accountFind">
     	<li><a href="/Logitech/idFind.jsp">아이디 찾기</a></li>
     	<li><a href="/Logitech/pwdFind.jsp">비밀번호 찾기</a></li>
-    	<li><a href="<%= request.getContextPath() %>/member/memberRegister.up" target="_blank" id="registerBtn">회원가입1</a></li>
+    	<li><a href="<%= request.getContextPath() %>/member/memberRegister.sg" target="_blank" id="registerBtn">회원가입1</a></li>
         <li style="cursor: pointer;" onclick="window.parent.goMemberRegister()">회원가입2</li>
     </ul>
     <br>

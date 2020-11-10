@@ -217,7 +217,7 @@ a#menu-share:hover > i{
 		
 		function goMemberRegister() {
 			closeModal();
-			location.href="/Logitech/member/memberRegister.up";
+			location.href="/Logitech/member/memberRegister.sg";
 		}
 		
 		function parentCall() {
@@ -292,7 +292,7 @@ a#menu-share:hover > i{
       <div class="modal-body">
         <div id="login">
         <%-- 임시 모달 꼭 변경 --%>
-             <iframe style="border: none; width: 100%; height: 500px;" src="<%= request.getContextPath() %>/login/login.up">
+             <iframe style="border: none; width: 100%; height: 500px;" src="<%= request.getContextPath() %>/login/login.sg">
              </iframe>
         </div>
       </div>
