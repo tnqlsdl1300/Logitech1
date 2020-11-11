@@ -250,7 +250,7 @@ a#menu-share:hover > i{
 						<li id="loginBtn" data-toggle="modal" data-target="#loginModal"><a
 							href="#"><span class="glyphicon glyphicon-user"></span><span
 								class="navText"> 내계정</span></a></li>
-						<li id="mypageBtn"><a href="#"><span
+						<li id="mypageBtn"><a href="마이페이지로 이동"><span
 								class="glyphicon glyphicon-user"></span><span class="navText">
 									내계정</span></a></li>
 						<li id="logoutBtn" onclick="goLogout()"><a href="#"><span
