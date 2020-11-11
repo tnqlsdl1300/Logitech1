@@ -218,7 +218,7 @@ a#menu-share:hover > i{
 		});
 		
 		function goLogout() {
-			location.href = "<%= ctxPath %>/login/logout.sg";
+			location.href = "<%= ctxPath %>/member/logout.sg";
 		}
 		
 		function goMemberRegister() {
@@ -303,7 +303,7 @@ a#menu-share:hover > i{
       <div class="modal-body">
         <div id="login">
         <%-- 임시 모달 꼭 변경 --%>
-             <iframe style="border: none; width: 100%; height: 500px;" src="<%= request.getContextPath() %>/login/login.sg">
+             <iframe style="border: none; width: 100%; height: 500px;" src="<%= request.getContextPath() %>/member/login.sg">
              </iframe>
         </div>
       </div>

@@ -74,7 +74,7 @@
 		}
 
 		var frm = document.idFindFrm;
-		frm.action = "<%= request.getContextPath() %>/login/idFind.sg";
+		frm.action = "<%= request.getContextPath() %>/member/idFind.sg";
 		frm.method = "POST";
 		frm.submit();
 		
