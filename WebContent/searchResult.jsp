@@ -108,6 +108,8 @@
 				    	<p class="productName">제품명3</p>
 				    	<p class="productText">설명3</p>
 				    </div>
+				    <%-- 어차피 부트스트랩이 12가 한계라 자동으로 아래로 내려감 eachItemImg만 정렬해서 넣음 될듯 --%>
+				    
 				    <div class="col-sm-3 eachItem" onclick="gotoDetail()">
 				    	<div class="eachItemImg">
 				    		<img src="https://resource.logitechg.com/e_trim/w_490,h_310,c_limit/c_lpad,ar_413:310,q_auto:best,f_auto,dpr_auto/content/dam/gaming/en/products/g603/g603-gallery-1.png?v=1">

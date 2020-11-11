@@ -20,6 +20,8 @@ values(member_seq.nextval, 'userid', 'pwd', 'name', 'email', 'mobile', 'birthday
 
 desc member;
 
+
+
 -- loginhistory 테이블 생성
 drop table loginhistory purge;
 create table loginhistory
@@ -67,10 +69,15 @@ select *
 from member
 order by memberno;
 
--- 1년 휴면 됐는지 확인하기 위한 쿼리
-update member set registerday = add_months(registerday, +13), lastpwdchangeday = add_months(lastpwdchangeday, +13)
-where userid='hjun34';
+select *
+from loginhistory;
+
+-- 3개월 비번 변경, 1년 휴면 됐는지 확인하기 위한 쿼리
+update member set registerday = add_months(registerday, 13), lastpwdchangeday = add_months(lastpwdchangeday, 13)
+where userid='hjun342';
+update loginhistory set logindate = add_months(logindate, -13)
+where fk_userid='hjun342';
 
 update member set idle = 0
-where userid = 'hjun34';
+where userid = 'hjun341';
 commit;

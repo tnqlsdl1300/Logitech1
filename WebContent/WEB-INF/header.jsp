@@ -220,6 +220,11 @@ a#menu-share:hover > i{
 			location.href="/Logitech/member/memberRegister.sg";
 		}
 		
+		function goIndex() {
+			closeModal();
+			location.href="/Logitech/index.sg";
+		}
+		
 		function parentCall() {
 			alert("부모창 함수 호출함");
 		}

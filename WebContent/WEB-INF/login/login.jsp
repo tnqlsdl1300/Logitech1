@@ -82,7 +82,12 @@
 			}	
 		});
 		
+		$("#loginTitle").click(function() {
+			window.parent.goMemberRegister();
+		});
+		
 	});	
+	
 	
 	function goLogin() {
 		var loginUserid = $("input[name=userid]").val();
@@ -106,12 +111,38 @@
 			localStorage.removeItem("saveid");
 		}
 		
-		var frm = document.loginFrm;
-		frm.action = "login.sg";
-		frm.method = "POST";
-		frm.submit();
-		
-		
+	
+	    $.ajax({
+	    	url:"/Logitech/login/login.sg",
+	    	type:"POST",
+	    	data:{"userid":loginUserid, "password":loginPwd},
+	    	dataType: "JSON",
+	    	success:function(json){ // json ==> {"login":"fail"}
+
+	    		if(json.login == "loginSuccess"){
+	    			window.parent.closeModal(); // 모달창 닫기
+	    		}
+	    		
+				if(json.login == "loginFail") {
+					alert("가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.");	
+				}
+
+	    		if(json.login == "pwdChange"){
+	    			window.parent.closeModal(); // 모달창 닫기
+	    			alert("비밀번호를 변경한지 3개월이 지났습니다. 비밀번호를 변경해주세요.");
+	    		}
+	    		
+	    		if (json.login == "restAccount") {
+	    			alert("1년동안 로그인을 하지 않아 휴면처리 된 계정입니다. 관리자에게 문의하세요.");
+				}
+	    		
+	    		
+	    	},
+	    	error: function(request, status, error){ 
+                alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+            }	
+	    });
+	
 	}
 	
 </script>

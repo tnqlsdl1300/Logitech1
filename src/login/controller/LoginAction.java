@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
+
 import common.controller.AbstractController;
 import member.model.*;
 
@@ -39,14 +41,15 @@ public class LoginAction extends AbstractController {
 				System.out.println(loginuser.getIdle());
 				if (loginuser.getIdle() == 1) {
 					// 1년 이상 미로그인 회원
-					String message = "1년동안 로그인을 하지 않아 휴면처리 된 계정입니다. 관리자에게 문의하세요.";
-					String loc = request.getContextPath() + "/index.sg";
+					System.out.println("들어오나");
+					JSONObject jsonObj = new JSONObject();
+					jsonObj.put("login", "restAccount");
 					
-					request.setAttribute("message", message);
-					request.setAttribute("loc", loc);
+					String json = jsonObj.toString();
+					request.setAttribute("json", json);
 					
 					super.setRedirect(false);
-					super.setViewPage("/WEB-INF/msg.jsp");
+					super.setViewPage("/WEB-INF/jsonview.jsp");
 				}else {
 					// 정상적인 회원일 시 session에 로그인한 회원정보 저장
 					
@@ -54,33 +57,40 @@ public class LoginAction extends AbstractController {
 					session.setAttribute("loginuser", loginuser);
 					
 					if (loginuser.isRequirePwdChange()) {
-						String message = "비밀번호를 변경한지 3개월이 지났습니다. 비밀번호를 변경해주세요.";
-						String loc = request.getContextPath() + "/index.sg";
+						// 비밀번호 변경한지 3개월 이상 지난 회원(alert만 띄워주기)
+						JSONObject jsonObj = new JSONObject();
+						jsonObj.put("login", "pwdChange");
 						
-						request.setAttribute("message", message);
-						request.setAttribute("loc", loc);
+						String json = jsonObj.toString();
+						request.setAttribute("json", json);
 						
 						super.setRedirect(false);
-						super.setViewPage("/WEB-INF/msg.jsp");
+						super.setViewPage("/WEB-INF/jsonview.jsp");
 						
 					}else {
-						// 메인으로 이동할 때 모달을 벗어나게 짜야함(질문)
-						super.setRedirect(true);
-						super.setViewPage(request.getContextPath() + "/index.sg");
+						// 정상적으로 로그인 된 회원
+						JSONObject jsonObj = new JSONObject();
+						jsonObj.put("login", "loginSuccess");
+						
+						String json = jsonObj.toString();
+						request.setAttribute("json", json);
+						
+						super.setRedirect(false);
+						super.setViewPage("/WEB-INF/jsonview.jsp");
 					}
 					
 				}
 				
-			}else {
-
-				String message = "로그인 실패";
-				String loc = "javascript:history.back()";
+			} else {
+				// ==== 로그인이 실패한 경우 ==== // 
+				JSONObject jsonObj = new JSONObject();
+				jsonObj.put("login", "loginFail");
 				
-				request.setAttribute("message", message);
-				request.setAttribute("loc", loc);
+				String json = jsonObj.toString(); // {"login":"fail"}
+				request.setAttribute("json", json);
 				
 				super.setRedirect(false);
-				super.setViewPage("/WEB-INF/msg.jsp");
+				super.setViewPage("/WEB-INF/jsonview.jsp");
 			}
 			
 			
