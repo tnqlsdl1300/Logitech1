@@ -13,6 +13,7 @@ desc KEYWORDSEARCH;
 select *
 from KEYWORDSEARCH;
 
+
 --- KEYWORDSEARCH 테이블에 키워드 넣는 쿼리
 insert into KEYWORDSEARCH(KEYWORD, SEARCHCNT)
 values('사무용', 0);
@@ -22,6 +23,13 @@ values('사무용', 0);
 게이밍
 사무용
 
+--- select 인기검색어 쿼리
+select keyword, searchcnt
+from keywordsearch
+order by searchcnt desc;
+
+update KEYWORDSEARCH set searchcnt= searchcnt-2
+where keyword='사무용';
 
 insert into member (memberno, userid, pwd, name, email, mobile, birthday, agreethird, agreesms, agreeemail)
 values(member_seq.nextval, 'userid', 'pwd', 'name', 'email', 'mobile', 'birthday', 1, 1, 1);

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 
@@ -68,11 +69,9 @@
     		<h3>인기검색어</h3>
     	
 	    	<div class="list-group">
-			  <a href="#" class="list-group-item">1. 인체공학</a>
-			  <a href="#" class="list-group-item">2. 게이밍</a>
-			  <a href="#" class="list-group-item">3. 무선</a>
-			  <a href="#" class="list-group-item">4. 블루투스</a>
-			  <a href="#" class="list-group-item">5. 업무용</a>
+	    	  <c:forEach var="keywordVO" items="${ rankingList }" varStatus="status">
+	    	  	<a href="#" class="list-group-item">${status.index+1}. ${ keywordVO.keyword }</a>
+	    	  </c:forEach>
 			</div>
 		</div>
     </div>
