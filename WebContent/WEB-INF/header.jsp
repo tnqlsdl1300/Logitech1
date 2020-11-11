@@ -202,27 +202,33 @@ a#menu-share:hover > i{
 
 		
 		$(document).ready(function() {
-			
-			// 로그아웃 상태
-			$("li#logoutBtn").hide();
-			$("li#mypageBtn").hide();
 
-			// 로그인일 때 
-			/*
-			$("li#loginBtn").hide();
-			$("li#logoutBtn").show();
-			$("li#mypageBtn").show();
-			 */
+			// 로그인 상태 관련 버튼 생성
+			if ("${ sessionScope.loginuser }") {
+				$("li#logoutBtn").show();
+				$("li#mypageBtn").show();
+				$("li#loginBtn").hide()
+			}else{
+				// 로그아웃 상태일 때
+				$("li#loginBtn").show()
+				$("li#logoutBtn").hide();
+				$("li#mypageBtn").hide();
+			}
+			
 		});
+		
+		function goLogout() {
+			location.href = "<%= ctxPath %>/login/logout.sg";
+		}
 		
 		function goMemberRegister() {
 			closeModal();
-			location.href="/Logitech/member/memberRegister.sg";
+			location.href="<%= ctxPath %>/member/memberRegister.sg";
 		}
 		
 		function goIndex() {
 			closeModal();
-			location.href="/Logitech/index.sg";
+			location.href="<%= ctxPath %>/index.sg";
 		}
 		
 		function parentCall() {
@@ -247,7 +253,7 @@ a#menu-share:hover > i{
 						<li id="mypageBtn"><a href="#"><span
 								class="glyphicon glyphicon-user"></span><span class="navText">
 									내계정</span></a></li>
-						<li id="logoutBtn"><a href="#"><span
+						<li id="logoutBtn" onclick="goLogout()"><a href="#"><span
 								class="glyphicon glyphicon-log-in"></span><span class="navText">
 									로그아웃</span></a></li>
 					</ul>

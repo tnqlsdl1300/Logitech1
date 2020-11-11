@@ -65,6 +65,7 @@ String sql = "select memberno, userid, name, email, mobile, birthday, postcode, 
 "    where fk_userid = ?\n"+
 ") H";
 
+
 select *
 from member
 order by memberno;
