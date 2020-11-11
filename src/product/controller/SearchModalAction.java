@@ -5,13 +5,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import common.controller.AbstractController;
 
-public class SearchProductAction extends AbstractController {
+public class SearchModalAction extends AbstractController {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		super.setRedirect(true);
-		super.setViewPage(request.getContextPath() + "/product/searchModal.sg");
+		System.out.println("get으로 들어옴");
+		
+		super.setRedirect(false);
+		super.setViewPage("/WEB-INF/searchModal.jsp");
 
 	}
 

@@ -324,7 +324,7 @@ a#menu-share:hover > i{
       </div>
       <div class="modal-body">
         <div id="register">
-             <iframe style="border: none; width: 100%; height: 500px;" src="<%= request.getContextPath() %>/product/searchProduct.sg">
+             <iframe style="border: none; width: 100%; height: 500px;" src="<%= request.getContextPath() %>/product/searchModal.sg">
              </iframe>
         </div>
       </div>

@@ -110,8 +110,7 @@
 		}else{
 			localStorage.removeItem("saveid");
 		}
-		
-	
+
 	    $.ajax({
 	    	url:"/Logitech/member/login.sg",
 	    	type:"POST",
