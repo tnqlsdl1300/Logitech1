@@ -20,5 +20,9 @@ public interface InterProductDAO {
 	
 	public List<ProductVO> selectOne(String string) throws SQLException;
 
+
+	// 키워드로 물품을 검색해서 List에 받아오는 메서드(제품 검색)
+	public List<ProductVO> searchProductKeyword(String keyword, String type) throws SQLException;
+
 	
 }

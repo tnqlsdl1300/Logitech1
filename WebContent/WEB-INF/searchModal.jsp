@@ -31,21 +31,31 @@
 		margin-bottom: 0;
 	}
 	
+	div#searchRankingBox a{
+		cursor: pointer;
+	}
+	
 </style>
 
 <script type="text/javascript">
 
 	$(document).ready(function() {
 		
-		// 검색시 검색결과 페이지로 이동(임시구현)
+		// 검색버튼 클릭 시 실행
 		$("button#M_searchBtn").click(function() {
 			
 			window.parent.closeModal();
-			window.parent.href("/Logitech/searchResult.jsp");
+			window.parent.href("<%= request.getContextPath() %>/product/searchResult.sg?keyword=" + $("input#searchBar").val() + "&type=search");
 			
 		});
-		
+
 	});
+	
+	// 인기검색어 클릭 시 실행
+	function goRank(keyword) {
+		window.parent.closeModal();
+		window.parent.href("<%= request.getContextPath() %>/product/searchResult.sg?keyword=" + keyword + "&type=rank");
+	}
 
 </script>
 
@@ -56,7 +66,7 @@
     	
 	   	<div class="input-group">
 	   		<input hidden="hidden" /><%-- 엔터 누를 시 자동 submit 방지 --%>
-	  	 	<input type="text" class="form-control" placeholder="Search">
+	  	 	<input type="text" class="form-control" id="searchBar" placeholder="Search">
 		    	<div class="input-group-btn">
 		       	 <button class="btn btn-default" type="button" id="M_searchBtn">
 		       	 <i class="glyphicon glyphicon-search"></i>
@@ -70,7 +80,7 @@
     	
 	    	<div class="list-group">
 	    	  <c:forEach var="keywordVO" items="${ rankingList }" varStatus="status">
-	    	  	<a href="#" class="list-group-item">${status.index+1}. ${ keywordVO.keyword }</a>
+	    	  	<a onclick="goRank('${ keywordVO.keyword }')" class="list-group-item">${status.count}&nbsp;&nbsp;${ keywordVO.keyword }</a>
 	    	  </c:forEach>
 			</div>
 		</div>

@@ -150,6 +150,63 @@ public class ProductDAO implements InterProductDAO {
 		
 		return productList; 
 	}
+
+	
+	//////////////////////////////////////////////////////////////////////////박수빈/////
+	
+	// 키워드로 물품을 검색해서 List에 받아오는 메서드(제품 검색)
+	@Override
+	public List<ProductVO> searchProductKeyword(String keyword, String type) throws SQLException {
+		
+		List<ProductVO> pList = new ArrayList<ProductVO>();
+		ProductVO pvo = null;
+
+		try {
+			
+			conn = ds.getConnection();
+			
+			String sql = "select productid, productname, fk_category, character, price, imgfilename \n"+
+					"from product\n";
+
+			if ("rank".equals(type)) {
+				sql += "where lower(character) like '%' || lower(?) || '%' ";
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, keyword);
+				
+			}else if ("search".equals(type)) {
+				sql += "where lower(productid) like '%' || lower(?) || '%' or lower(productname) like '%' || lower(?) || '%' ";
+				System.out.println("search sql문 들어옴");
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, keyword);
+				pstmt.setString(2, keyword);
+			}
+			
+			rs = pstmt.executeQuery();
+			
+			
+			while(rs.next()) {
+				pvo = new ProductVO();
+				
+				pvo.setProductid(rs.getString(1));
+				pvo.setProductname(rs.getString(2));
+				pvo.setFk_category(rs.getString(3));
+				pvo.setCharacter(rs.getString(4));
+				pvo.setPrice(rs.getInt(5));
+				pvo.setImgfilename(rs.getString(6));
+				
+				pList.add(pvo);
+			}
+			
+		} finally {
+			close();
+		}
+		
+		return pList;
+	}
+	
+	
+	//////////////////////////////////////////////////////////////////////////박수빈/////
 	
 	
 	

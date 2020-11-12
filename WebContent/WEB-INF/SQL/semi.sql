@@ -11,7 +11,39 @@ drop table abc purge;
 desc KEYWORDSEARCH;
 
 select *
-from KEYWORDSEARCH;
+from PRODUCT;
+
+select *
+from PURCHASEDETAIL;
+-- 여기에 productid 가 들어가야함
+
+------ 구매디테일 테이블 제품넘버 추가
+drop table PURCHASEDETAIL purge;
+create table purchasedetail
+(purchasedetailid number not null
+,fk_purchaseno number not null
+,fk_productid     varchar2(30) not null
+,fk_productserialid varchar2(30) not null
+,volume number(5) not null
+,constraint PK_purchasedetail primary key(purchasedetailid)
+,constraint FK_purchasedetail_pur foreign key(fk_purchaseno) references purchase(purchaseno)
+,constraint FK_productid_pur foreign key(fk_productid) references PRODUCT(productid)
+,constraint FK_purchasedetail_pro foreign key(fk_productserialid) references productoption(productserialid)
+);
+-- Table PURCHASEDETAIL이(가) 생성되었습니다.
+drop sequence purchasedetail_seq;
+create sequence purchasedetail_seq
+start with 1
+increment by 1
+nomaxvalue
+nominvalue
+nocycle
+nocache;
+
+select * from purchasedetail;
+--------------------
+
+commit;
 
 
 --- KEYWORDSEARCH 테이블에 키워드 넣는 쿼리
@@ -27,6 +59,10 @@ values('사무용', 0);
 select keyword, searchcnt
 from keywordsearch
 order by searchcnt desc;
+--
+String sql = "select keyword, searchcnt\n"+
+"from keywordsearch\n"+
+"order by searchcnt desc";
 
 update KEYWORDSEARCH set searchcnt= searchcnt-2
 where keyword='사무용';
@@ -38,6 +74,30 @@ values(member_seq.nextval, 'userid', 'pwd', 'name', 'email', 'mobile', 'birthday
  values(member_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 
 desc member;
+
+
+--- 물품 검색(키워드) 쿼리
+select keyword, searchcnt
+from keywordsearch
+order by searchcnt desc;
+commit;
+-- 제품검색쿼리
+select *
+from product
+where productid like '%MX%' or productname like '%mx%' ;
+--(rank)
+select *
+from product
+where character like '%게이밍%' ;
+--
+String sql = "select productid, productname, fk_category, character, price, imgfilename\n"+
+"from product\n"+
+"where character like '%' || ? || '%' ";
+--(search)
+String sql = "select productid, productname, fk_category, character, price, imgfilename\n"+
+"from product\n"+
+"where productid like '%' || ? || '%' or productname like '%' || ? || '%' ";
+
 
 
 

@@ -15,9 +15,6 @@ public class SearchModalAction extends AbstractController {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		String method = request.getMethod();
-		
-		
 		// 검색어순위 리스트를 ArrayList를 통해 순서대로 받아온다 
 		InterKeywordSearch kdao = new KeywordSearchDAO();
 		List<KeywordSearchVO> rankingList =  kdao.selectRanking();
