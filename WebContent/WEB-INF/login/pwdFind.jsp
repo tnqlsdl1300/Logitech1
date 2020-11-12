@@ -99,17 +99,38 @@
 				
 				if (json.isExist) {
 					// 회원정보 있음, 인증번호 보내기
+					
+					// 인증번호 관련 div와 버튼으로 변경
 					$("div#verificationDiv").show();
 					$("button#pwdChangeBtn").show();
 					$("button#pwdFindBtn").hide();
 					
+					// 인증번호 보내기
+					$.ajax({
+						url: "<%= request.getContextPath() %>/member/smsSend.sg",
+						type: "POST",
+						data: {"mobile":mobile},
+						dataType: "json",
+						success:function(json){
+							if (json.success_count == 1) {
+								// 메세지전송 성공 시
+								alert("메세지 전송 성공");
+							}else if(json.error_count != 0){
+								// 메세지전송 실패 시
+								alert("메세지 전송 실패");
+							}
+						},
+						error: function(request, status, error){ 
+			                alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+			            }
+					});
 					
-	
+					
 				}else{
 					// 회원정보 없음, 실패 alert() 띄우기
 					alert("일치하는 회원이 존재하지 않습니다.");
 				}
-
+			},
 			error: function(request, status, error){ 
                 alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
             }	
