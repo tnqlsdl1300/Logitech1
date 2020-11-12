@@ -1,5 +1,7 @@
 package product.model;
 
+import java.io.UnsupportedEncodingException;
+import java.security.GeneralSecurityException;
 import java.sql.*;
 import java.util.*;
 import javax.naming.*;
@@ -152,7 +154,7 @@ public class ProductDAO implements InterProductDAO {
 	}
 
 	
-	//////////////////////////////////////////////////////////////////////////박수빈/////
+	//////////////////////////////////////////////////////////////////////////박수빈:시작/////
 	
 	// 키워드로 물품을 검색해서 List에 받아오는 메서드(제품 검색)
 	@Override
@@ -204,9 +206,34 @@ public class ProductDAO implements InterProductDAO {
 		
 		return pList;
 	}
+
+	// 검색한 키워드 DB에 cnt + 1 해주는 메서드(제품 검색)
+	@Override
+	public int updateRankingKeyword(String keyword) throws SQLException {
+		
+		int result = 0;
+		
+		try {
+			
+			conn = ds.getConnection();
+			
+			String sql = "update keywordsearch set searchcnt= searchcnt + 1\n"+
+					"where keyword= ? ";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, keyword);
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close();
+		}
+		
+		return result;
+	}
 	
 	
-	//////////////////////////////////////////////////////////////////////////박수빈/////
+	//////////////////////////////////////////////////////////////////////////박수빈:끝/////
 	
 	
 	

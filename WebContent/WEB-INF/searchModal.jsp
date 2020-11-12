@@ -43,7 +43,6 @@
 		
 		$("input#searchBar").keyup(function() {
 			if (event.keyCode == 13) {
-				alert("엔터");
 				if ($("input#searchBar").val().length < 2) {
 					alert("검색어는 2글자 이상으로 입력해주세요.");
 					return false;

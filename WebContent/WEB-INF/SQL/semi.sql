@@ -64,8 +64,15 @@ String sql = "select keyword, searchcnt\n"+
 "from keywordsearch\n"+
 "order by searchcnt desc";
 
-update KEYWORDSEARCH set searchcnt= searchcnt-2
-where keyword='사무용';
+-- update 인기검색어 cnt 제어 쿼리
+update keywordsearch set searchcnt= searchcnt + 1
+where keyword='무선';
+--
+String sql = "update keywordsearch set searchcnt= searchcnt + 1\n"+
+"where keyword=?";
+
+select *
+from keywordsearch;
 
 insert into member (memberno, userid, pwd, name, email, mobile, birthday, agreethird, agreesms, agreeemail)
 values(member_seq.nextval, 'userid', 'pwd', 'name', 'email', 'mobile', 'birthday', 1, 1, 1);

@@ -19,11 +19,17 @@ public class SearchResultAction extends AbstractController {
 		
 		InterProductDAO pdao = new ProductDAO();
 		
+		// 검색한 결과 받기
 		List<ProductVO> pList = pdao.searchProductKeyword(keyword, type);
-		
-		
 
-		// 키워드 cnt + 1 업데이트도 해줘야 함
+		// 검색한 키워드 DB에 cnt + 1 해주기
+		int n = pdao.updateRankingKeyword(keyword);
+		
+		/*if (n == 1) {
+			System.out.println("업뎃 성공");
+		}else {
+			System.out.println("업뎃 실패");
+		}*/
 		
 		request.setAttribute("pList", pList);
 		request.setAttribute("keyword", keyword);
