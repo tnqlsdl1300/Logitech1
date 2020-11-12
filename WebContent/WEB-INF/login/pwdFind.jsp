@@ -45,9 +45,6 @@
 		$("label#memberNotFindError").hide();
 		
 		
-		
-		
-		
 		// 인증코드 input 보여주기
 		var bFlag = false;
 		$("button#testBtn").click(function() {
@@ -114,7 +111,10 @@
 						success:function(json){
 							if (json.success_count == 1) {
 								// 메세지전송 성공 시
-								alert("메세지 전송 성공");
+								// 코드가 json에서 꺼내기가 불가능함 => json으로 변경하면서 문제가 생긴거같음
+								console.log(json.code);
+								
+								
 							}else if(json.error_count != 0){
 								// 메세지전송 실패 시
 								alert("메세지 전송 실패");

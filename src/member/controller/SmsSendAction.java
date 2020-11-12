@@ -15,6 +15,12 @@ public class SmsSendAction extends AbstractController {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
+		// 6자리 숫자난수 생성
+		int code = (int)Math.floor(Math.random() * 1000000)+100000;
+		if(code>1000000){
+			code = code - 100000;
+		}
+		
 		//String api_key = "발급받은 본인의 API Key";  // 발급받은 본인 API Key
 		String api_key = "NCSEYQLU3C7JDBBW";  // 박수빈꺼임
 	  
@@ -33,7 +39,8 @@ public class SmsSendAction extends AbstractController {
 		paraMap.put("to", mobile); // 수신번호
 		paraMap.put("from", "01077226318"); // 발신번호
 		paraMap.put("type", "SMS"); // Message type ( SMS(단문), LMS(장문), MMS, ATA )
-		paraMap.put("text", "인증코드는 1111 입니다."); // 문자내용    
+		paraMap.put("text", "인증코드는 [" + code + "] 입니다."); // 문자내용    
+		paraMap.put("code", Integer.toString(code));
 		paraMap.put("app_version", "JAVA SDK v2.2"); // application name and version
 				
 		//	 ==  아래의 파라미터는 필요에 따라 사용하는 선택사항이다. == 
@@ -54,6 +61,7 @@ public class SmsSendAction extends AbstractController {
 		//	paraMap.put("app_version", "Purplebook 4.1") // 어플리케이션 버전
 		
 		// 문자쓸때만 JSONObject의 import를 simple로 해줘야 한다!!!!!!!!!!!!!
+		
 		JSONObject jsobj = (JSONObject)coolsms.send(paraMap);
 
 		String json = jsobj.toString();
