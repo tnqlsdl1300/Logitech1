@@ -17,7 +17,7 @@
 		padding-top: 5%;
 	}
 
-	.pwdFindBtn{
+	.pwdBtn{
 		display: block;
 		width: 100%;
 		line-height: 30px;
@@ -44,6 +44,10 @@
 		$("button#pwdChangeBtn").hide();
 		$("label#memberNotFindError").hide();
 		
+		
+		
+		
+		
 		// 인증코드 input 보여주기
 		var bFlag = false;
 		$("button#testBtn").click(function() {
@@ -66,6 +70,53 @@
 		
 	});
 	
+	// 인증코드 보내는 버튼[아이디, 전화번호 입력]
+	function goFindPwd() {
+		
+		var userid = $("input[name=userid]").val().trim();
+		var mobile = $("input[name=mobile]").val().trim();
+
+		if (userid == "") {
+			alert("아이디를 입력해주세요.");
+			$("input[name=userid]").val("");
+			$("input[name=userid]").focus();
+			return;
+		}
+		
+		if (mobile == "") {
+			alert("전화번호를 입력해주세요.");
+			$("input[name=mobile]").val("");
+			$("input[name=mobile]").focus();
+			return;
+		}
+		
+		$.ajax({
+			url: "<%= request.getContextPath() %>/member/pwdFind.sg",
+			type: "POST",
+			data: {"userid":userid, "mobile":mobile},
+			dataType: "json",
+			success:function(json){
+				
+				if (json.isExist) {
+					// 회원정보 있음, 인증번호 보내기
+					$("div#verificationDiv").show();
+					$("button#pwdChangeBtn").show();
+					$("button#pwdFindBtn").hide();
+					
+					
+	
+				}else{
+					// 회원정보 없음, 실패 alert() 띄우기
+					alert("일치하는 회원이 존재하지 않습니다.");
+				}
+
+			error: function(request, status, error){ 
+                alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+            }	
+		});
+		
+	}
+	
 	// 임시 버튼(삭제 요망)
 	function gotoChangeBtn(){       
 		location.href="/Logitech/pwdChange.jsp"
@@ -77,7 +128,7 @@
 <%-- Modal 로 띄울 페이지 - 아이디 찾기 --%>
 <div class="container">
   
-  <form action="/action_page.php">
+  <form name = "pwdFindFrm">
   	<div id="titleText">
  		<label>비밀번호 찾기</label>
  	</div>
@@ -85,23 +136,23 @@
   	<label>아이디</label>
     <input id="userid" type="text" class="form-control" name="userid" placeholder="아이디" >
     <br>
-    <label>이메일</label>
-    <input id="email" type="text" class="form-control" name="email" placeholder="이메일" >
+    <label>전화번호</label>
+    <input id="mobile" type="text" class="form-control" name="mobile" placeholder="전화번호(-을 빼고 입력해주세요.)" >
     <label class="error" id="memberNotFindError">일치하는 회원이 없습니다.</label><%-- 인증코드를 잘못 입력했을 시 hidden 해제 --%>
 
 	<br>
 	<br>
 
 	<div id="verificationDiv">
-   		<input id="verification" type="text" class="form-control" name="verification" placeholder="인증코드" >
-   		<label>메일을 발송했습니다. 인증코드를 입력해주세요.</label>
-   		<label class="error" hidden="hidden">잘못된 인증코드를 입력하였습니다.</label><%-- 인증코드를 잘못 입력했을 시 hidden 해제 --%>
+   		<input id="verification" type="text" class="form-control" name="verification" placeholder="인증번호" >
+   		<label>인증번호를 발송했습니다. 문자메세지를 확인해주세요.</label>
+   		<label class="error" id="codeNotFindError">잘못된 인증번호를 입력하였습니다.</label>
 	</div>
 
     <br><br>
     
-    <button type="button" id="testBtn" class="btn btn-default pwdFindBtn">찾기</button>
-    <button type="button" id="pwdChangeBtn" class="btn btn-default pwdFindBtn" onclick="gotoChangeBtn()">비밀번호 변경</button>
+    <button type="button" id="pwdFindBtn" class="btn btn-default pwdBtn" onclick="goFindPwd()">찾기</button>
+    <button type="button" id="pwdChangeBtn" class="btn btn-default pwdBtn" onclick="gotoChangeBtn()">비밀번호 변경</button>
   </form>
   
   

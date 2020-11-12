@@ -60,7 +60,7 @@
 		var email = $("input[name=email]").val().trim();
 		
 		if (name == "") {
-			alert("아이디를 입력해주세요.");
+			alert("이름을 입력해주세요.");
 			$("input[name=name]").val("");
 			$("input[name=name]").focus();
 			return false;

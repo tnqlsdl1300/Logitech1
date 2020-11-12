@@ -294,6 +294,41 @@ public class MemberDAO implements InterMemberDAO {
 		return member;
 	}
 
+	// 입력받은 정보[아이디, 전화번호]가 DB에 저장되어 있는지 아닌지 찾는 메서드 (비밀번호 찾기)
+	@Override
+	public boolean pwdFindOneMember(Map<String, String> paraMap) throws SQLException {
+		
+		boolean isExist = false;
+		
+		String userid = paraMap.get("userid");
+		String mobile = paraMap.get("mobile");
+		
+		try {
+			
+			conn = ds.getConnection();
+			
+			String sql = "select userid\n"+
+					"from member\n"+
+					"where userid = ? and mobile = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userid);
+			pstmt.setString(2, aes.encrypt(mobile));
+
+			rs = pstmt.executeQuery();
+			
+			// 행이 있으면(중복) true, 없으면(중복x) false 반환
+			isExist = rs.next();
+			
+		} catch (UnsupportedEncodingException | GeneralSecurityException  e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		
+		return isExist;
+	}
+
 	
 
 }

@@ -4,6 +4,9 @@ from abc;
 select *
 from tab;
 
+select *
+from review;
+
 SELECT * FROM USER_SEQUENCES;
 
 drop table abc purge;
@@ -73,6 +76,14 @@ String sql = "update keywordsearch set searchcnt= searchcnt + 1\n"+
 
 select *
 from keywordsearch;
+
+select userid
+from member
+where userid = 'hjun34' and mobile='X8MAf5MHC2yJl8K95HOrCA==';
+--
+String sql = "select userid\n"+
+"from member\n"+
+"where userid = ? and mobile = ?";
 
 insert into member (memberno, userid, pwd, name, email, mobile, birthday, agreethird, agreesms, agreeemail)
 values(member_seq.nextval, 'userid', 'pwd', 'name', 'email', 'mobile', 'birthday', 1, 1, 1);

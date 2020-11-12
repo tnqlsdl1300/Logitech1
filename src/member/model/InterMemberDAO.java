@@ -20,6 +20,9 @@ public interface InterMemberDAO {
 	// 아이디, 비밀번호로 회원 하나 검색하는 메서드 (로그인에서 사용)
 	MemberVO selectOneMember(Map<String, String> paraMap) throws SQLException;
 
+	// 입력받은 정보[아이디, 전화번호]가 DB에 저장되어 있는지 아닌지 찾는 메서드 (비밀번호 찾기)
+	boolean pwdFindOneMember(Map<String, String> paraMap) throws SQLException;
+
 	
 	
 }
