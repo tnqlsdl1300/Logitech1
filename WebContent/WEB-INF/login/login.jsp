@@ -167,7 +167,7 @@
     </div>
     <ul id="accountFind">
     	<li><a href="<%= request.getContextPath() %>/member/idFind.sg">아이디 찾기</a></li>
-    	<li><a href="">비밀번호 찾기</a></li>
+    	<li><a href="<%= request.getContextPath() %>/member/pwdFind.sg">비밀번호 찾기</a></li>
         <li id="loginRegisterBtn" onclick="window.parent.goMemberRegister()">회원가입</li>
     </ul>
     <br>

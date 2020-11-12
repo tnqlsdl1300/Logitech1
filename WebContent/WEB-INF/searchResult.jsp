@@ -81,7 +81,7 @@
 		      <%-- 여기 option의 value는 나중에 DB 컬럼과 일치하게 해야함 --%>
 		      <option value="가격높은순">가격높은순</option>
 		      <option value="가격낮은순">가격낮은순</option>
-		      <option value="평점순">평점순</option>
+		      <option value="인기순">인기순</option>
 		    </select>
 			
 			
