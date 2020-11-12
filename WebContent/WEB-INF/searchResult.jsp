@@ -26,6 +26,7 @@
 	
 	select#searchResultOrderBy{
 		float: right;
+		
 	}
 	
 	div#resultItemContainer{
@@ -75,11 +76,11 @@
 			<h1 id="searchResultTitle">"${ keyword }" 검색결과</h1>
 			<hr style="border-top: 4px dashed black;">
 			
-			<select class="form-control" id="searchResultOrderBy">
+			<select class="form-control" id="searchResultOrderBy" style="width: 120px;">
 		      <option value="" selected disabled hidden="hidden">정렬</option>
 		      <%-- 여기 option의 value는 나중에 DB 컬럼과 일치하게 해야함 --%>
-		      <option value="가격순">가격순</option>
-		      <option value="인기순">인기순</option>
+		      <option value="가격높은순">가격높은순</option>
+		      <option value="가격낮은순">가격낮은순</option>
 		      <option value="평점순">평점순</option>
 		    </select>
 			
@@ -88,6 +89,7 @@
 			<%-- 물품 넣을 때 주소에 get방식으로 productid를 붙여서 보내주면 됨 --%>
 			  <div class="row">
 
+				<%-- 검색한 결과가 있을 때 --%>
 			  	<c:if test="${ pList.size() != 0 }">
 			  		<c:forEach var="pvo" items="${ pList }">
 				  		<div class="col-sm-3 eachItem" onclick="gotoDetail()">
@@ -102,6 +104,7 @@
 				  	</c:forEach>
 			  	</c:if>
 			  	
+			  	<%-- 검색한 결과가 없을 때 --%>
 			  	<c:if test="${ pList.size() == 0 }">
 			  		<div id="noResultItemContainer">
 						<span>검색된 결과가 없습니다.</span>
