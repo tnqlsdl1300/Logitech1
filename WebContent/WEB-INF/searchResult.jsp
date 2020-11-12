@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	String ctxPath = request.getContextPath();
 %>
@@ -71,7 +72,6 @@
 	<div id="wrap">
 		<div class="innerContainer" id="searchResultContainer">
 		
-			<%-- '마우스' 부분은 검색어로 지정 --%>
 			<h1 id="searchResultTitle">"${ keyword }" 검색결과</h1>
 			<hr style="border-top: 4px dashed black;">
 			
@@ -94,8 +94,9 @@
 					    	<div class="eachItemImg">
 					    		<img src="${ pvo.imgfilename }">
 					    	</div>				    	
-					    	<p class="productName">${ pvo.productid }</p>
-					    	<p class="productText">${ pvo.productname }</p>
+					    	<p class="productId">${ pvo.productid }</p>
+					    	<p class="productName">${ pvo.productname }</p>
+					    	<p class="productPrice"><fmt:formatNumber value="${pvo.price}" pattern="###,###" />원</p>
 					    </div>
 				  		
 				  	</c:forEach>

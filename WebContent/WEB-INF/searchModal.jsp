@@ -41,12 +41,29 @@
 
 	$(document).ready(function() {
 		
+		$("input#searchBar").keyup(function() {
+			if (event.keyCode == 13) {
+				alert("엔터");
+				if ($("input#searchBar").val().length < 2) {
+					alert("검색어는 2글자 이상으로 입력해주세요.");
+					return false;
+				}
+
+				window.parent.closeModal();
+				window.parent.href("<%= request.getContextPath() %>/product/searchResult.sg?keyword=" + $("input#searchBar").val() + "&type=search");
+			}
+		});
+		
 		// 검색버튼 클릭 시 실행
 		$("button#M_searchBtn").click(function() {
 			
+			if ($("input#searchBar").val().length < 2) {
+				alert("검색어는 2글자 이상으로 입력해주세요.");
+				return false;
+			}
+
 			window.parent.closeModal();
 			window.parent.href("<%= request.getContextPath() %>/product/searchResult.sg?keyword=" + $("input#searchBar").val() + "&type=search");
-			
 		});
 
 	});
@@ -60,7 +77,7 @@
 </script>
 
   
-  <form action="/action_page.php">
+  <form>
   	
     <div class="container">
     	
