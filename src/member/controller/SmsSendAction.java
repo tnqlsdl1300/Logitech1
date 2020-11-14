@@ -4,22 +4,26 @@ import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 
 import common.controller.AbstractController;
 import net.nurigo.java_sdk.api.Message;
+import util.authentication.AuthenticationCode;
 
 public class SmsSendAction extends AbstractController {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		// 인증코드 생성, session에 저장
+		String code = AuthenticationCode.getAuthenticationCode();
+		System.out.println("action 코드는: " + code);
 		
-		// 6자리 숫자난수 생성
-		int code = (int)Math.floor(Math.random() * 1000000)+100000;
-		if(code>1000000){
-			code = code - 100000;
-		}
+		HttpSession session = request.getSession();
+		session.setAttribute("code", code);
+		System.out.println("action 세션: " + session.getAttribute("code"));
 		
 		//String api_key = "발급받은 본인의 API Key";  // 발급받은 본인 API Key
 		String api_key = "NCSEYQLU3C7JDBBW";  // 박수빈꺼임
@@ -40,9 +44,9 @@ public class SmsSendAction extends AbstractController {
 		paraMap.put("from", "01077226318"); // 발신번호
 		paraMap.put("type", "SMS"); // Message type ( SMS(단문), LMS(장문), MMS, ATA )
 		paraMap.put("text", "인증코드는 [" + code + "] 입니다."); // 문자내용    
-		paraMap.put("code", Integer.toString(code));
 		paraMap.put("app_version", "JAVA SDK v2.2"); // application name and version
-				
+		paraMap.put("mode", "test");
+		System.out.println("sms 코드는" + code);
 		//	 ==  아래의 파라미터는 필요에 따라 사용하는 선택사항이다. == 
 		//	paraMap.put("mode", "test"); // 'test' 모드. 실제로 발송되지 않으며 전송내역에 60 오류코드로 뜹니다. 차감된 캐쉬는 다음날 새벽에 충전 됩니다.
 		//	paraMap.put("image", "desert.jpg"); // image for MMS. type must be set as "MMS"

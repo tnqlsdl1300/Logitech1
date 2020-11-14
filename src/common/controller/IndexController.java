@@ -2,6 +2,7 @@ package common.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 public class IndexController extends AbstractController {
@@ -15,6 +16,8 @@ public class IndexController extends AbstractController {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		System.out.println("@@@ 확인용 IndexController 의 인스턴스 메서드 execute 가 호출됨 @@@");
+		HttpSession session = request.getSession();
+		System.out.println("index 코드: " +  session.getAttribute("code"));
 		
 		//InterProductDAO pdao = new ProductDAO();
 		

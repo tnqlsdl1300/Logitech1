@@ -37,12 +37,15 @@
 </style>
 
 <script type="text/javascript">
-	
+
 	$(document).ready(function() {
 		
 		$("div#verificationDiv").hide();
 		$("button#pwdChangeBtn").hide();
 		$("label#memberNotFindError").hide();
+		$("button#rePwdFindBtn").hide();
+		$("label#codeNotFindError").hide();
+		
 		
 		
 		// 인증코드 input 보여주기
@@ -86,7 +89,7 @@
 			$("input[name=mobile]").focus();
 			return;
 		}
-		
+
 		$.ajax({
 			url: "<%= request.getContextPath() %>/member/pwdFind.sg",
 			type: "POST",
@@ -99,7 +102,9 @@
 					
 					// 인증번호 관련 div와 버튼으로 변경
 					$("div#verificationDiv").show();
-					$("button#pwdChangeBtn").show();
+					
+					$("button#pwdFindBtn").hide();
+					$("button#rePwdFindBtn").show();
 					$("button#pwdFindBtn").hide();
 					
 					// 인증번호 보내기
@@ -111,9 +116,8 @@
 						success:function(json){
 							if (json.success_count == 1) {
 								// 메세지전송 성공 시
-								// 코드가 json에서 꺼내기가 불가능함 => json으로 변경하면서 문제가 생긴거같음
-								console.log(json.code);
-								
+								alert("문자메세지를 전송하였습니다. 인증번호를 확인해주세요.");
+								$("button#pwdChangeBtn").show();
 								
 							}else if(json.error_count != 0){
 								// 메세지전송 실패 시
@@ -138,9 +142,45 @@
 		
 	}
 	
-	// 임시 버튼(삭제 요망)
+	
+	// 비밀번호 변경 페이지로 이동하는 버튼(입력한 인증코드가 맞는지 확인)
 	function gotoChangeBtn(){       
-		location.href="/Logitech/pwdChange.jsp"
+		
+		var inputCode = $("input#verification").val().trim();
+		var userid = $("input[name=userid]").val().trim();
+		
+		// 인증번호를 입력하지 않았을 시
+		if (inputCode == "") {
+			alert("인증번호 6자리를 정확하게 입력해주세요.");
+			$("input#verification").val("");
+			$("input#verification").focus();
+			return;
+		}
+		
+		// 인증번호를 입력했을 시 맞는지 확인해주는 ajax
+		$.ajax({
+			url: "<%= request.getContextPath() %>/member/pwdChange.sg",
+			type: "POST",
+			data: {"inputCode":inputCode},
+			dataType: "json",
+			success:function(json){
+				if (json.code_success == true) {
+					// 입력한 인증번호가 맞을 시
+					// post방식으로 pwdChangeEnd.sg에 보내기(form데이터 같이 가져가서 userid로 db update)
+					
+					var frm = document.pwdFindFrm;
+					frm.action = "<%= request.getContextPath() %>/member/pwdChangeEnd.sg";
+					
+				}else if(json.code_success == false){
+					// 입력한 인증번호가 틀릴 시
+					alert("잘못된 인증번호입니다. 인증번호를 확인한 다음 다시 입력해주세요.");
+				}
+			},
+			error: function(request, status, error){ 
+                alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+            }
+		});
+		
 
 	}
 	
@@ -173,6 +213,7 @@
     <br><br>
     
     <button type="button" id="pwdFindBtn" class="btn btn-default pwdBtn" onclick="goFindPwd()">찾기</button>
+    <button type="button" id="rePwdFindBtn" class="btn btn-default pwdBtn" onclick="goFindPwd()">인증번호 재전송</button>
     <button type="button" id="pwdChangeBtn" class="btn btn-default pwdBtn" onclick="gotoChangeBtn()">비밀번호 변경</button>
   </form>
   

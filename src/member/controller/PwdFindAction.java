@@ -5,12 +5,14 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
 
 import common.controller.AbstractController;
 import member.model.InterMemberDAO;
 import member.model.MemberDAO;
+import util.authentication.AuthenticationCode;
 
 public class PwdFindAction extends AbstractController {
 
@@ -38,6 +40,9 @@ public class PwdFindAction extends AbstractController {
 			if (isExist) {
 				// 회원존재
 				jsonObj.put("isExist", true);	
+				
+				
+				
 			}else{
 				jsonObj.put("isExist", false);	
 			}
@@ -51,6 +56,7 @@ public class PwdFindAction extends AbstractController {
 			
 		}else {
 			// get방식으로 접속했을 때 (거부 - 패스워드창만 다시 띄우기)
+			System.out.println("get");
 			super.setRedirect(false);
 			super.setViewPage("/WEB-INF/login/pwdFind.jsp");
 		}
