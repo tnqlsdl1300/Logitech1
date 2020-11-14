@@ -167,6 +167,13 @@ select *
 from member
 order by memberno;
 
+--- 비밀번호 변경 쿼리
+update member set pwd = '9695b88a59a1610320897fa84cb7e144cc51f2984520efb77111d94b402a8382'
+where userid = 'hjun343';
+--
+String sql = "update member set pwd = ?\n"+
+"where userid = ?";
+rollback
 select *
 from loginhistory;
 
@@ -178,4 +185,10 @@ where fk_userid='hjun342';
 
 update member set idle = 0
 where userid = 'hjun341';
+commit;
+
+-- 회원 삭제
+delete from member 
+where userid = 'test123';
+
 commit;

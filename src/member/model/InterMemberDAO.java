@@ -23,6 +23,9 @@ public interface InterMemberDAO {
 	// 입력받은 정보[아이디, 전화번호]가 DB에 저장되어 있는지 아닌지 찾는 메서드 (비밀번호 찾기)
 	boolean pwdFindOneMember(Map<String, String> paraMap) throws SQLException;
 
+	// 새로운 비밀번호를 지정해주는 메서드 (비밀번호 찾기)
+	int updatePwd(String userid, String newPwd) throws SQLException;
+
 	
 	
 }

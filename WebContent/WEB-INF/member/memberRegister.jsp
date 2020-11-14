@@ -74,6 +74,7 @@
 <script type="text/javascript">
 	
 	var useridFlag = false;
+	var emailFlag = false;
 	
 	$(document).ready(function() {
 		
@@ -130,12 +131,12 @@
   					alert("사용불가능 이메일");
   					$("input#email").val("");
   					$("input#email").focus();
-  					useridFlag = false;
+  					emailFlag = false;
   				}else{
   					// 입력한 userid 가 DB 테이블에 존재하지 않는 경우라면
   					//$("span#idcheckResult").html("사용가능한 아이디입니다.").css({"color":"navy"});
   					alert("사용가능 이메일");
-  					useridFlag = true;
+  					emailFlag = true;
   				}
   			},
   			error: function(request, status, error){			// 실패했을 때 실행할 것(코딩 개떡같이 했을 때 => 정상적으로 받아온 데이터 true/false와 상관없음)
@@ -219,8 +220,6 @@
 			$("input[name=email]").focus();
 			$("input[name=email]").next().show();
 			return false;
-		}else{
-			alert("정상");
 		}
 		
 		
@@ -240,6 +239,11 @@
 		
 		if(!useridFlag){
 			alert("아이디 중복검사를 해주세요.");
+			return false;
+		}
+		
+		if(!emailFlag){
+			alert("이메일 중복검사를 해주세요.");
 			return false;
 		}
 		

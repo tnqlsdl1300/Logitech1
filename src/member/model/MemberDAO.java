@@ -329,6 +329,32 @@ public class MemberDAO implements InterMemberDAO {
 		return isExist;
 	}
 
+	// 새로운 비밀번호를 지정해주는 메서드 (비밀번호 찾기)
+	@Override
+	public int updatePwd(String userid, String newPwd) throws SQLException {
+		
+		int result = 0;
+		
+		try {
+			
+			conn = ds.getConnection();
+			
+			String sql = "update member set pwd = ?\n"+
+					"where userid = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, Sha256.encrypt(newPwd));
+			pstmt.setString(2, userid);
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close();
+		}
+		
+		return result;
+	}
+
 	
 
 }

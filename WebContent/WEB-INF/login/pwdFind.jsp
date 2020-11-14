@@ -95,7 +95,6 @@
 						success:function(json){
 							if (json.success_count == 1) {
 								// 메세지전송 성공 시
-								alert("문자메세지를 전송하였습니다. 인증번호를 확인해주세요.");
 								$("button#pwdChangeBtn").show();
 								
 							}else if(json.error_count != 0){
@@ -154,7 +153,7 @@
 					
 				}else if(json.code_success == false){
 					// 입력한 인증번호가 틀릴 시
-					alert("잘못된 인증번호입니다. 인증번호를 확인한 다음 다시 입력해주세요.");
+					$("label#memberNotFindError").show();
 				}
 			},
 			error: function(request, status, error){ 
@@ -188,7 +187,7 @@
 	<div id="verificationDiv">
    		<input id="verification" type="text" class="form-control" name="verification" placeholder="인증번호" >
    		<label>인증번호를 발송했습니다. 문자메세지를 확인해주세요.</label>
-   		<label class="error" id="codeNotFindError">잘못된 인증번호를 입력하였습니다.</label>
+   		<label class="error" id="codeNotFindError">잘못된 인증번호입니다. 인증번호를 확인한 다음 다시 입력해주세요.</label>
 	</div>
 
     <br><br>

@@ -40,17 +40,64 @@
 <script type="text/javascript">
 
 	$(document).ready(function() {
-		// 에러메세지 일단 숨겨둠
+		// 에러메세지 숨겨둠
 		$("label.error").hide();
-		
-		$("button.pwdChangeBtn").click(function() {
-			window.parent.closeModal();
-		});
 		
 	});
 	
 	// 비밀번호 변경 버튼을 눌렀을 때 실행
 	function pwdChange() {
+		
+		$("label.error").hide();
+		
+		//// 비밀번호 정규식 검사 
+		var newPwd = $("input[name=newPwd]").val().trim();
+		var regExp = new RegExp(/^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).*$/g);
+		
+		var bool = regExp.test(newPwd);
+		if(!bool){
+			// 불가
+			$("input[name=newPwd]").val("");
+			$("input[name=newPwd]").focus();
+			$("input[name=newPwd]").next().show();
+			return false;
+		}
+		
+		//// 비밀번호체크 검사
+		var newPwd = $("input[name=newPwd]").val().trim();
+		var checkPwd = $("input[name=checkPwd]").val().trim();
+		
+		if (newPwd != checkPwd) {
+			// 불가
+			$("input[name=checkPwd]").val("");
+			$("input[name=checkPwd]").focus();
+			$("input[name=checkPwd]").next().show();
+			return false;
+		}
+		
+		// 비밀번호 변경을 위한 ajax
+		$.ajax({
+			url: "<%= request.getContextPath() %>/member/pwdChangeEnd.sg",
+			type: "POST",
+			data: { "userid":"${ userid }", "newPwd":newPwd },
+			dataType: "json",
+			success:function(json){
+				if (json.pwd_change_success == true) {
+					// 비밀번호 변경이 성공했을 시
+					alert("비밀번호 변경을 완료하였습니다.");
+					window.parent.closeModal();
+					// index.sg 로 이동 => 그냥 모달만 닫기로 변경
+					
+				}else if(json.pwd_change_success == false){
+					// 비밀번호 변경이 실패했을 시(DB문제)
+					alert("DB 문제로 비밀번호 변경에 실패하였습니다.");
+					
+				}
+			},
+			error: function(request, status, error){ 
+                alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+            }
+		});
 		
 	}
 	
@@ -66,6 +113,7 @@
     <br><br>
   	<label>새로운 비밀번호</label>
     <input id="newPwd" type="password" class="form-control" name="newPwd" placeholder="새로운 비밀번호" >
+    <label id="invalidPwdError" class="error">영문자+숫자+특수문자 조합 6~15글자로 설정해주세요.</label>
     <br>
     <label>비밀번호 확인</label>
     <input id="checkPwd" type="password" class="form-control" name="checkPwd" placeholder="비밀번호 확인" >

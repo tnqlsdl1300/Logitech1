@@ -19,11 +19,9 @@ public class SmsSendAction extends AbstractController {
 
 		// 인증코드 생성, session에 저장
 		String code = AuthenticationCode.getAuthenticationCode();
-		System.out.println("action 코드는: " + code);
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("code", code);
-		System.out.println("action 세션: " + session.getAttribute("code"));
 		
 		//String api_key = "발급받은 본인의 API Key";  // 발급받은 본인 API Key
 		String api_key = "NCSEYQLU3C7JDBBW";  // 박수빈꺼임
@@ -47,6 +45,7 @@ public class SmsSendAction extends AbstractController {
 		paraMap.put("app_version", "JAVA SDK v2.2"); // application name and version
 		paraMap.put("mode", "test");
 		System.out.println("sms 코드는" + code);
+		
 		//	 ==  아래의 파라미터는 필요에 따라 사용하는 선택사항이다. == 
 		//	paraMap.put("mode", "test"); // 'test' 모드. 실제로 발송되지 않으며 전송내역에 60 오류코드로 뜹니다. 차감된 캐쉬는 다음날 새벽에 충전 됩니다.
 		//	paraMap.put("image", "desert.jpg"); // image for MMS. type must be set as "MMS"
@@ -69,9 +68,7 @@ public class SmsSendAction extends AbstractController {
 		JSONObject jsobj = (JSONObject)coolsms.send(paraMap);
 
 		String json = jsobj.toString();
-		
-		
-		System.out.println("확인용 json: " + json);
+
 		// 확인용 json: {"group_id":"R2G9SvjnjOSoI32T","success_count":1,"error_count":0}
 		
 		request.setAttribute("json", json);
