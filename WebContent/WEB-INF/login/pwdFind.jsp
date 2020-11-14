@@ -45,29 +45,7 @@
 		$("label#memberNotFindError").hide();
 		$("button#rePwdFindBtn").hide();
 		$("label#codeNotFindError").hide();
-		
-		
-		
-		// 인증코드 input 보여주기
-		var bFlag = false;
-		$("button#testBtn").click(function() {
-			if(!bFlag){
-				// [이름/이메일이 DB에 있을 때]
-				$("div#verificationDiv").show();
-				$("button#pwdChangeBtn").show();
-				$(this).hide();
-				bFlag = true;
-			}else{
-				//[이름/이메일이 DB에 없을 때]
-				$("div#verificationDiv").hide();
-				$("label#memberNotFindError").show();
-				bFlag = false;
-			}
-			
-		});
-		
 
-		
 	});
 	
 	// 인증코드 보내는 버튼[아이디, 전화번호 입력]
@@ -90,6 +68,7 @@
 			return;
 		}
 
+		// 비밀번호를 찾을 회원의 정보를 DB에서 검색, 성공시 인증번호 ajax 실행
 		$.ajax({
 			url: "<%= request.getContextPath() %>/member/pwdFind.sg",
 			type: "POST",
@@ -107,7 +86,7 @@
 					$("button#rePwdFindBtn").show();
 					$("button#pwdFindBtn").hide();
 					
-					// 인증번호 보내기
+					// 인증번호를 보내는 ajax
 					$.ajax({
 						url: "<%= request.getContextPath() %>/member/smsSend.sg",
 						type: "POST",
@@ -132,7 +111,7 @@
 					
 				}else{
 					// 회원정보 없음, 실패 alert() 띄우기
-					alert("일치하는 회원이 존재하지 않습니다.");
+					alert("입력하신 정보와 일치하는 회원이 존재하지 않습니다.");
 				}
 			},
 			error: function(request, status, error){ 
@@ -169,7 +148,9 @@
 					// post방식으로 pwdChangeEnd.sg에 보내기(form데이터 같이 가져가서 userid로 db update)
 					
 					var frm = document.pwdFindFrm;
-					frm.action = "<%= request.getContextPath() %>/member/pwdChangeEnd.sg";
+					frm.action = "<%= request.getContextPath() %>/member/goPwdChange.sg";
+					frm.method = "POST";
+					frm.submit();
 					
 				}else if(json.code_success == false){
 					// 입력한 인증번호가 틀릴 시

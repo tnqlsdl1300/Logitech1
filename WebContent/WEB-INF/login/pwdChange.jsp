@@ -49,6 +49,11 @@
 		
 	});
 	
+	// 비밀번호 변경 버튼을 눌렀을 때 실행
+	function pwdChange() {
+		
+	}
+	
 </script>
 
 <%-- Modal 로 띄울 페이지 - 아이디 찾기 --%>
@@ -69,7 +74,7 @@
 	<br><br><br>
 
     
-    <button type="button" class="btn btn-default pwdChangeBtn">변경</button>
+    <button type="button" class="btn btn-default pwdChangeBtn" onclick="pwdChange()">변경</button>
   </form>
   
   

@@ -56,7 +56,6 @@ public class PwdFindAction extends AbstractController {
 			
 		}else {
 			// get방식으로 접속했을 때 (거부 - 패스워드창만 다시 띄우기)
-			System.out.println("get");
 			super.setRedirect(false);
 			super.setViewPage("/WEB-INF/login/pwdFind.jsp");
 		}
