@@ -178,7 +178,7 @@ public class ProductDAO implements InterProductDAO {
 				
 			}else if ("search".equals(type)) {
 				sql += "where lower(productid) like '%' || lower(?) || '%' or lower(productname) like '%' || lower(?) || '%' ";
-				System.out.println("search sql문 들어옴");
+
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, keyword);
 				pstmt.setString(2, keyword);
@@ -280,7 +280,7 @@ public class ProductDAO implements InterProductDAO {
 	public EventVO selectOneEvent(String seq_event) throws SQLException {
 
 		EventVO evo = null;
-		System.out.println("?? : " + seq_event);
+		
 		try {
 			
 			conn = ds.getConnection();

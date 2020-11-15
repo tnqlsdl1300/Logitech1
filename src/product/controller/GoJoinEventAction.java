@@ -19,7 +19,6 @@ public class GoJoinEventAction extends AbstractController {
 		MemberVO loginuser = (MemberVO) session.getAttribute("loginuser");
 		
 		if (loginuser == null) {
-			System.out.println("안돼");
 			super.setRedirect(false);
 			super.setViewPage("/WEB-INF/joinEvent.jsp");
 		}else {
@@ -31,12 +30,7 @@ public class GoJoinEventAction extends AbstractController {
 			InterProductDAO pdao = new ProductDAO();
 			EventVO evo = pdao.selectOneEvent(seq_event);
 			
-			try {
-				System.out.println(evo.getEventname());
-			} catch (NullPointerException e) {
-				// TODO: handle exception
-			}
-			
+			// index.sg 처음들어왔을 때 여기서 널포인터 떨어질 수 있음 주의
 			
 			request.setAttribute("evo", evo);
 			

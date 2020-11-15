@@ -14,8 +14,7 @@ public class MemberRegisterDBAction extends AbstractController {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		String method = request.getMethod();
-		System.out.println(method);
-		
+
 		if ("post".equalsIgnoreCase(method)) {
 			
 			String agreethird = request.getParameter("agreethird");
@@ -28,15 +27,7 @@ public class MemberRegisterDBAction extends AbstractController {
 			String mobile = request.getParameter("mobile");
 			String email = request.getParameter("email");
 			String birthday = request.getParameter("birthday");
-			
-			
-			System.out.println(name);
-			System.out.println(userid);
-			System.out.println(pwd);
-			System.out.println(mobile);
-			System.out.println(email);
-			System.out.println(birthday);
-			
+
 			MemberVO member = new MemberVO();
 			member.setName(name);
 			member.setUserid(userid);
@@ -67,7 +58,6 @@ public class MemberRegisterDBAction extends AbstractController {
 			super.setViewPage("/WEB-INF/msg.jsp");
 			
 		}else {
-			System.out.println("get으로 빠짐");
 			super.setRedirect(false);	// forward 방식
 			super.setViewPage("/WEB-INF/member/memberRegister.jsp");
 		}

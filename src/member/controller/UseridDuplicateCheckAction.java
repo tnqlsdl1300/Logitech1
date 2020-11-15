@@ -15,8 +15,6 @@ public class UseridDuplicateCheckAction extends AbstractController {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String userid = request.getParameter("userid");
 		
-		System.out.println(">>> 확인용 userid => " + userid);
-		
 		InterMemberDAO mdao = new MemberDAO();
 		boolean isExists = mdao.useridDuplicateCheck(userid);
 		

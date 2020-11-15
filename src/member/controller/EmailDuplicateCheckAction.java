@@ -15,9 +15,7 @@ public class EmailDuplicateCheckAction extends AbstractController {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		String email = request.getParameter("email");
-		
-		System.out.println(">>> 확인용 email => " + email);
-		
+
 		InterMemberDAO mdao = new MemberDAO();
 		boolean isExists = mdao.emailDuplicateCheck(email);
 		

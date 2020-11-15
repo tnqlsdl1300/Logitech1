@@ -38,10 +38,9 @@ public class LoginAction extends AbstractController {
 			
 			if (loginuser != null) {
 				// 로그인 성공시
-				System.out.println(loginuser.getIdle());
+
 				if (loginuser.getIdle() == 1) {
 					// 1년 이상 미로그인 회원
-					System.out.println("들어오나");
 					JSONObject jsonObj = new JSONObject();
 					jsonObj.put("login", "restAccount");
 					
@@ -96,8 +95,7 @@ public class LoginAction extends AbstractController {
 			
 		}else {
 			// 로그인 창에 들어왔을 시
-			
-			System.out.println("get으로 들어옴");
+
 			super.setRedirect(false);
 			super.setViewPage("/WEB-INF/login/login.jsp");
 			
