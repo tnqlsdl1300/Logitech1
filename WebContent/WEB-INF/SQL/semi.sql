@@ -4,8 +4,20 @@ from abc;
 select *
 from tab;
 
+desc event;
+fk_productid
+-- 컬럼 추가
+ALTER TABLE event ADD CAROUSELIMG VARCHAR2(4000) NOT NULL;
+
+insert into event (SEQ_EVENT, EVENTNAME, FK_PRODUCTID, CAROUSELIMG)
+values(EVENT_SEQ.nextval, '슬림한 디자인의 무소음 무선 마우스', 'Logitech Pebble M350', 'https://resource.logitech.com/w_1206,c_limit,q_auto,f_auto,dpr_1.0/content/dam/logitech/en/products/mice/m350/m350-carousel-04.png?v=1!@#https://resource.logitech.com/w_1206,c_limit,q_auto,f_auto,dpr_1.0/content/dam/logitech/en/products/mice/m350/m350-carousel-05.png?v=1!@#https://resource.logitech.com/w_1206,c_limit,q_auto,f_auto,dpr_1.0/content/dam/logitech/en/products/mice/m350/m350-carousel-03.png?v=1!@#https://resource.logitech.com/w_1206,c_limit,q_auto,f_auto,dpr_1.0/content/dam/logitech/en/products/mice/m350/m350-carousel-01.png?v=1');
+
+commit;
+-- 전체 시퀀스 보기
+SELECT * FROM USER_SEQUENCES;
+
 select *
-from review;
+from event;
 
 SELECT * FROM USER_SEQUENCES;
 
@@ -16,6 +28,12 @@ desc KEYWORDSEARCH;
 select *
 from PRODUCT;
 
+-- 기간 내 이벤트만 보여주는 쿼리
+select *
+from event 
+WHERE trunc(sysdate) BETWEEN TO_DATE(STARTDAY, 'YY/MM/DD') AND
+                                TO_DATE(ENDDAY, 'YY/MM/DD');
+                                
 select *
 from PURCHASEDETAIL;
 -- 여기에 productid 가 들어가야함
@@ -51,7 +69,7 @@ commit;
 
 --- KEYWORDSEARCH 테이블에 키워드 넣는 쿼리
 insert into KEYWORDSEARCH(KEYWORD, SEARCHCNT)
-values('사무용', 0);
+values('가정용', 0);
 
 무선
 유선

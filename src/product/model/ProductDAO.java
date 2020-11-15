@@ -231,6 +231,13 @@ public class ProductDAO implements InterProductDAO {
 		
 		return result;
 	}
+
+	// 메인페이지의 들어갈 이벤트 정보를 받아오는 메서드 (이벤트 캐러셀)
+	@Override
+	public List<EventVO> selectCarousel() throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 	//////////////////////////////////////////////////////////////////////////박수빈:끝/////

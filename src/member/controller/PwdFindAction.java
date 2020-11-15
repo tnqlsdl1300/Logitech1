@@ -40,9 +40,7 @@ public class PwdFindAction extends AbstractController {
 			if (isExist) {
 				// 회원존재
 				jsonObj.put("isExist", true);	
-				
-				
-				
+
 			}else{
 				jsonObj.put("isExist", false);	
 			}

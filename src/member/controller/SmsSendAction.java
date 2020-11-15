@@ -41,7 +41,7 @@ public class SmsSendAction extends AbstractController {
 		paraMap.put("to", mobile); // 수신번호
 		paraMap.put("from", "01077226318"); // 발신번호
 		paraMap.put("type", "SMS"); // Message type ( SMS(단문), LMS(장문), MMS, ATA )
-		paraMap.put("text", "인증코드는 [" + code + "] 입니다."); // 문자내용    
+		paraMap.put("text", "[Logitech] 인증번호는 [" + code + "] 입니다."); // 문자내용    
 		paraMap.put("app_version", "JAVA SDK v2.2"); // application name and version
 		paraMap.put("mode", "test");
 		System.out.println("sms 코드는" + code);

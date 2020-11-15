@@ -61,8 +61,7 @@
 
 
 <div class="totalWrap" id="carWrap">
-	<div id="wrap">
-		
+
 		  <div id="myCarousel" class="carousel slide" data-ride="carousel">
 		    <!-- Indicators -->
 		    <ol class="carousel-indicators">
@@ -89,11 +88,11 @@
 		    <div class="carousel-inner">
 		      
 		      <div class="item active" data-toggle="modal" data-target="#eventModal">
-		        <img src="<%= ctxPath %>/images/headsetmain.png" style="width:100%;">
+		        <img src="https://resource.logitech.com/w_1024,h_1366,c_limit,q_auto,f_auto,dpr_1.0/content/dam/logitech/en/products/mice/mx-ergo/mx-ergo-wireless-trackball-banner-carousel-01-tablet.png?v=1!@#https://resource.logitech.com/w_1024,h_1366,c_limit,q_auto,f_auto,dpr_1.0/content/dam/logitech/en/products/mice/mx-ergo/mx-ergo-wireless-trackball-banner-carousel-02-tablet.png?v=1!@#https://resource.logitech.com/w_1024,h_1366,c_limit,q_auto,f_auto,dpr_1.0/content/dam/logitech/en/products/mice/mx-ergo/mx-ergo-wireless-trackball-banner-carousel-03-tablet.png?v=1!@#https://resource.logitech.com/w_1024,h_1366,c_limit,q_auto,f_auto,dpr_1.0/content/dam/logitech/en/products/mice/mx-ergo/mx-ergo-wireless-trackball-banner-carousel-04-tablet.png?v=1" style="width:100%;">
 		      </div>
 		
 		      <div class="item" data-toggle="modal" data-target="#eventModal">
-		        <img src="<%= ctxPath %>/images/keyboardmain.png" style="width:100%;">
+		        <img src="https://resource.logitech.com/w_1206,c_limit,q_auto,f_auto,dpr_1.0/content/dam/logitech/en/products/mice/m350/m350-carousel-04.png?v=1!@#https://resource.logitech.com/w_1206,c_limit,q_auto,f_auto,dpr_1.0/content/dam/logitech/en/products/mice/m350/m350-carousel-05.png?v=1!@#https://resource.logitech.com/w_1206,c_limit,q_auto,f_auto,dpr_1.0/content/dam/logitech/en/products/mice/m350/m350-carousel-03.png?v=1!@#https://resource.logitech.com/w_1206,c_limit,q_auto,f_auto,dpr_1.0/content/dam/logitech/en/products/mice/m350/m350-carousel-01.png?v=1" style="width:100%;">
 		      </div>
 		    
 		      <div class="item" data-toggle="modal" data-target="#eventModal">
@@ -133,7 +132,7 @@
 		    </a>
 		  </div>
 	  
-	 	</div> 
+
 	 </div>
 
 	<%--
@@ -167,9 +166,19 @@
 	  		<h1>카테고리별 BEST 3</h1>
 	    	<p></p>
 	  	</div>
-	    <div class="col-sm-3" style="text-align: center; border-right: solid 1px #cccccc;">
+	  
+	  	<%-- 가로로 다시 만드는걸 추천 - 테이블사용 --%>
+	    <div class="col-sm-3" style="text-align: center; border-right: solid 1px #cccccc; background-color: #d4d4d4">
 	      <p style="text-align: center; font-weight: bold; font-size: 12pt;">마우스</p>
+	      <br>
 	      <div>
+      	<div class="indexBestItem" onclick="gotoDetail()">
+	    	<div class="eachItemImg">
+	    		<img src="https://assets.logitech.com/assets/54686/x300-gallery.png"  class="img-thumbnail" class="img-rounded" style="width:90%;" alt="Image">
+	    	</div>				    	
+	    	<p class="productId">아이템1</p>
+	    	<p class="productName">만암니람지라밎라</p>
+	    </div>
 	      	<div class="indexBestItem">
 	      		<a href="#"><img src="<%= ctxPath %>/images/동원.png" class="img-thumbnail" class="img-rounded" style="width:100%;" alt="Image"><p>1. 마우스</p></a>
 	      	</div>

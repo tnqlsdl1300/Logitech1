@@ -1,8 +1,12 @@
 package common.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import product.model.*;
 
 
 public class IndexController extends AbstractController {
@@ -15,20 +19,15 @@ public class IndexController extends AbstractController {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		System.out.println("@@@ 확인용 IndexController 의 인스턴스 메서드 execute 가 호출됨 @@@");
+		// 이벤트 캐러셀 데이터 DB에서 불러오기
+		InterProductDAO pdao = new ProductDAO();
+		List<EventVO> eventList = pdao.selectCarousel();
 		
-		//InterProductDAO pdao = new ProductDAO();
 		
-		//List<ImageVO> imgList = pdao.ImageSelectAll();
 		
-		//request.setAttribute("imgList", imgList);
 		
-		// super.setRedirect(false);
-		// this.setRedirect(false);
-		// setRedirect(false); => 셋 다 같은말
-		
+		super.setRedirect(false);
 		super.setViewPage("/WEB-INF/index.jsp");
-		
 	}
 
 }

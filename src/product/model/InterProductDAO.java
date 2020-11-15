@@ -28,6 +28,9 @@ public interface InterProductDAO {
 
 	// 검색한 키워드 DB에 cnt + 1 해주는 메서드(제품 검색)
 	public int updateRankingKeyword(String keyword) throws SQLException;
+
+	// 메인페이지의 들어갈 이벤트 정보를 받아오는 메서드 (이벤트 캐러셀)
+	public List<EventVO> selectCarousel() throws SQLException;
 	
 	//////////////////////////////////////////////////////////////////////////박수빈:끝/////
 
