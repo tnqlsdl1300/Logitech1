@@ -2,7 +2,7 @@ package product.model;
 
 public class EventVO {
 	
-	private int SEQ_EVENT;			// 이벤트 시퀀스
+	private int seq_event;			// 이벤트 시퀀스
 	private String eventname;		// 이벤트명
 	private String fk_productid;	// 이벤트 제품 아이디
 	private String startday;		// 이벤트 시작 날짜
@@ -14,13 +14,13 @@ public class EventVO {
 	public EventVO() {	}
 	
 	////////////////////////////////////////////
-
-	public int getSEQ_EVENT() {
-		return SEQ_EVENT;
+	
+	public int getSeq_event() {
+		return seq_event;
 	}
 
-	public void setSEQ_EVENT(int sEQ_EVENT) {
-		SEQ_EVENT = sEQ_EVENT;
+	public void setSeq_event(int seq_event) {
+		this.seq_event = seq_event;
 	}
 
 	public String getEventname() {
@@ -62,7 +62,6 @@ public class EventVO {
 	public void setCarouselimg(String carouselimg) {
 		this.carouselimg = carouselimg;
 	}
-	
-	
+
 	
 }

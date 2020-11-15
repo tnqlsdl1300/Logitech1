@@ -1,23 +1,27 @@
 select *
-from abc;
+from joinevent;
 
 select *
 from tab;
 
-desc event;
-fk_productid
+desc joinevent;
+
 -- 컬럼 추가
-ALTER TABLE event ADD CAROUSELIMG VARCHAR2(4000) NOT NULL;
+ALTER TABLE joinevent ADD eventcomment VARCHAR2(300) NOT NULL;
 
 insert into event (SEQ_EVENT, EVENTNAME, FK_PRODUCTID, CAROUSELIMG)
 values(EVENT_SEQ.nextval, '슬림한 디자인의 무소음 무선 마우스', 'Logitech Pebble M350', 'https://resource.logitech.com/w_1206,c_limit,q_auto,f_auto,dpr_1.0/content/dam/logitech/en/products/mice/m350/m350-carousel-04.png?v=1!@#https://resource.logitech.com/w_1206,c_limit,q_auto,f_auto,dpr_1.0/content/dam/logitech/en/products/mice/m350/m350-carousel-05.png?v=1!@#https://resource.logitech.com/w_1206,c_limit,q_auto,f_auto,dpr_1.0/content/dam/logitech/en/products/mice/m350/m350-carousel-03.png?v=1!@#https://resource.logitech.com/w_1206,c_limit,q_auto,f_auto,dpr_1.0/content/dam/logitech/en/products/mice/m350/m350-carousel-01.png?v=1');
+
+String sql = "insert into joinevent(seq_joinevent, fk_event, fk_memberno, eventcomment)\n"+
+"values(joinevent_seq.nextval, ?, ?, ?)";
 
 commit;
 -- 전체 시퀀스 보기
 SELECT * FROM USER_SEQUENCES;
 
-select *
-from event;
+String sql = "select seq_event, eventname, fk_productid, startday, endday, carouselimg \n"+
+"from event\n"+
+"where SEQ_EVENT = ? ";
 
 SELECT * FROM USER_SEQUENCES;
 
@@ -26,13 +30,18 @@ drop table abc purge;
 desc KEYWORDSEARCH;
 
 select *
-from PRODUCT;
+from member;
 
--- 기간 내 이벤트만 보여주는 쿼리
+--- 기간 내 이벤트만 보여주는 쿼리
 select *
 from event 
 WHERE trunc(sysdate) BETWEEN TO_DATE(STARTDAY, 'YY/MM/DD') AND
                                 TO_DATE(ENDDAY, 'YY/MM/DD');
+--
+String sql = "select seq_event, eventname, fk_productid, startday, endday, carouselimg\n"+
+"from event \n"+
+"WHERE trunc(sysdate) BETWEEN TO_DATE(STARTDAY, 'YY/MM/DD') AND\n"+
+"                                TO_DATE(ENDDAY, 'YY/MM/DD')";
                                 
 select *
 from PURCHASEDETAIL;

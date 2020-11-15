@@ -26,6 +26,12 @@ public interface InterMemberDAO {
 	// 새로운 비밀번호를 지정해주는 메서드 (비밀번호 찾기)
 	int updatePwd(String userid, String newPwd) throws SQLException;
 
+	// joinevent 테이블에서 이미 이벤트에 참여한 회원인지 검사하는 메서드(이벤트참여)
+	boolean joinEventCheck(String seq_event, String memberno) throws SQLException;
+	
+	// joinevent 테이블에 데이터를 넣어 이벤트 참여를 시켜주는 메서드 (이벤트참여)
+	int insertEventMember(String seq_event, String memberno, String eventcomment) throws SQLException;
+
 	
 	
 }

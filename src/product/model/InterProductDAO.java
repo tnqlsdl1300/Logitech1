@@ -31,6 +31,9 @@ public interface InterProductDAO {
 
 	// 메인페이지의 들어갈 이벤트 정보를 받아오는 메서드 (이벤트 캐러셀)
 	public List<EventVO> selectCarousel() throws SQLException;
+
+	// 이벤트 번호를 통해 이벤트 정보를 받아오는 메서드 (이벤트 참여)
+	public EventVO selectOneEvent(String seq_event) throws SQLException;
 	
 	//////////////////////////////////////////////////////////////////////////박수빈:끝/////
 

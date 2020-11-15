@@ -2,6 +2,7 @@ package member.model;
 
 import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -231,8 +232,8 @@ public class MemberDAO implements InterMemberDAO {
 					member.setMemberno(rs.getInt(1));
 					member.setUserid(rs.getString(2));
 					member.setName(rs.getString(3));
-					member.setEmail(rs.getString(4));
-					member.setMobile(rs.getString(5));
+					member.setEmail(aes.decrypt(rs.getString(4)));
+					member.setMobile(aes.decrypt(rs.getString(5)));
 					member.setBirthday(rs.getString(6));
 					member.setPoint(rs.getInt(7));
 					member.setPoint(rs.getInt(11));
@@ -241,8 +242,8 @@ public class MemberDAO implements InterMemberDAO {
 					member.setMemberno(rs.getInt(1));
 					member.setUserid(rs.getString(2));
 					member.setName(rs.getString(3));
-					member.setEmail(rs.getString(4));
-					member.setMobile(rs.getString(5));
+					member.setEmail(aes.decrypt(rs.getString(4)));
+					member.setMobile(aes.decrypt(rs.getString(5)));
 					member.setBirthday(rs.getString(6));
 					member.setPoint(rs.getInt(7));
 					member.setAddress(rs.getString(8));
@@ -286,6 +287,15 @@ public class MemberDAO implements InterMemberDAO {
 				
 			}
 			
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (GeneralSecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} finally {
 			close();
 		}
@@ -348,6 +358,62 @@ public class MemberDAO implements InterMemberDAO {
 			
 			result = pstmt.executeUpdate();
 			
+		} finally {
+			close();
+		}
+		
+		return result;
+	}
+
+	// joinevent 테이블에서 이미 이벤트에 참여한 회원인지 검사하는 메서드(이벤트참여)
+	@Override
+	public boolean joinEventCheck(String seq_event, String memberno) throws SQLException {
+
+		boolean join = false;
+		
+		try {
+			
+			conn = ds.getConnection();
+			
+			String sql = "select fk_event\n"+
+					"from joinevent\n"+
+					"where fk_event = ? and fk_memberno = ? ";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, seq_event);
+			pstmt.setString(2, memberno);
+
+			rs = pstmt.executeQuery();
+			
+			// 행이 있으면(중복) true, 없으면(중복x) false 반환
+			join = rs.next();
+			
+		} finally {
+			close();
+		}
+		
+		return join;
+	}
+
+	// joinevent 테이블에 데이터를 넣어 이벤트 참여를 시켜주는 메서드 (이벤트참여)
+	@Override
+	public int insertEventMember(String seq_event, String memberno, String eventcomment) throws SQLException {
+
+		int result = 0;
+		
+		try {
+			conn = ds.getConnection();
+			
+			String sql = "insert into joinevent(seq_joinevent, fk_event, fk_memberno, eventcomment)\n"+
+					"values(joinevent_seq.nextval, ?, ?, ?)";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, seq_event);
+			pstmt.setString(2, memberno);
+			pstmt.setString(3, eventcomment);
+
+			result = pstmt.executeUpdate();
+
 		} finally {
 			close();
 		}

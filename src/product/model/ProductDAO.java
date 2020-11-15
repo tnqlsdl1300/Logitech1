@@ -235,8 +235,84 @@ public class ProductDAO implements InterProductDAO {
 	// 메인페이지의 들어갈 이벤트 정보를 받아오는 메서드 (이벤트 캐러셀)
 	@Override
 	public List<EventVO> selectCarousel() throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<EventVO> eventList = new ArrayList<EventVO>();
+		
+		
+		try {
+			
+			conn = ds.getConnection();
+			
+			// 이벤트기간이 지나지 않은 진행중인 이벤트만 받아오는 sql문
+			String sql = "select seq_event, eventname, fk_productid, startday, endday, carouselimg\n"+
+					"from event \n"+
+					"WHERE trunc(sysdate) BETWEEN TO_DATE(STARTDAY, 'YY/MM/DD') AND\n"+
+					"                                TO_DATE(ENDDAY, 'YY/MM/DD')";
+			
+			pstmt = conn.prepareStatement(sql);
+
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				
+				EventVO evo = new EventVO();
+				
+				evo.setSeq_event(rs.getInt(1));
+				evo.setEventname(rs.getString(2));
+				evo.setFk_productid(rs.getString(3));
+				evo.setStartday(rs.getString(4));
+				evo.setEndday(rs.getString(5));
+				evo.setCarouselimg(rs.getString(6));
+
+				eventList.add(evo);
+				
+			}// end of while -----------------------------
+			
+			}finally {
+				close();
+			}
+		
+		return eventList;
+	}
+
+	// 이벤트 번호를 통해 이벤트 정보를 받아오는 메서드 (이벤트 참여)
+	@Override
+	public EventVO selectOneEvent(String seq_event) throws SQLException {
+
+		EventVO evo = null;
+		System.out.println("?? : " + seq_event);
+		try {
+			
+			conn = ds.getConnection();
+			
+			// 이벤트기간이 지나지 않은 진행중인 이벤트만 받아오는 sql문
+			String sql = "select seq_event, eventname, fk_productid, startday, endday, carouselimg \n"+
+					"from event\n"+
+					"where SEQ_EVENT = ? ";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, seq_event);
+
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				
+				evo = new EventVO();
+				
+				evo.setSeq_event(rs.getInt(1));
+				evo.setEventname(rs.getString(2));
+				evo.setFk_productid(rs.getString(3));
+				evo.setStartday(rs.getString(4));
+				evo.setEndday(rs.getString(5));
+				evo.setCarouselimg(rs.getString(6));
+
+			}// end of while -----------------------------
+			
+			}finally {
+				close();
+			}
+		
+		return evo;
 	}
 	
 	

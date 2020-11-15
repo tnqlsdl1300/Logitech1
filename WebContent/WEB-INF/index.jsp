@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	String ctxPath = request.getContextPath();
 %>
@@ -54,10 +55,32 @@
 </style>
 
 <script type="text/javascript">
+	
 	$(document).ready(function() {
 		
 	});
+	
+	function goEventModal(seq_event) {
+		
+		// 로그인을 하지 않았을 시 거부
+		if (${ sessionScope.loginuser.userid == null }) {
+			alert("이벤트 참여는 로그인 시에만 가능합니다.");
+			return;
+		}
+		
+		// 로그인일 시 모달창으로 정상 이동
+		var frm = document.sessionFrm;
+		frm.action = "<%= ctxPath %>/product/goJoinEvent.sg";
+		frm.method = "GET";
+		frm.seq_event.value = seq_event;
+		frm.submit();
+	}
+	
 </script>
+
+<form name="sessionFrm">
+	<input type="hidden" name="seq_event" value="">
+</form>
 
 
 <div class="totalWrap" id="carWrap">
@@ -65,14 +88,8 @@
 		  <div id="myCarousel" class="carousel slide" data-ride="carousel">
 		    <!-- Indicators -->
 		    <ol class="carousel-indicators">
-		      
-		      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-		      <li data-target="#myCarousel" data-slide-to="1"></li>
-		      <li data-target="#myCarousel" data-slide-to="2"></li>
-		      <li data-target="#myCarousel" data-slide-to="3"></li>
-		      
-		      <%--
-		      <c:forEach var="imgList" items="${ imgList }" varStatus="status">
+
+		      <c:forEach var="evo" items="${ eventList }" varStatus="status">
 		      	<c:if test="${ status.index == 0 }">
 		      		<li data-target="#myCarousel" data-slide-to="${ status.index }" class="active"></li>
 		      	</c:if>
@@ -81,43 +98,26 @@
 		      		<li data-target="#myCarousel" data-slide-to="${ status.index }"></li>
 		      	</c:if>
 		      </c:forEach>
-		      --%>
+
 		    </ol>
 		
 		    <!-- Wrapper for slides -->
 		    <div class="carousel-inner">
-		      
-		      <div class="item active" data-toggle="modal" data-target="#eventModal">
-		        <img src="https://resource.logitech.com/w_1024,h_1366,c_limit,q_auto,f_auto,dpr_1.0/content/dam/logitech/en/products/mice/mx-ergo/mx-ergo-wireless-trackball-banner-carousel-01-tablet.png?v=1!@#https://resource.logitech.com/w_1024,h_1366,c_limit,q_auto,f_auto,dpr_1.0/content/dam/logitech/en/products/mice/mx-ergo/mx-ergo-wireless-trackball-banner-carousel-02-tablet.png?v=1!@#https://resource.logitech.com/w_1024,h_1366,c_limit,q_auto,f_auto,dpr_1.0/content/dam/logitech/en/products/mice/mx-ergo/mx-ergo-wireless-trackball-banner-carousel-03-tablet.png?v=1!@#https://resource.logitech.com/w_1024,h_1366,c_limit,q_auto,f_auto,dpr_1.0/content/dam/logitech/en/products/mice/mx-ergo/mx-ergo-wireless-trackball-banner-carousel-04-tablet.png?v=1" style="width:100%;">
-		      </div>
-		
-		      <div class="item" data-toggle="modal" data-target="#eventModal">
-		        <img src="https://resource.logitech.com/w_1206,c_limit,q_auto,f_auto,dpr_1.0/content/dam/logitech/en/products/mice/m350/m350-carousel-04.png?v=1!@#https://resource.logitech.com/w_1206,c_limit,q_auto,f_auto,dpr_1.0/content/dam/logitech/en/products/mice/m350/m350-carousel-05.png?v=1!@#https://resource.logitech.com/w_1206,c_limit,q_auto,f_auto,dpr_1.0/content/dam/logitech/en/products/mice/m350/m350-carousel-03.png?v=1!@#https://resource.logitech.com/w_1206,c_limit,q_auto,f_auto,dpr_1.0/content/dam/logitech/en/products/mice/m350/m350-carousel-01.png?v=1" style="width:100%;">
-		      </div>
-		    
-		      <div class="item" data-toggle="modal" data-target="#eventModal">
-		        <img src="<%= ctxPath %>/images/mousemain.png" style="width:100%;">
-		      </div>
-		      
-		      <div class="item" data-toggle="modal" data-target="#eventModal">
-		        <img src="<%= ctxPath %>/images/speakerProduct.png" style="width:100%;">
-		      </div>
-		      
-		      <%-- 
-		      <c:forEach var="imgvo" items="${ imgList }" varStatus="status">
+
+		      <c:forEach var="evo" items="${ eventList }" varStatus="status">
 		      	<c:if test="${ status.index == 0 }">
-		      	  <div class="item active">
-			        <img src="<%= ctxPath %>/images/${ imgvo.imgfilename }" style="width:100%;">
+		      	  <div class="item active" onclick="goEventModal('${evo.seq_event}')">
+			        <img src="${ evo.carouselimg }" style="width:100%;">
 			      </div>
 		      	</c:if>
 		      	
 		      	<c:if test="${ status.index != 0 }">
-		      	  <div class="item">
-			        <img src="<%= ctxPath %>/images/${ imgvo.imgfilename }" style="width:100%;">
+		      	  <div class="item" onclick="goEventModal('${evo.seq_event}')">
+			        <img src="${ evo.carouselimg }" style="width:100%;">
 			      </div>
 		      	</c:if>
 		      </c:forEach>
-		      	--%>
+
 		    </div>
 		    
 		
@@ -248,10 +248,10 @@
         <h4 class="modal-title">이벤트 참여</h4>
       </div>
       <div class="modal-body">
-        <div id="register">
-             <iframe style="border: none; width: 100%; height: 500px;" src="/Logitech/joinEvent.jsp">
+      	  <div id="register">
+             <iframe style="border: none; width: 100%; height: 500px;" src="<%= ctxPath %>/product/goJoinEvent.sg">
              </iframe>
-        </div>
+          </div>
       </div>
     </div>
 
