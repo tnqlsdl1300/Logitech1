@@ -3,8 +3,46 @@ from joinevent;
 
 select *
 from tab;
+SELECT * FROM purchase;
+select * from productoption;
+select * from product;
+select * from PURCHASEdetail;
+desc PURCHASEdetail;
 
-desc joinevent;
+insert into PURCHASE (PURCHASENO, FK_MEMBERNO, RECEIVER, POSTCODE, ADDRESS, DETAILADDRESS, EXTRAADDRESS, PAYMENT, PURCHASEDAY, TOTALPRICE)
+values(PURCHASE_SEQ.nextval, '2', '박수빈', '21413', '주소1', '주소2', '주소3', 'card', '2020-11-16', '25000');
+
+insert into PURCHASEdetail (purchasedetailid, fk_purchaseno, fk_productid, fk_productserialid, volume)
+values(PURCHASEDETAIL_SEQ.nextval, '4', 'X100', 'X100_2', 5);
+
+
+select fk_productid,  sum(volume)
+from PURCHASEdetail
+group by fk_productid;
+
+--- 판매수 별 물품
+select productid, productname, fk_category, character, price, imgfilename, volume
+from
+(
+    select fk_productid,  sum(volume) as volume
+    from PURCHASEdetail
+    group by fk_productid
+) C
+inner join product P
+on C.fk_productid = P.productid
+order by volume desc;
+-- sql문
+String sql = "select productid, productname, fk_category, character, price, imgfilename, volume\n"+
+"from\n"+
+"(\n"+
+"    select fk_productid,  sum(volume) as volume\n"+
+"    from PURCHASEdetail\n"+
+"    group by fk_productid\n"+
+") C\n"+
+"inner join product P\n"+
+"on C.fk_productid = P.productid\n"+
+"order by volume desc";
+
 
 -- 컬럼 추가
 ALTER TABLE joinevent ADD eventcomment VARCHAR2(300) NOT NULL;
@@ -17,7 +55,7 @@ String sql = "insert into joinevent(seq_joinevent, fk_event, fk_memberno, eventc
 
 commit;
 -- 전체 시퀀스 보기
-SELECT * FROM USER_SEQUENCES;
+SELECT * FROM PRODUCTOPTION;
 
 String sql = "select seq_event, eventname, fk_productid, startday, endday, carouselimg \n"+
 "from event\n"+
@@ -30,7 +68,7 @@ drop table abc purge;
 desc KEYWORDSEARCH;
 
 select *
-from member;
+from product;
 
 --- 기간 내 이벤트만 보여주는 쿼리
 select *

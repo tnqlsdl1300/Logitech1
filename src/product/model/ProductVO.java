@@ -17,6 +17,13 @@ public class ProductVO {
 	String detailimg;
 	ProductOptionVO povo;
 	
+	
+	// 추가: select용
+	// 판매량
+	int sale;
+	
+	///////////////////////////////////
+	
 	public String getImgfilename() {
 		return imgfilename;
 	}
@@ -72,5 +79,12 @@ public class ProductVO {
 	}
 	public void setPovo(ProductOptionVO povo) {
 		this.povo = povo;
+	}
+	
+	public int getSale() {
+		return sale;
+	}
+	public void setSale(int sale) {
+		this.sale = sale;
 	}
 }

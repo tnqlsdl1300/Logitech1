@@ -30,12 +30,13 @@
 	}
 	
 	div#indexBestItemBox{
-		padding: 4% 0;
+		
 	}
 	
 	div#bestItemTitle{
 		text-align: center;
-		padding-bottom: 4%;
+		padding: 0;
+		padding-top: 1%;
 	}
 	
 	div#bestItemTitle h1{
@@ -49,7 +50,32 @@
 	}
 	
 	div.indexBestItem{
-		padding-bottom: 30px;
+		padding: 0;
+		margin: 0;
+		cursor: pointer;
+	}
+	
+	div.testItem{
+		border: solid 1px red;
+		float: left;
+	}
+	
+	.equal {
+	  display: flex;
+	  display: -webkit-flex;
+	  flex-wrap: wrap;
+	}
+	
+	.eachItemBox{
+		border: solid 1px black;
+		padding: 0;
+		margin: 0;
+		margin-bottom: 2%;
+	}
+	
+	.indexBestItem > .rankText{
+		color: red;
+		font-size: 15pt;
 	}
 	
 </style>
@@ -75,6 +101,14 @@
 		frm.seq_event.value = seq_event;
 		frm.submit();
 	}
+	
+	// 제품상세 페이지로 이동하는 함수
+	function gotoDetail(productid) {
+		alert(productid);
+		location.href="productviewpage.sg?productid=" + productid;
+	}
+	
+	
 	
 </script>
 
@@ -156,6 +190,8 @@
     </div>
   </div>
    --%>
+   <%-- 여기 --%>
+	
   
   
   <div class="totalWrap" id="bestItemWrap">
@@ -166,68 +202,45 @@
 	  		<h1>카테고리별 BEST 3</h1>
 	    	<p></p>
 	  	</div>
-	  
-	  	<%-- 가로로 다시 만드는걸 추천 - 테이블사용 --%>
-	    <div class="col-sm-3" style="text-align: center; border-right: solid 1px #cccccc; background-color: #d4d4d4">
-	      <p style="text-align: center; font-weight: bold; font-size: 12pt;">마우스</p>
-	      <br>
-	      <div>
-      	<div class="indexBestItem" onclick="gotoDetail()">
-	    	<div class="eachItemImg">
-	    		<img src="https://assets.logitech.com/assets/54686/x300-gallery.png"  class="img-thumbnail" class="img-rounded" style="width:90%;" alt="Image">
-	    	</div>				    	
-	    	<p class="productId">아이템1</p>
-	    	<p class="productName">만암니람지라밎라</p>
-	    </div>
-	      	<div class="indexBestItem">
-	      		<a href="#"><img src="<%= ctxPath %>/images/동원.png" class="img-thumbnail" class="img-rounded" style="width:100%;" alt="Image"><p>1. 마우스</p></a>
-	      	</div>
-	      	<div class="indexBestItem">
-	      		<a href="#"><img src="<%= ctxPath %>/images/미샤.png" class="img-thumbnail" class="img-rounded" style="width:100%;" alt="Image"><p>1. 마우스</p></a>
-	      	</div>
-	      	<div class="indexBestItem">
-	      		<a href="#"><img src="<%= ctxPath %>/images/레노보.png" class="img-thumbnail" class="img-rounded" style="width:100%;" alt="Image"><p>1. 마우스</p></a>
-	      	</div>
-	      </div>
-	    </div>
-	    
-	    <div class="col-sm-3" style="text-align: center; border-right: solid 1px #cccccc;">
-	      <p style="text-align: center; font-weight: bold; font-size: 12pt;">키보드</p>
-	      <div>
-	      	<a href="#"><img src="<%= ctxPath %>/images/동원.png" class="img-thumbnail" class="img-rounded" style="width:100%;" alt="Image"><p>1. 키보드</p></a>
-	      	<br>
-	      	<a href="#"><img src="<%= ctxPath %>/images/미샤.png" class="img-thumbnail" class="img-rounded" style="width:100%;" alt="Image"><p>2. 키보드</p></a>
-	      	<br>
-	      	<a href="#"><img src="<%= ctxPath %>/images/레노보.png" class="img-thumbnail" class="img-rounded" style="width:100%;" alt="Image"><p>3. 키보드</p></a>
-	      	<br>
-	      </div>
-	    </div>
-	    
-	    <div class="col-sm-3" style="text-align: center; border-right: solid 1px #cccccc;">
-	      <p style="text-align: center; font-weight: bold; font-size: 12pt;">헤드셋</p>
-	      <div>
-	      	<a href="#"><img src="<%= ctxPath %>/images/동원.png" class="img-thumbnail" class="img-rounded" style="width:100%;" alt="Image"><p>1. 헤드셋</p></a>
-	      	<br>
-	      	<a href="#"><img src="<%= ctxPath %>/images/미샤.png" class="img-thumbnail" class="img-rounded" style="width:100%;" alt="Image"><p>2. 헤드셋</p></a>
-	      	<br>
-	      	<a href="#"><img src="<%= ctxPath %>/images/레노보.png" class="img-thumbnail" class="img-rounded" style="width:100%;" alt="Image"><p>3. 헤드셋</p></a>
-	      	<br>
-	      </div>
-	    </div>
-	    
-	    <div class="col-sm-3" style="text-align: center;">
-	      <p style="text-align: center; font-weight: bold; font-size: 12pt;">스피커</p>
-	      <div>
-	      	<a href="#"><img src="<%= ctxPath %>/images/동원.png" class="img-thumbnail" class="img-rounded" style="width:100%;" alt="Image"><p>1. 스피커</p></a>
-	      	<br>
-	      	<a href="#"><img src="<%= ctxPath %>/images/미샤.png" class="img-thumbnail" class="img-rounded" style="width:100%;" alt="Image"><p>2. 스피커</p></a>
-	      	<br>
-	      	<a href="#"><img src="<%= ctxPath %>/images/레노보.png" class="img-thumbnail" class="img-rounded" style="width:100%;" alt="Image"><p>3. 스피커</p></a>
-	      	<br>
-	      </div>
-	    </div>
-	 </div> 
-	 
+	  	
+	  	<h2>스피커</h2>
+	  	<div class="bestItemBox" style="border: solid 0px red;"> 
+	 		<c:forEach var="speakervo" items="${ speakerList }" varStatus="status">
+	 			<div class="col-md-4 eachItemBox" style="text-align: center; border-right: solid 1px #cccccc; background-color: #d4d4d4">
+		     		<div class="indexBestItem" onclick="gotoDetail('${ speakervo.productid }')">
+		     			<label class="rankText">${ status.count }위</label>
+		     			<hr style="margin: 0; padding: 0;">
+				    	<div class="eachItemImg" style="margin: 0; padding: 0;">
+				    		<img src="${ speakervo.imgfilename }" class="img-thumbnail" style="width:90%; height: 280px;" alt="Image">
+				    	</div>				    	
+				    	<p class="productId">${ speakervo.productid }</p>
+				    	<p class="productName">${ speakervo.productname }</p>
+				    </div>
+	     		</div>
+	 		</c:forEach>
+	   </div>
+	   
+	   <h2>마우스</h2>
+	  	<div class="bestItemBox"> 
+	 		<c:forEach var="mousevo" items="${ mouseList }" varStatus="status">
+	 			<div class="col-md-4 eachItemBox" style="text-align: center; border-right: solid 1px #cccccc; background-color: #d4d4d4">
+		     		<div class="indexBestItem" onclick="gotoDetail('${ mousevo.productid }')">
+		     			<label class="rankText">${ status.count }위</label>
+		     			<hr style="margin: 0; padding: 0;">
+				    	<div class="eachItemImg">
+				    		<img src="${ mousevo.imgfilename }"  class="img-thumbnail" style="width:90%; height: 300px;" alt="Image">
+				    	</div>				    	
+				    	<p class="productId">${ mousevo.productid }</p>
+				    	<p class="productName">${ mousevo.productname }</p>
+				    </div>
+	     		</div>
+	 		</c:forEach>
+	   </div>
+	   
+	   <%-- DB에 데이터를 모두 넣은 뒤 헤드셋, 키보드 까지 넣으면 됨 --%>
+	   
+	</div>
+
   </div>
  </div>
   

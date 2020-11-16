@@ -34,6 +34,9 @@ public interface InterProductDAO {
 
 	// 이벤트 번호를 통해 이벤트 정보를 받아오는 메서드 (이벤트 참여)
 	public EventVO selectOneEvent(String seq_event) throws SQLException;
+
+	// 판매순으로 정렬한 물품 데이터 DB에서 불러오기
+	public List<ProductVO> selectBestCategoryOrder(String category) throws SQLException;
 	
 	//////////////////////////////////////////////////////////////////////////박수빈:끝/////
 

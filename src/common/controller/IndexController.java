@@ -24,10 +24,23 @@ public class IndexController extends AbstractController {
 		
 		// 진행중인 이벤트가 없을 시 문제가 생길 듯(널포인터)
 		
-		
 		request.setAttribute("eventList", eventList);
 		
 		///// 끝: 이벤트 캐러셀 데이터 DB에서 불러오기
+		
+		///// 시작: 카테고리별 판매순으로 정렬한 각 3개씩의 물품 데이터 DB에서 불러오기
+		
+		List<ProductVO> mouseList = pdao.selectBestCategoryOrder("mouse");
+		List<ProductVO> keyboardList = pdao.selectBestCategoryOrder("keyboard");
+		List<ProductVO> headsetList = pdao.selectBestCategoryOrder("headset");
+		List<ProductVO> speakerList = pdao.selectBestCategoryOrder("speaker");
+		
+		// DB에 mouse와 speaker 값만 있고 그 외 나머지는 값이 없음
+		
+		request.setAttribute("mouseList", mouseList);
+		request.setAttribute("keyboardList", keyboardList);
+		request.setAttribute("headsetList", headsetList);
+		request.setAttribute("speakerList", speakerList);
 		
 		super.setRedirect(false);
 		super.setViewPage("/WEB-INF/index.jsp");
