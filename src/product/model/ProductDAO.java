@@ -206,6 +206,77 @@ public class ProductDAO implements InterProductDAO {
 		
 		return pList;
 	}
+	
+	// 사용자가 select를 선택했을 때 검색해주는 메서드 (제품 검색)
+	@Override
+	public List<ProductVO> searchProductSelect(String keyword, String select, String type) throws SQLException {
+		
+		List<ProductVO> pList = new ArrayList<ProductVO>();
+		ProductVO pvo = null;
+		
+		switch (select) {
+			case "highPrice":
+				select = " order by price desc ";
+				break;
+				
+			case "lowPrice":
+				select = " order by price ";
+				break;
+				
+			case "favorite":
+				select = "";
+				break;
+				
+			case "sale":
+				select = "";
+				break;
+		}
+
+		try {
+			
+			conn = ds.getConnection();
+			
+			String sql = "select productid, productname, fk_category, character, price, imgfilename \n"+
+					"from product\n";
+
+			if ("rank".equals(type)) {
+				sql += "where lower(character) like '%' || lower(?) || '%' ";
+				sql += select;
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, keyword);
+				
+			}else if ("search".equals(type)) {
+				sql += "where lower(productid) like '%' || lower(?) || '%' or lower(productname) like '%' || lower(?) || '%' ";
+				sql += select;
+
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, keyword);
+				pstmt.setString(2, keyword);
+			}
+
+			rs = pstmt.executeQuery();
+			
+			
+			while(rs.next()) {
+				pvo = new ProductVO();
+				
+				pvo.setProductid(rs.getString(1));
+				pvo.setProductname(rs.getString(2));
+				pvo.setFk_category(rs.getString(3));
+				pvo.setCharacter(rs.getString(4));
+				pvo.setPrice(rs.getInt(5));
+				pvo.setImgfilename(rs.getString(6));
+				
+				pList.add(pvo);
+			}
+			
+		} finally {
+			close();
+		}
+		
+		return pList;
+	}
 
 	// 검색한 키워드 DB에 cnt + 1 해주는 메서드(제품 검색)
 	@Override

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	String ctxPath = request.getContextPath();
 %>
@@ -17,7 +18,7 @@
 		background-color: #d4d4d4;
 	}
 	
-	div#bestItemWrap{
+	div#bestCategoryItemWrap{
 		background-color: white;
 	}
 	
@@ -25,7 +26,7 @@
 		background-color: #222222;
 	}
 	
-	div#bestItemWrap{
+	div#bestCategoryItemWrap{
 		background-color: #f1f1f1;
 	}
 	
@@ -116,9 +117,8 @@
 	<input type="hidden" name="seq_event" value="">
 </form>
 
-
-<div class="totalWrap" id="carWrap">
-
+	<%-- 전체 Best3 --%>
+    <div class="totalWrap" id="carWrap">
 		  <div id="myCarousel" class="carousel slide" data-ride="carousel">
 		    <!-- Indicators -->
 		    <ol class="carousel-indicators">
@@ -165,36 +165,18 @@
 		      <span class="sr-only">Next</span>
 		    </a>
 		  </div>
-	  
+    </div>
 
-	 </div>
-
-	<%--
-  <h3>인기제품</h3><br>
-  <div class="row">
-    <div class="col-sm-3">
-      <p>마우스</p>
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-thumbnail" style="width:100%" alt="Image">
-    </div>
-    <div class="col-sm-3"> 
-      <p>키보드</p>
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-thumbnail" style="width:100%" alt="Image">
-    </div>
-    <div class="col-sm-3"> 
-      <p>헤드셋</p>
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-thumbnail" style="width:100%" alt="Image">
-    </div>
-    <div class="col-sm-3">
-      <p>스피커</p>
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-thumbnail" style="width:100%" alt="Image">
-    </div>
-  </div>
-   --%>
-   <%-- 여기 --%>
+	<%-- 취향 맞춤 추천 --%>
+	<div class="totalWrap" id="bestItemWrap" style="background-color: #00ead0; height: 100px; cursor: pointer;">
+		<div id="wrap" style="text-align: center;">
+			<h3 style="padding: 0; padding-top: 3%; margin: 0; font-weight: bold;">취향 맞춤 추천</h3>
+		</div>
+	</div>
 	
   
-  
-  <div class="totalWrap" id="bestItemWrap">
+  <%-- 카테고리별 Best3 --%>
+  <div class="totalWrap" id="bestCategoryItemWrap">
 	<div id="wrap">
 	  
 	 <div class="row" id="indexBestItemBox">
@@ -215,6 +197,7 @@
 				    	</div>				    	
 				    	<p class="productId">${ speakervo.productid }</p>
 				    	<p class="productName">${ speakervo.productname }</p>
+				    	<p class="productPrice"><fmt:formatNumber value="${ speakervo.price }" pattern="###,###" />원</p>
 				    </div>
 	     		</div>
 	 		</c:forEach>
@@ -232,6 +215,7 @@
 				    	</div>				    	
 				    	<p class="productId">${ mousevo.productid }</p>
 				    	<p class="productName">${ mousevo.productname }</p>
+				    	<p class="productPrice"><fmt:formatNumber value="${ mousevo.price }" pattern="###,###" />원</p>
 				    </div>
 	     		</div>
 	 		</c:forEach>
@@ -245,10 +229,10 @@
  </div>
   
   
-  <%-- 아래는 Modal --%>
   
   
-
+  
+<%-- 아래는 Modal --%>
 
 <%-- 이벤트 Modal --%>
 <div id="eventModal" class="modal fade" role="dialog" data-keyboard="false" data-backdrop="static">

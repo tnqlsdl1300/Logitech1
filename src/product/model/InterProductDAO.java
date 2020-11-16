@@ -37,6 +37,9 @@ public interface InterProductDAO {
 
 	// 판매순으로 정렬한 물품 데이터 DB에서 불러오기
 	public List<ProductVO> selectBestCategoryOrder(String category) throws SQLException;
+
+	// 사용자가 select를 선택했을 때 검색해주는 메서드 (제품 검색)
+	List<ProductVO> searchProductSelect(String keyword, String select, String type) throws SQLException;
 	
 	//////////////////////////////////////////////////////////////////////////박수빈:끝/////
 

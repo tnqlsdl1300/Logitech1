@@ -67,6 +67,16 @@
 
 <script type="text/javascript">
 	
+	$(document).ready(function() {
+		// <%= request.getContextPath() %>
+		$("select#searchResultOrderBy").change(function() {
+			alert("${ keyword }");
+			location.href = "<%= request.getContextPath() %>/product/searchResult.sg?keyword=${ keyword }&select=" + $(this).val() + "&type=${ type }";
+		});
+		
+	});
+
+	
 </script>
 
 <div class="totalWrap" id="searchResultWrap">
@@ -79,9 +89,10 @@
 			<select class="form-control" id="searchResultOrderBy" style="width: 120px;">
 		      <option value="" selected disabled hidden="hidden">정렬</option>
 		      <%-- 여기 option의 value는 나중에 DB 컬럼과 일치하게 해야함 --%>
-		      <option value="가격높은순">가격높은순</option>
-		      <option value="가격낮은순">가격낮은순</option>
-		      <option value="인기순">인기순</option>
+		      <option value="highPrice">가격높은순</option>
+		      <option value="lowPrice">가격낮은순</option>
+		      <option value="favorite">인기순</option>
+		      <option value="sale">판매순</option>
 		    </select>
 			
 			

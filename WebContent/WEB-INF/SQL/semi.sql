@@ -163,11 +163,11 @@ desc member;
 select keyword, searchcnt
 from keywordsearch
 order by searchcnt desc;
-commit;
+
 -- 제품검색쿼리
 select *
 from product
-where productid like '%MX%' or productname like '%mx%' ;
+where productid like '%MX%' or productname like '%mx%';
 --(rank)
 select *
 from product
