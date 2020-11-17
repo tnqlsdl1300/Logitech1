@@ -338,8 +338,8 @@ a#menu-share:hover > i{
 	class="fa fa-plus my-float"></i>
 </a>
 <ul class="floatingBtnBox">
-	<li><a href="#" class="floatingBtn"> <i class="fa fa-history my-float"></i>
+	<li><a href="<%= request.getContextPath() %>/history.sg" class="floatingBtn"> <i class="fa fa-history my-float"></i>
 	</a></li>
-	<li><a href="#" class="floatingBtn"> <i class="fa fa-user my-float"></i>
+	<li><a href="마이페이지 연결할 곳" class="floatingBtn"> <i class="fa fa-user my-float"></i>
 	</a></li>
 </ul>
