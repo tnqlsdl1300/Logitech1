@@ -38,6 +38,8 @@ public class SearchResultAction extends AbstractController {
 			}else if("sale".equals(select)) {
 				// dao에 새로운 메서드 생성 sql문이 달라질듯
 				pList = pdao.selectBestOrder(keyword, type);
+			}else if ("favorite".equals(select)) {
+				pList = pdao.selectFavOrder(keyword, type);
 			}
 			// else if favorite
 			

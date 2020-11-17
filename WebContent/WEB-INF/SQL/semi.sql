@@ -22,29 +22,36 @@ values(PURCHASEDETAIL_SEQ.nextval, '4', 'X100', 'X100_2', 5);
 
 --where lower(character) like '%게이밍%' 
 
-select productid, productname, fk_category, character, price, imgfilename, volume
+desc LIKEPRODUCT;
+select * from likeproduct;
+select * from member;
+
+insert into likeproduct (fk_memberno, fk_productid, status)
+values('121', 'Logitech Pebble M350', 1);
+
+select productid, productname, fk_category, character, price, imgfilename, status
 from
 (
-    select fk_productid,  sum(volume) as volume
-    from PURCHASEdetail
-    group by fk_productid
+    select fk_productid, sum(status) as status
+from likeproduct
+group by fk_productid
 ) C
 inner join product P
 on C.fk_productid = P.productid
-where lower(productid) like '%x%' 
-order by volume desc;
+where lower(character) like '%무선%' 
+order by status desc;
 --
-String sql = "select productid, productname, fk_category, character, price, imgfilename, volume\n"+
+String sql = "select productid, productname, fk_category, character, price, imgfilename, status\n"+
 "from\n"+
 "(\n"+
-"    select fk_productid,  sum(volume) as volume\n"+
-"    from PURCHASEdetail\n"+
-"    group by fk_productid\n"+
+"    select fk_productid, sum(status) as status\n"+
+"from likeproduct\n"+
+"group by fk_productid\n"+
 ") C\n"+
 "inner join product P\n"+
 "on C.fk_productid = P.productid\n"+
-"where lower(productid) like '%' || lower(?) || '%' \n"+
-"order by volume desc";
+"where lower(character) like '%무선%' \n"+
+"order by status desc";
 
 
 --- 판매수 별 물품
