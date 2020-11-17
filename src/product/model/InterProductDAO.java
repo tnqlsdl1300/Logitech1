@@ -16,9 +16,13 @@ public interface InterProductDAO {
 	public List<ProductVO> selectAll(String fk_category) throws SQLException;
 
 	
-	//고객이 선택한 상품을 조회하는 (select) 메서드
+	//고객이 선택한 상품에 대한 상세제품들을 조회하는 (select) 메서드
+	public List<ProductVO> selectOne(String productid) throws SQLException;
+		
+		
+	//색상 선택하고 보여주기
+	public List<ProductVO> selectOneColor(Map<String, String> paraMap) throws SQLException;
 	
-	public List<ProductVO> selectOne(String string) throws SQLException;
 
 
 	//////////////////////////////////////////////////////////////////////////박수빈:시작/////

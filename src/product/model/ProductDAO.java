@@ -7,7 +7,6 @@ import java.util.*;
 import javax.naming.*;
 import javax.sql.*;
 
-import javafx.geometry.VPos;
 
 
 public class ProductDAO implements InterProductDAO {
@@ -52,6 +51,8 @@ public class ProductDAO implements InterProductDAO {
 
 	
 	
+	
+	
 	// 제품 페이지에 보여지는 상품이미지 파일명을 모두 조회(select) 하는 메서드
 	
 	@Override
@@ -64,9 +65,7 @@ public class ProductDAO implements InterProductDAO {
 		conn = ds.getConnection();
 		
 		String sql = "select productid, productname, fk_category, character, price, imgfilename \n"+
-				"from product A\n"+
-				"JOIN productoption B\n"+
-				"on A.productid = B.fk_productid\n"+
+				"from product \n"+
 				"where fk_category = ?";
 		
 		pstmt = conn.prepareStatement(sql);
@@ -91,7 +90,7 @@ public class ProductDAO implements InterProductDAO {
 			productList.add(pvo);
 			
 		}// end of while -----------------------------
-		
+		}catch (SQLException e) {
 		}finally {
 			close();
 		}
@@ -106,7 +105,7 @@ public class ProductDAO implements InterProductDAO {
 	
 	///////////////////////////////////////////////////////////////////////
 	
-	//고객이 선택한 상품을 조회하는 (select) 메서드
+	//고객이 선택한 상품 1개를 조회하는 (select) 메서드
 	@Override
 	public List<ProductVO> selectOne(String productid) throws SQLException {
 		
@@ -120,11 +119,14 @@ public class ProductDAO implements InterProductDAO {
 				"from product A\n"+
 				"JOIN productoption B\n"+
 				"on A.productid = B.fk_productid\n"+
-				"where productid = ? ";
+				"where A.productid = ? "; 
+		
+		
 		
 		pstmt = conn.prepareStatement(sql);
 		
 		pstmt.setString(1, productid);
+		//pstmt.setString(2, color);
 		
 		rs = pstmt.executeQuery();
 		
@@ -140,20 +142,95 @@ public class ProductDAO implements InterProductDAO {
 			pvo.setImgfilename(rs.getString(6));
 			pvo.setCarouselimg(rs.getString(7));
 			pvo.setDetailimg(rs.getString(8));
-			pvo.getPovo().setColor(rs.getString(9));
-			pvo.getPovo().setProductserialid(rs.getString(10));
 			
+			ProductOptionVO povo = new ProductOptionVO();
+			povo.setColor(rs.getString(9));
+			
+			povo.setProductserialid(rs.getString(10));
+			
+			pvo.setPovo(povo);
 			
 			productList.add(pvo);
 			
 		}// end of while -----------------------------
+		
+		}catch (SQLException e) {
+		    
+		
 		
 		}finally {
 			close();
 		}
 		
 		return productList; 
+		
 	}
+	
+	//컬러선택
+	
+		@Override
+		public List<ProductVO> selectOneColor(Map<String, String> paraMap) throws SQLException {
+			
+			List<ProductVO> colorList = new ArrayList<>();
+			
+			try {
+			
+			conn = ds.getConnection();
+			
+			String sql = "select productid, productname, fk_category, character, price, imgfilename, color, productserialid\n"+
+					"from product A\n"+
+					"JOIN productoption B\n"+
+					"on A.productid = B.fk_productid\n"+
+					"where A.productid = ? and B.color = ? "; 
+			
+			
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, paraMap.get("productid"));
+			pstmt.setString(2, paraMap.get("color"));
+			//pstmt.setString(2, color);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				
+				ProductVO pvo = new ProductVO();
+				
+				pvo.setProductid(rs.getString(1));
+				pvo.setProductname(rs.getString(2));
+				pvo.setFk_category(rs.getString(3));
+				pvo.setCharacter(rs.getString(4));
+				pvo.setPrice(rs.getInt(5));		
+				pvo.setImgfilename(rs.getString(6));
+				
+				ProductOptionVO povo = new ProductOptionVO();
+				
+				povo.setColor(rs.getString(7));
+				povo.setProductserialid(rs.getString(8));
+				
+				pvo.setPovo(povo);
+				colorList.add(pvo);
+				
+			}// end of while -----------------------------
+			
+			}catch (SQLException e) {
+			
+			}finally {
+				close();
+			}
+			
+			return colorList;
+		}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	
 	//////////////////////////////////////////////////////////////////////////박수빈:시작/////

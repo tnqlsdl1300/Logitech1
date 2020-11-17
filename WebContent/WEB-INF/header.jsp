@@ -270,7 +270,7 @@ a#menu-share:hover > i{
 				</div>
 
 				<ul id="menu">
-					<li><a href="mouse.html">마우스</a></li>
+					<li><a href="<%= request.getContextPath() %>/product/mouse.sg">마우스</a></li>
 					<li><a href="keyboard.html">키보드</a></li>
 					<li><a href="headset.html">헤드셋</a></li>
 					<li><a href="speaker.html">스피커</a></li>
