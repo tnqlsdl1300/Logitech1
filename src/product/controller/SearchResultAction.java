@@ -31,10 +31,13 @@ public class SearchResultAction extends AbstractController {
 			int n = pdao.updateRankingKeyword(keyword);
 		} else {
 			// 사용자가 select를 선택했을 때 검색
-			if (select == "highPrice" || select == "lowPrice") {
+
+			if ("highPrice".equals(select) || "lowPrice".equals(select)) {
 				pList = pdao.searchProductSelect(keyword, select, type);
-			}else if(select == "sale") {
+				
+			}else if("sale".equals(select)) {
 				// dao에 새로운 메서드 생성 sql문이 달라질듯
+				pList = pdao.selectBestOrder(keyword, type);
 			}
 			// else if favorite
 			

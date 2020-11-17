@@ -4,10 +4,15 @@ from joinevent;
 select *
 from tab;
 SELECT * FROM purchase;
-select * from productoption;
+select * from LIKEPRODUCT;
 select * from product;
 select * from PURCHASEdetail;
 desc PURCHASEdetail;
+
+-- 찜하기 제품아이디별 찜 수량
+select fk_productid, sum(status)
+from LIKEPRODUCT
+group by fk_productid;
 
 insert into PURCHASE (PURCHASENO, FK_MEMBERNO, RECEIVER, POSTCODE, ADDRESS, DETAILADDRESS, EXTRAADDRESS, PAYMENT, PURCHASEDAY, TOTALPRICE)
 values(PURCHASE_SEQ.nextval, '2', '박수빈', '21413', '주소1', '주소2', '주소3', 'card', '2020-11-16', '25000');
@@ -15,10 +20,32 @@ values(PURCHASE_SEQ.nextval, '2', '박수빈', '21413', '주소1', '주소2', '�
 insert into PURCHASEdetail (purchasedetailid, fk_purchaseno, fk_productid, fk_productserialid, volume)
 values(PURCHASEDETAIL_SEQ.nextval, '4', 'X100', 'X100_2', 5);
 
+--where lower(character) like '%게이밍%' 
 
-select fk_productid,  sum(volume)
-from PURCHASEdetail
-group by fk_productid;
+select productid, productname, fk_category, character, price, imgfilename, volume
+from
+(
+    select fk_productid,  sum(volume) as volume
+    from PURCHASEdetail
+    group by fk_productid
+) C
+inner join product P
+on C.fk_productid = P.productid
+where lower(productid) like '%x%' 
+order by volume desc;
+--
+String sql = "select productid, productname, fk_category, character, price, imgfilename, volume\n"+
+"from\n"+
+"(\n"+
+"    select fk_productid,  sum(volume) as volume\n"+
+"    from PURCHASEdetail\n"+
+"    group by fk_productid\n"+
+") C\n"+
+"inner join product P\n"+
+"on C.fk_productid = P.productid\n"+
+"where lower(productid) like '%' || lower(?) || '%' \n"+
+"order by volume desc";
+
 
 --- 판매수 별 물품
 select productid, productname, fk_category, character, price, imgfilename, volume
@@ -167,11 +194,13 @@ order by searchcnt desc;
 -- 제품검색쿼리
 select *
 from product
-where productid like '%MX%' or productname like '%mx%';
+where productid like '%MX%' or productname like '%mx%'
+
 --(rank)
 select *
 from product
-where character like '%게이밍%' ;
+where character like '%무선%' 
+order by price;
 --
 String sql = "select productid, productname, fk_category, character, price, imgfilename\n"+
 "from product\n"+

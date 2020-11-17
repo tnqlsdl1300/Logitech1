@@ -70,7 +70,6 @@
 	$(document).ready(function() {
 		// <%= request.getContextPath() %>
 		$("select#searchResultOrderBy").change(function() {
-			alert("${ keyword }");
 			location.href = "<%= request.getContextPath() %>/product/searchResult.sg?keyword=${ keyword }&select=" + $(this).val() + "&type=${ type }";
 		});
 		

@@ -7,6 +7,8 @@ import java.util.*;
 import javax.naming.*;
 import javax.sql.*;
 
+import javafx.geometry.VPos;
+
 
 public class ProductDAO implements InterProductDAO {
 
@@ -441,6 +443,67 @@ public class ProductDAO implements InterProductDAO {
 		}
 		
 		return pvoList;
+	}
+
+	// 검색한 물품을 판매순으로 정렬해주는 메서드 (제품검색 - select) 
+	@Override
+	public List<ProductVO> selectBestOrder(String keyword, String type) throws SQLException {
+		
+		List<ProductVO> pList = new ArrayList<ProductVO>();
+		ProductVO pvo = null;
+
+		try {
+			
+			conn = ds.getConnection();
+			
+			String sql = "select productid, productname, fk_category, character, price, imgfilename, volume\n"+
+					"from\n"+
+					"(\n"+
+					"    select fk_productid,  sum(volume) as volume\n"+
+					"    from PURCHASEdetail\n"+
+					"    group by fk_productid\n"+
+					") C\n"+
+					"inner join product P\n"+
+					"on C.fk_productid = P.productid\n";
+
+			if ("rank".equals(type)) {
+				sql += "where lower(character) like '%' || lower(?) || '%' ";
+				sql += "order by volume desc";
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, keyword);
+
+			}else if ("search".equals(type)) {
+				sql += "where lower(productid) like '%' || lower(?) || '%' or lower(productname) like '%' || lower(?) || '%' ";
+				sql += "order by volume desc";
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, keyword);
+				pstmt.setString(2, keyword);
+
+			}
+			
+			rs = pstmt.executeQuery();
+			
+			
+			while(rs.next()) {
+				pvo = new ProductVO();
+				
+				pvo.setProductid(rs.getString(1));
+				pvo.setProductname(rs.getString(2));
+				pvo.setFk_category(rs.getString(3));
+				pvo.setCharacter(rs.getString(4));
+				pvo.setPrice(rs.getInt(5));
+				pvo.setImgfilename(rs.getString(6));
+				
+				pList.add(pvo);
+			}
+			
+		} finally {
+			close();
+		}
+		
+		return pList;
 	}
 	
 	
