@@ -1,13 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<!DOCTYPE html>
-
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<jsp:include page="header.jsp" />
 
 <style>
 	
@@ -29,6 +23,11 @@
 	
 	#comment{
 		resize: none;
+	}
+	
+	div#joinWrap{
+		margin-top: 3%;
+		margin-bottom: 3%;
 	}
 	
 </style>
@@ -84,9 +83,9 @@
 	
 </script>
 
-<%-- Modal 로 띄울 페이지 - 로그인 --%>
-<div class="container">
-  
+<%-- Modal 로 띄울 페이지 - 이벤트 --%>
+<div class="totalWrap">
+	<div class="container" id="joinWrap" style="width: 50%;">
   <form name="joinEventFrm">
  	<label id="titleText"></label>
     <br><br>
@@ -104,7 +103,9 @@
     <button type="button" class="btn btn-default submitBtn" onclick="joinEvent()">참여하기</button>
   </form>
   
-  
+  </div>
 </div>
+
+<jsp:include page="footer.jsp" />
 
     
