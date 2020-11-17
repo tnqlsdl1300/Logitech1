@@ -49,6 +49,7 @@ public class SearchResultAction extends AbstractController {
 		request.setAttribute("pList", pList);
 		request.setAttribute("keyword", keyword);
 		request.setAttribute("type", type);
+		request.setAttribute("select", select);
 		
 		super.setRedirect(false);
 		super.setViewPage("/WEB-INF/searchResult.jsp");

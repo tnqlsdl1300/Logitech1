@@ -68,7 +68,13 @@
 <script type="text/javascript">
 	
 	$(document).ready(function() {
-		// <%= request.getContextPath() %>
+		
+		// select 값 변경시 로드후에도 고정
+		if (!"${ select }" == "") {
+			$("select#searchResultOrderBy").val("${ select }").prop("selected", true);	
+		}
+	
+		// select 값 변경 시 DB에서 데이터를 다시 가져옴
 		$("select#searchResultOrderBy").change(function() {
 			location.href = "<%= request.getContextPath() %>/product/searchResult.sg?keyword=${ keyword }&select=" + $(this).val() + "&type=${ type }";
 		});
