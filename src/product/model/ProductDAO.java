@@ -651,11 +651,8 @@ public class ProductDAO implements InterProductDAO {
 		
 		List<ProductVO> pvoList = new ArrayList<ProductVO>();
 		
+		// 받은 문자값은 맨 앞에 ,가 붙어있으므로 삭제
 		String[] historyArr = history.split(",");
-		for (int i = 0; i < historyArr.length; i++) {
-			System.out.println(i + ": " + historyArr[i]);
-		}
-		System.out.println("배열의 길이: " + historyArr.length);
 		
 		try {
 			
@@ -664,8 +661,11 @@ public class ProductDAO implements InterProductDAO {
 			String sql = "select productid, productname, fk_category, character, price, imgfilename \n"+
 					"from product\n"+
 					"where productid in(";
+			
+					// sql문 내의 in(?) 의 ? 갯수를 정해주는 for문
 					for (int i = 0; i < historyArr.length; i++) {
 						if (i == historyArr.length-1) {
+							// 문자열의 끝일때 ,를 빼고 넣어준다
 							sql += "?";
 						}else {
 							sql += "?, ";
@@ -676,8 +676,11 @@ public class ProductDAO implements InterProductDAO {
 			
 			sql += ")\n"+
 					"ORDER BY decode(productid, ";
+			
+			// sql문 내의 order by decode(productid, ?, ? ...) 의 ? 갯수를 정해주는 for문
 			for (int i = 1; i <= historyArr.length; i++) {
 				if (i == historyArr.length) {
+					// 문자열의 끝일때 ,를 빼고 넣어준다
 					sql += "?, " + i;
 				}else {
 					sql += "?, " + i + ", ";	
@@ -685,21 +688,18 @@ public class ProductDAO implements InterProductDAO {
 				
 			}
 			sql += ")";
-			
-			System.out.println("sql문: " + sql);
-			
+
 			pstmt = conn.prepareStatement(sql);
 			
+			// sql문 내의 in(?) 의 ? 에 데이터를 매칭해주는 for문
 			for (int i = 1; i <= historyArr.length; i++) {
 				pstmt.setString(i, historyArr[i-1]);
-				System.out.println("i값: " + i + "|| 컬럼값: " + historyArr[i-1]);
 			}
 			
-			System.out.println();
+			// sql문 내의 order by decode(productid, ?, ? ...) 의 ? 에 데이터를 매칭해주는 for문
 			int limit = historyArr.length+1;
 			for (int i = historyArr.length+1; i <= limit + historyArr.length-1; i++) {
-				System.out.println(i);
-				pstmt.setString(i, historyArr[i-4]);
+				pstmt.setString(i, historyArr[i-limit]);
 				
 			}
 			

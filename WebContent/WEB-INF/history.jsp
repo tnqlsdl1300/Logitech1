@@ -68,9 +68,7 @@
 <script type="text/javascript">
 	
 	$(document).ready(function() {
-		
-		
-		
+
 	});
 
 	
@@ -80,7 +78,7 @@
 	<div id="wrap">
 		<div class="innerContainer" id="searchResultContainer">
 		
-			<h1 id="searchResultTitle">최근 본 상품(숫자)건</h1>
+			<h1 id="searchResultTitle">최근 본 상품(${ pvoList.size() })건</h1>
 			<hr style="border-top: 4px dashed black;">
 			
 			<div id="resultItemContainer">
@@ -88,8 +86,8 @@
 			  <div class="row">
 
 				<%-- 검색한 결과가 있을 때 --%>
-			  	<c:if test="${ pList.size() != 0 }">
-			  		<c:forEach var="pvo" items="${ pList }">
+			  	<c:if test="${ pvoList.size() != 0 }">
+			  		<c:forEach var="pvo" items="${ pvoList }">
 				  		<div class="col-sm-3 eachItem" onclick="gotoDetail()">
 					    	<div class="eachItemImg">
 					    		<img src="${ pvo.imgfilename }">
@@ -103,7 +101,7 @@
 			  	</c:if>
 			  	
 			  	<%-- 검색한 결과가 없을 때 --%>
-			  	<c:if test="${ pList.size() == 0 }">
+			  	<c:if test="${ pvoList.size() == 0 }">
 			  		<div id="noResultItemContainer">
 						<span>최근 본 상품이 존재하지 않습니다.</span>
 					</div>	

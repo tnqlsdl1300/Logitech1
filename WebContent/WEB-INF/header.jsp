@@ -346,7 +346,7 @@ a#menu-share:hover > i{
 	class="fa fa-plus my-float"></i>
 </a>
 <ul class="floatingBtnBox">
-	<li><a onclick="goHistory()" class="floatingBtn"> <i class="fa fa-history my-float"></i>
+	<li style="cursor: pointer;"><a onclick="goHistory()" class="floatingBtn"> <i class="fa fa-history my-float"></i>
 	</a></li>
 	<li><a href="마이페이지 연결할 곳" class="floatingBtn"> <i class="fa fa-user my-float"></i>
 	</a></li>
