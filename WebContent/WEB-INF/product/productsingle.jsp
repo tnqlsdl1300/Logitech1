@@ -145,6 +145,50 @@ select:disabled {
 <script type="text/javascript">
 
 $(document).ready(function(){
+	
+	
+	<%-- 수빈:시작 --%>
+	
+	var proid = "${rProductVO.productid}";
+	
+	var history = localStorage.getItem("history");
+	
+	if(history == null) {
+		// 세션스토리지에 history가 없을 때 처음 생성해줌
+		console.log("히스토리가 null일 때");
+		// 처음에 null값이 들어가는걸 방지
+		history = "";
+		localStorage.setItem("history", proid);
+
+	} 
+
+	// 중복된 값이 들어오는걸 방지(중복됐다면 삭제하고 다시 최신으로 넣어줌)
+	if (history.indexOf(proid) != -1) {
+		
+		console.log("중복일때");
+
+		history = history.replace("," + proid , "");
+		history = proid + ","+ history;
+		
+	}else{
+		console.log("중복 아닐 때");
+		history = proid + "," + history;
+
+	}
+	
+	var check = history.split("").reverse().join("").substr(0, 1);
+	
+	if (check == ",") {
+		history = history.substr(0, history.length -1);
+	}
+	
+	console.log("history 끝=> " + history);
+	localStorage.removeItem("history");			// 기존의 세션스토리지 삭제
+	localStorage.setItem("history", history);	// 최신값을 넣어줌
+	
+	
+	
+	<%-- 수빈:끝 --%>
 
  	 		<%-- var frm = document.selectColor;
  			frm.action = "<%= ctxPath%>/product/purchasedetail.sg"; 
@@ -194,6 +238,42 @@ if($("select#selectColor").val() == ""){
 	 	 		
 	 			location.href = "<%= ctxPath%>/mypage/ordercart.sg?fk_productid=${rProductVO.productid}&price=${rProductVO.price}&color="+color;
 			}
+}
+		
+// 최근본 목록을 갱신해주는 함수(위치 제품상세페이지로 옮겨야할 듯-document)
+function goProdView(proid) {
+	
+	var history = localStorage.getItem("history");
+	
+	if(history == null) {
+		// 세션스토리지에 history가 없을 때 처음 생성해줌
+		localStorage.setItem("history", proid);
+		
+	} else {
+		// 세션스토리지에 history가 있을 때
+		if (history == null) {
+			// 처음에 null값이 들어가는걸 방지
+			history = "";
+		}
+		
+		// 중복된 값이 들어오는걸 방지(중복됐다면 삭제하고 다시 최신으로 넣어줌)
+		if (history.indexOf(proid) != -1) {
+			// 중복된 값이 있는 경우
+			console.log(history);
+			console.log(proid);
+			
+			// replace가 안먹히는듯
+			history.replace( /proid/gi, " ");
+			
+		}
+		
+		// 최신순으로 세션스토리지에 쌓아줌 
+		history = proid + "," + history;
+		
+		localStorage.removeItem("history");			// 기존의 세션스토리지 삭제
+		localStorage.setItem("history", history);	// 최신값을 넣어줌
+	}
+
 }
 
 

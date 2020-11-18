@@ -4,10 +4,15 @@ from joinevent;
 select *
 from tab;
 SELECT * FROM purchase;
-select * from LIKEPRODUCT;
 select * from product;
+select * from productcategory;
 select * from PURCHASEdetail;
 desc PURCHASEdetail;
+
+create table productcategory
+(category   varchar2(10) not null
+,constraint PK_productcategory primary key(category)
+);
 
 -- 찜하기 제품아이디별 찜 수량
 select fk_productid, sum(status)
@@ -80,10 +85,11 @@ String sql = "select productid, productname, fk_category, character, price, imgf
 
 -- 컬럼 추가
 ALTER TABLE joinevent ADD eventcomment VARCHAR2(300) NOT NULL;
-
-insert into event (SEQ_EVENT, EVENTNAME, FK_PRODUCTID, CAROUSELIMG)
-values(EVENT_SEQ.nextval, '슬림한 디자인의 무소음 무선 마우스', 'Logitech Pebble M350', 'https://resource.logitech.com/w_1206,c_limit,q_auto,f_auto,dpr_1.0/content/dam/logitech/en/products/mice/m350/m350-carousel-04.png?v=1!@#https://resource.logitech.com/w_1206,c_limit,q_auto,f_auto,dpr_1.0/content/dam/logitech/en/products/mice/m350/m350-carousel-05.png?v=1!@#https://resource.logitech.com/w_1206,c_limit,q_auto,f_auto,dpr_1.0/content/dam/logitech/en/products/mice/m350/m350-carousel-03.png?v=1!@#https://resource.logitech.com/w_1206,c_limit,q_auto,f_auto,dpr_1.0/content/dam/logitech/en/products/mice/m350/m350-carousel-01.png?v=1');
-
+select * from product;
+desc product;
+insert into product (productid, productname, fk_category, CHARACTER, price, imgfilename, carouselimg, detailimg )
+values('MX ANYWHERE 3', '로지텍 마스터 시리즈', 'mouse', '무선, 게이밍', 25000, 'https://www.logitech.com/content/dam/logitech/en/products/mice/m720/m720-glamour-lg.png', 'https://resource.logitech.com/w_900,h_900,c_limit,q_auto,f_auto,dpr_1.0/content/dam/logitech/en/products/mice/mx-anywhere-3/gallery/mx-anywhere-3-product-gallery-pale-gray-fob.png?v=1', 'https://resource.logitech.com/w_900,h_900,c_limit,q_auto,f_auto,dpr_1.0/content/dam/logitech/en/products/mice/mx-anywhere-3/gallery/mx-anywhere-3-product-gallery-pale-gray-fob.png?v=1');
+commit;
 String sql = "insert into joinevent(seq_joinevent, fk_event, fk_memberno, eventcomment)\n"+
 "values(joinevent_seq.nextval, ?, ?, ?)";
 
