@@ -164,17 +164,10 @@ $(document).ready(function(){
 
 	// 중복된 값이 들어오는걸 방지(중복됐다면 삭제하고 다시 최신으로 넣어줌)
 	if (history.indexOf(proid) != -1) {
-		
-		console.log("중복일때");
-
-		history = history.replace("," + proid , "");
-		history = proid + ","+ history;
-		
-	}else{
-		console.log("중복 아닐 때");
-		history = proid + "," + history;
-
+		history = history.replace("," + "'" + proid + "'" , "");
 	}
+	
+	history =  "," + "'" + proid + "'" + history;
 	
 	var check = history.split("").reverse().join("").substr(0, 1);
 	
@@ -185,9 +178,7 @@ $(document).ready(function(){
 	console.log("history 끝=> " + history);
 	localStorage.removeItem("history");			// 기존의 세션스토리지 삭제
 	localStorage.setItem("history", history);	// 최신값을 넣어줌
-	
-	
-	
+
 	<%-- 수빈:끝 --%>
 
  	 		<%-- var frm = document.selectColor;
