@@ -50,6 +50,9 @@ public interface InterProductDAO {
 
 	// 검색한 물품을 인기순(찜)으로 정렬해주는 메서드 (제품검색 - select) 
 	public List<ProductVO> selectFavOrder(String keyword, String type) throws SQLException;
+
+	// 로컬스토리지에서 받은 페이지 방문 기록값으로 디비에서 해당 제품들을 받아오는 메서드(최근 본 제품)
+	public List<ProductVO> selectHistoryItem(String history) throws SQLException;
 	
 	//////////////////////////////////////////////////////////////////////////박수빈:끝/////
 

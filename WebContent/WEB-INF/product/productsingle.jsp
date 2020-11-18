@@ -164,10 +164,10 @@ $(document).ready(function(){
 
 	// 중복된 값이 들어오는걸 방지(중복됐다면 삭제하고 다시 최신으로 넣어줌)
 	if (history.indexOf(proid) != -1) {
-		history = history.replace("," + "'" + proid + "'" , "");
+		history = history.replace(","+ proid  , "");
 	}
 	
-	history =  "," + "'" + proid + "'" + history;
+	history =  "," + proid + history;
 	
 	var check = history.split("").reverse().join("").substr(0, 1);
 	

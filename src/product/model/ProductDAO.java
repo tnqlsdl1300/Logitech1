@@ -645,6 +645,94 @@ public class ProductDAO implements InterProductDAO {
 		
 	}
 	
+	// 로컬스토리지에서 받은 페이지 방문 기록값으로 디비에서 해당 제품들을 받아오는 메서드(최근 본 제품)
+	@Override
+	public List<ProductVO> selectHistoryItem(String history) throws SQLException {
+		
+		List<ProductVO> pvoList = new ArrayList<ProductVO>();
+		
+		String[] historyArr = history.split(",");
+		for (int i = 0; i < historyArr.length; i++) {
+			System.out.println(i + ": " + historyArr[i]);
+		}
+		System.out.println("배열의 길이: " + historyArr.length);
+		
+		try {
+			
+			conn = ds.getConnection();
+			
+			String sql = "select productid, productname, fk_category, character, price, imgfilename \n"+
+					"from product\n"+
+					"where productid in(";
+					for (int i = 0; i < historyArr.length; i++) {
+						if (i == historyArr.length-1) {
+							sql += "?";
+						}else {
+							sql += "?, ";
+						}
+
+					}
+					
+			
+			sql += ")\n"+
+					"ORDER BY decode(productid, ";
+			for (int i = 1; i <= historyArr.length; i++) {
+				if (i == historyArr.length) {
+					sql += "?, " + i;
+				}else {
+					sql += "?, " + i + ", ";	
+				}
+				
+			}
+			sql += ")";
+			
+			System.out.println("sql문: " + sql);
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			for (int i = 1; i <= historyArr.length; i++) {
+				pstmt.setString(i, historyArr[i-1]);
+				System.out.println("i값: " + i + "|| 컬럼값: " + historyArr[i-1]);
+			}
+			
+			System.out.println();
+			int limit = historyArr.length+1;
+			for (int i = historyArr.length+1; i <= limit + historyArr.length-1; i++) {
+				System.out.println(i);
+				pstmt.setString(i, historyArr[i-4]);
+				
+			}
+			
+			rs = pstmt.executeQuery();
+			
+			int cnt = 0;
+			while(rs.next()) {
+				
+				if (cnt == 20) {
+					break;
+				}
+				
+				ProductVO pvo = new ProductVO();
+				
+				pvo.setProductid(rs.getString(1));
+				pvo.setProductname(rs.getString(2));
+				pvo.setFk_category(rs.getString(3));
+				pvo.setCharacter(rs.getString(4));
+				pvo.setPrice(rs.getInt(5));
+				pvo.setImgfilename(rs.getString(6));
+				
+				pvoList.add(pvo);
+				
+				cnt++;
+			}
+			
+		} finally {
+			close();
+		}
+		
+		return pvoList;
+	}
+	
 	
 	//////////////////////////////////////////////////////////////////////////박수빈:끝/////
 	
