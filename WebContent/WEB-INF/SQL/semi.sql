@@ -3,7 +3,7 @@ from joinevent;
 
 select *
 from tab;
-SELECT * FROM purchase;
+SELECT * FROM event;
 select * from product;
 select * from productcategory;
 select * from PURCHASEdetail;

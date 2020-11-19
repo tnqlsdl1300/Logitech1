@@ -147,12 +147,21 @@
 		      	<c:if test="${ status.index == 0 }">
 		      	  <div class="item active" onclick="goEventModal('${evo.seq_event}')">
 			        <img src="${ evo.carouselimg }" style="width:100%;">
+			        <div class="carousel-caption">
+				        <h3>${ evo.eventname }</h3>
+				        <p>${ evo.startday } ~ ${ evo.endday }</p>
+		     		</div>
 			      </div>
+			      
 		      	</c:if>
 		      	
 		      	<c:if test="${ status.index != 0 }">
 		      	  <div class="item" onclick="goEventModal('${evo.seq_event}')">
-			        <img src="${ evo.carouselimg }" style="width:100%;">
+			          <img src="${ evo.carouselimg }" style="width:100%;">
+				      <div class="carousel-caption">
+				        <h3>${ evo.eventname }</h3>
+				        <p>${ evo.startday } ~ ${ evo.endday }</p>
+				      </div>
 			      </div>
 		      	</c:if>
 		      </c:forEach>

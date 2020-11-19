@@ -11,7 +11,9 @@
 <style>
 	
 	div#searchResultWrap{
+		
 		background-color: #ffffff;	
+		height: 900px;
 	}
 	
 	div#searchResultContainer{
