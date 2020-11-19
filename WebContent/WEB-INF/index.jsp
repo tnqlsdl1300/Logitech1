@@ -114,6 +114,11 @@
 		location.href="<%= request.getContextPath() %>/product/productviewpage.sg?productid=" + proid;
 	}
 	
+	// 취향 맞춤 추천 페이지로 이동하는 버튼
+	function findLikeItem() {
+		location.href="<%= request.getContextPath() %>/product/findLikeItem.sg"
+	}
+	
 	
 	
 </script>
@@ -182,7 +187,7 @@
     </div>
 
 	<%-- 취향 맞춤 추천 --%>
-	<div class="totalWrap" id="bestItemWrap" style="background-color: #00ead0; height: 100px; cursor: pointer;">
+	<div class="totalWrap" id="bestItemWrap" onclick="findLikeItem()" style="background-color: #00ead0; height: 100px; cursor: pointer;">
 		<div id="wrap" style="text-align: center;">
 			<h3 style="padding: 0; padding-top: 3%; margin: 0; font-weight: bold;">취향 맞춤 추천</h3>
 		</div>
