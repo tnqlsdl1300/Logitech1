@@ -11,6 +11,9 @@ public class FindLikeItemAction extends AbstractController {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		System.out.println("취향찾기");
+		
+		super.setRedirect(false);
+		super.setViewPage("/WEB-INF/main/findLikeItem.jsp");
 
 	}
 
