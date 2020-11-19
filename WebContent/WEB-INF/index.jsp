@@ -109,6 +109,11 @@
 		location.href="productviewpage.sg?productid=" + productid;
 	}
 	
+	// 검색한 제품을 클릭시 상세 페이지로 이동하는 함수
+	function gotoDetail(proid) {
+		location.href="<%= request.getContextPath() %>/product/productviewpage.sg?productid=" + proid;
+	}
+	
 	
 	
 </script>

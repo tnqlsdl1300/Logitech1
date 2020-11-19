@@ -155,7 +155,6 @@ $(document).ready(function(){
 	
 	if(history == null) {
 		// 세션스토리지에 history가 없을 때 처음 생성해줌
-		console.log("히스토리가 null일 때");
 		// 처음에 null값이 들어가는걸 방지
 		history = "";
 		localStorage.setItem("history", proid);
@@ -168,8 +167,7 @@ $(document).ready(function(){
 	}
 	
 	history =  "," + proid + history;
-	
-	console.log("history 끝=> " + history);
+
 	localStorage.removeItem("history");			// 기존의 세션스토리지 삭제
 	localStorage.setItem("history", history);	// 최신값을 넣어줌
 

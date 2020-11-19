@@ -249,8 +249,6 @@ a#menu-share:hover > i{
 			location.href = "<%= request.getContextPath() %>/history.sg?history=" + history; 
 		}
 		
-		
-
 	</script>
 	<div class="totalWrap" id="navWrap">
 		<div id="wrap">
