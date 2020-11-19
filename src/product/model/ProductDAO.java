@@ -394,7 +394,7 @@ public class ProductDAO implements InterProductDAO {
 			conn = ds.getConnection();
 			
 			// 이벤트기간이 지나지 않은 진행중인 이벤트만 받아오는 sql문
-			String sql = "select seq_event, eventname, fk_productid, startday, endday, carouselimg\n"+
+			String sql = "select seq_event, eventname, fk_productid, to_char(stARTDAY, 'YYYY.MM.DD') as startday, to_char(ENDDAY, 'YYYY.MM.DD') as endday, carouselimg\n"+
 					"from event \n"+
 					"WHERE trunc(sysdate) BETWEEN TO_DATE(STARTDAY, 'YY/MM/DD') AND\n"+
 					"                                TO_DATE(ENDDAY, 'YY/MM/DD')";
@@ -413,9 +413,8 @@ public class ProductDAO implements InterProductDAO {
 				evo.setStartday(rs.getString(4));
 				evo.setEndday(rs.getString(5));
 				evo.setCarouselimg(rs.getString(6));
-
-				eventList.add(evo);
 				
+				eventList.add(evo);
 			}// end of while -----------------------------
 			
 			}finally {
@@ -718,8 +717,7 @@ public class ProductDAO implements InterProductDAO {
 			}
             ////////////////////////////////////////////////////////////////////////////////
 		*/	
-			System.out.println("sql=>" + sql);
-			
+
 			pstmt = conn.prepareStatement(sql);
 			
 			rs = pstmt.executeQuery();
