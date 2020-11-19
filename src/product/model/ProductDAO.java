@@ -658,6 +658,20 @@ public class ProductDAO implements InterProductDAO {
 			
 			conn = ds.getConnection();
 			
+			////////////////////////////////////////////////////////////
+			String sql = "";
+			
+			for(int i=0; i<historyArr.length; i++) {
+				sql += " select productid, productname, fk_category, character, price, imgfilename from product where productid = '"+historyArr[i]+"' ";       
+				
+				if( i < historyArr.length-1 ) {
+					sql += " UNION ALL ";
+				}
+			}
+			/////////////////////////////////////////////////////////////
+			
+		/*	
+			///////////////////////////////////////////////////////////////////////////////////
 			String sql = "select productid, productname, fk_category, character, price, imgfilename \n"+
 					"from product\n"+
 					"where productid in(";
@@ -702,6 +716,11 @@ public class ProductDAO implements InterProductDAO {
 				pstmt.setString(i, historyArr[i-limit]);
 				
 			}
+            ////////////////////////////////////////////////////////////////////////////////
+		*/	
+			System.out.println("sql=>" + sql);
+			
+			pstmt = conn.prepareStatement(sql);
 			
 			rs = pstmt.executeQuery();
 			

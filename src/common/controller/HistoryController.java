@@ -15,8 +15,6 @@ public class HistoryController extends AbstractController {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		String history = request.getParameter("history");
-
-		history = history.substring(1, history.length());
 		
 		// 최대 20건(20번 돌리면 멈추고 나오기)
 		InterProductDAO pdao = new ProductDAO();

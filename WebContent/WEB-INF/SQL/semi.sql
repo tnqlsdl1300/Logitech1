@@ -96,6 +96,12 @@ select productid
 from product
 where productid in('MX ANYWHERE 3','MX ERGO','Logitech Pebble M350')
 ORDER BY decode(productid, 'MX ANYWHERE 3', 1,  'MX ERGO', 2, 'Logitech Pebble M350', 3);
+ORDER BY decode(productid, ?, 1, ?, 2, ?, 3)
+--
+String sql = "select productid\n"+
+"from product\n"+
+"where productid in(?)\n"+
+"ORDER BY decode(productid, 'MX ANYWHERE 3', 1,  'MX ERGO', 2, 'Logitech Pebble M350', 3)";
 
 -- 전체 시퀀스 보기
 SELECT * FROM PRODUCTOPTION;
@@ -302,3 +308,34 @@ delete from member
 where userid = 'test123';
 
 commit;
+
+----------------------------------------------------------------------------------------------------
+
+select *
+from product
+where productid in ('MX ANYWHERE 3','Logitech Pebble M350','MX ERGO');
+
+
+select *
+from product
+where productid = 'MX ANYWHERE 3'
+UNION ALL 
+select *
+from product
+where productid = 'Logitech Pebble M350'
+UNION ALL 
+select *
+from product
+where productid = 'MX ERGO';
+
+
+
+sql=> select productid, productname, fk_category, character, price, imgfilename from product where productid = 'Logitech Pebble M350'  select productid, productname, fk_category, character, price, imgfilename from product where productid = 'MX ERGO'  UNION ALL  select productid, productname, fk_category, character, price, imgfilename from product where productid = 'MX ANYWHERE 3' 
+
+
+
+
+
+
+
+

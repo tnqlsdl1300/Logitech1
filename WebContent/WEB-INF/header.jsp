@@ -238,6 +238,14 @@ a#menu-share:hover > i{
 		// 최근 본 제품으로 이동하면서 get방식으로 로컬스토리지의 값을 가져감
 		function goHistory() {
 			var history = localStorage.getItem("history");
+			
+			if(history != null) {
+			 history = history.substring(1, history.length);
+			}
+			else {
+				history = "";
+			}
+			
 			location.href = "<%= request.getContextPath() %>/history.sg?history=" + history; 
 		}
 		
