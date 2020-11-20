@@ -83,19 +83,19 @@
 		// 1번 외에 다른 질문, 버튼을 안보이게 하기
 		allHide();
 		
-		
 		$("h2#qna1").show();
 		$("div#Choice1").show();
 		
 	});
 	
+	var ans1 = "";
+	var ans2 = "";
+	var ans3 = "";
+	
 	function goChoice(whatCh, val) {
 		
-		var ans1 = "";
-		var ans2 = "";
-		var ans3 = "";
-		
 		if (whatCh == "ch1") {
+			alert(val);
 			ans1 = val;
 			allHide();
 			$("h2#qna2").show();
@@ -103,6 +103,7 @@
 		}
 		
 		if (whatCh == "ch2") {
+			alert(val);
 			ans2 = val;
 			allHide();
 			$("h2#qna3").show();
@@ -110,15 +111,15 @@
 		}
 		
 		if (whatCh == "ch3") {
+			alert(val);
 			ans3 = val;
 			allHide();
 			$("h2#qna3").show();
 			$("div#Choice3").show();
 			
-			// ans1,2  값이 들어오지 않음
-			console.log("ans1: " + ans1);
-			console.log("ans2: " + ans2);
-			console.log("ans3: " + ans3);
+			// ajax 사용해서 하기(받은 밸류 3개 값만 보내기)
+			
+			
 		}
 		
 	}
