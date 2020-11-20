@@ -65,7 +65,7 @@
 	  display: flex;
 	  display: -webkit-flex;
 	  flex-wrap: wrap;
-	}
+	} 
 	
 	.eachItemBox{
 		border: solid 1px black;
