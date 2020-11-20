@@ -84,7 +84,7 @@
 <div class="totalWrap" id="searchResultWrap">
 	<div id="wrap">
 		<div class="innerContainer" id="searchResultContainer">
-		으흥 
+		으흥  
 			<h1 id="searchResultTitle">최근 본 상품(${ pvoList.size() })건</h1>
 			<hr style="border-top: 4px dashed black;">
 			
