@@ -72,6 +72,11 @@
 	$(document).ready(function() {
 
 	});
+	
+	// 검색한 제품을 클릭시 상세 페이지로 이동하는 함수
+	function gotoDetail(proid) {
+		location.href="<%= request.getContextPath() %>/product/productviewpage.sg?productid=" + proid;
+	}
 
 	
 </script>
@@ -90,7 +95,7 @@
 				<%-- 검색한 결과가 있을 때 --%>
 			  	<c:if test="${ pvoList.size() != 0 }">
 			  		<c:forEach var="pvo" items="${ pvoList }">
-				  		<div class="col-sm-3 eachItem" onclick="gotoDetail()">
+				  		<div class="col-sm-3 eachItem" onclick="gotoDetail('${ pvo.productid }')">
 					    	<div class="eachItemImg">
 					    		<img src="${ pvo.imgfilename }">
 					    	</div>				    	

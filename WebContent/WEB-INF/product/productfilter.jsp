@@ -31,7 +31,7 @@
 
 body {
   background-color: #f1f1f1;
-  padding: 20px;
+  
   font-family: Arial;
 }
 
@@ -106,13 +106,13 @@ h1 {
 }
 
  img.img{
-   width:280px;
-   height:280px;
+	width:280px;
+	height:280px;
 }
 
  img.img:hover{
-   cursor: pointer;
-   background-color: SlateBlue;
+	cursor: pointer;
+	background-color: SlateBlue;
 } 
 
 </style>
@@ -122,33 +122,33 @@ h1 {
 
  $(document).ready(function() {
    
-   
-    <%--
-    $("button#goPurchase").click(function(){
-         
-             if($("select#selectColor").val() == ""){
-             
-             alert('색상을 선택해주세요!!');
-             return;
-          }
-          if($("select#selectColor").val() != ""){
-             var color = $("#selectColor option:selected").val();
-            // alert(color);
-            $("input#color").val(color);
-            alert(color);
-             var frm = document.selectColor;
-            frm.action = "<%= ctxPath%>/product/purchasedetail.sg"; 
-            frm.method = "POST";
-            frm.submit();
-          }  
-          
-         
-         }); 
-    --%>
-    
-    
-    
-    
+	
+	 <%--
+	 $("button#goPurchase").click(function(){
+			
+		 	   if($("select#selectColor").val() == ""){
+		 		
+		 		alert('색상을 선택해주세요!!');
+		 		return;
+		 	}
+		 	if($("select#selectColor").val() != ""){
+		 		var color = $("#selectColor option:selected").val();
+				// alert(color);
+				$("input#color").val(color);
+				alert(color);
+		 		var frm = document.selectColor;
+				frm.action = "<%= ctxPath%>/product/purchasedetail.sg"; 
+				frm.method = "POST";
+				frm.submit();
+		 	}  
+		 	
+			
+			}); 
+	 --%>
+	 
+	 
+	 
+	 
    $("button.btn").click(function(){
       
      
@@ -165,7 +165,7 @@ h1 {
 filterSelection("all") 
 
 function filterSelection(c) {
-   
+	
   var x, i;
   x = document.getElementsByClassName("column");
   if (c == "all") c = "";
@@ -196,7 +196,7 @@ function AddClass(element, name) {
 //리무브 클래스
 
 function RemoveClass(element, name) {
-   
+	
   var i, arr1, arr2;
   arr1 = element.className.split(" ");
   arr2 = name.split(" ");
@@ -238,24 +238,24 @@ for (var i = 0; i < btns.length; i++) {
    
 </div>
 
-   
-         
-         
-         
+	
+			
+			
+			
 
  <%-- <div class="row">
   <c:forEach var="pvo" items="${productList}">
   
   </c:forEach> 
-     <div class="column a">
-       <div class="content">
-         <a href="javascript:location.href='/Logitech/productsingle.sg?productid=${pvo.fk_category}'"> <!-- <img src="https://assets.logitech.com/assets/54721/x50-gallery.png" alt="Lights" style="width:100%"> --> </a>
-        <img class="img" src="${rProductVO.imgfilename}" onclick="javascript:location.href='productviewpage.sg?productid=${rProductVO.productid}'" />
-        
-         <h3 style="text-align:center; font-weight:bold;">${rProductVO.productname}</h3>
-          
-         <h4 style="text-align:center; font-weight:bold;"><fmt:formatNumber value="${rProductVO.price}" pattern="###,###" />원</h4>
-       </div>
+	  <div class="column a">
+	    <div class="content">
+	      <a href="javascript:location.href='/Logitech/productsingle.sg?productid=${pvo.fk_category}'"> <!-- <img src="https://assets.logitech.com/assets/54721/x50-gallery.png" alt="Lights" style="width:100%"> --> </a>
+		  <img class="img" src="${rProductVO.imgfilename}" onclick="javascript:location.href='productviewpage.sg?productid=${rProductVO.productid}'" />
+	     
+	      <h3 style="text-align:center; font-weight:bold;">${rProductVO.productname}</h3>
+	       
+	      <h4 style="text-align:center; font-weight:bold;"><fmt:formatNumber value="${rProductVO.price}" pattern="###,###" />원</h4>
+	    </div>
       </div> --%>
       
       
@@ -264,19 +264,19 @@ for (var i = 0; i < btns.length; i++) {
 
 <form name ="">
 <div class="row">
-  <c:forEach var="pvo" items="${productList}" varStatus="status">
-     <div class="column a">  
-       <div class="content">
-         <!-- <a href ="javascript:location.href='/Logitech/productsingle.sg'"> -->
-         <a href="javascript:location.href='/Logitech/productsingle.sg?productid=${pvo.fk_category}'"> <!-- <img src="https://assets.logitech.com/assets/54721/x50-gallery.png" alt="Lights" style="width:100%"> --> </a>
-         
-         <img class="img" src="${pvo.imgfilename}" onclick="javascript:location.href='productviewpage.sg?productid=${pvo.productid}'" /> 
-         
-         <h4 style="text-align:center;" id="proid${status.index}" >${pvo.productid}</h4>
-         <p style="text-align:center;"><fmt:formatNumber value="${pvo.price}" pattern="###,###" />원</p>
-         
-       </div>
-     </div>
+  <c:forEach var="pvo" items="${productList}">
+	  <div class="column a">  
+	    <div class="content">
+	      <!-- <a href ="javascript:location.href='/Logitech/productsingle.sg'"> -->
+	      <a href="javascript:location.href='/Logitech/productsingle.sg?productid=${pvo.fk_category}'"> <!-- <img src="https://assets.logitech.com/assets/54721/x50-gallery.png" alt="Lights" style="width:100%"> --> </a>
+	      
+	      <img class="img" src="${pvo.imgfilename}" onclick="javascript:location.href='productviewpage.sg?productid=${pvo.productid}'" /> 
+	      
+	      <h4 style="text-align:center;">${pvo.productid}</h4>
+	      <p style="text-align:center;"><fmt:formatNumber value="${pvo.price}" pattern="###,###" />원</p>
+	      
+	    </div>
+	  </div>
   </c:forEach>
  </div> 
  </form>

@@ -8,6 +8,16 @@ public class ProductOptionVO {
 	int stock;
 	String saleday;
 	
+	public ProductOptionVO() {}
+	
+	public ProductOptionVO(String productserialid, String fk_productid, String color, int stock, String saleday) {
+		super();
+		this.productserialid = productserialid;
+		this.fk_productid = fk_productid;
+		this.color = color;
+		this.stock = stock;
+		this.saleday = saleday;
+	}
 	
 	public String getProductserialid() {
 		return productserialid;

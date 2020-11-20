@@ -1,0 +1,109 @@
+@CHARSET "UTF-8";
+
+#mycontainer	{ border: 0px solid red;
+				  background-color: #FAFAFA;  
+				  width: 98%; 
+                  min-height: 1024px;
+                  margin: 0 auto; 
+                  padding: 1.5%; }
+
+#headerImg		{ border: 0px solid red;
+	              background-color: #f0f0f0; 
+                  height: 70px; 
+                  padding: 20px; }
+
+#headerLink     { border: 0px solid red;
+	              margin-top: 2%;
+				  margin-bottom: 1%;
+	              font-size: 12pt; 
+                  padding-left: 10%;
+                  padding-bottom: 1%;
+                  border-bottom-style: solid;
+                  border-bottom-width: 2px;
+                  border-bottom-color: gold; }                  
+
+#sideMenu		{ float: left;
+	              position: relative; 
+                  top: 2%; 
+                  background-color: #E6E6E6;  
+                  width: 20%; 
+                  min-height: 1024px; }
+                  
+#content		{ float: left;
+                  position: relative; 
+                  top: 2%; 
+                  background-color: #F5F5F5; 
+                  width: 80%; 
+                  min-height: 1024px; }  
+
+#footer			{ clear:both;
+	              background-color: #999999; 
+                  height: 100px; 
+                  margin-bottom: 10px;}
+
+
+/*표준 글꼴 서식 스타일*/
+ body, td, th, input, select, textarea, p {
+	font-size: 12pt;
+	font-family: 'NanumGothic', 'MalgunGothic' ; 
+	color: navy;
+	padding: 0.5%; /* 안쪽 여백 */
+}
+
+/* 표준 링크 스타일 */
+a {text-decoration: none !important;}
+
+/* 
+   a:link { text-decoration:none; }
+
+   a:visited { text-decoration:none; } 
+*/
+
+/* unvisited link */
+a:link {
+	color: #005c99;	
+}
+
+/* visited link */
+a:visited{
+	color: #005c99;
+}
+
+/* mouse over link */
+a:hover { color:maroon; 
+          font-weight: bold; }
+          
+/* selected link */
+a:active {
+	color: navy;
+}          
+          
+		  
+#headerLink a:hover { text-decoration: none;
+	                  color: maroon;
+		  			  font-weight: bold;
+		  			  font-style: italic;
+		  			  font-size: 12pt;
+		  			  cursor: pointer;  }	   
+
+.box { border:1px solid navy; }
+
+.box2 { border:1px dotted red; }
+
+table.outline { width: 95%;
+	            border-top: 4px double navy;
+	            border-bottom: 4px double navy; }
+	             
+table.outline th {background-color: #e6e6e6;}	             
+
+.error { color: red; padding-left: 10px; margin-bottom: 5px;}
+
+img { border: 0px; }
+
+.bgcol {background-color: LightGray;}
+
+
+
+
+
+

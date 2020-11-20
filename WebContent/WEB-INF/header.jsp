@@ -249,6 +249,7 @@ a#menu-share:hover > i{
 			location.href = "<%= request.getContextPath() %>/history.sg?history=" + history; 
 		}
 		
+		
 	</script>
 	<div class="totalWrap" id="navWrap">
 		<div id="wrap">
@@ -285,10 +286,10 @@ a#menu-share:hover > i{
 
 				<ul id="menu">
 					<li><a href="<%= request.getContextPath() %>/product/mouse.sg">마우스</a></li>
-					<li><a href="keyboard.html">키보드</a></li>
-					<li><a href="headset.html">헤드셋</a></li>
-					<li><a href="speaker.html">스피커</a></li>
-					<li><a href="service.html">고객센터</a></li>
+					<li><a href="<%= request.getContextPath() %>/product/keyboard.sg">키보드</a></li>
+					<li><a href="<%= request.getContextPath() %>/product/headset.sg">헤드셋</a></li>
+					<li><a href="<%= request.getContextPath() %>/product/speaker.sg">스피커</a></li>
+					<li><a href="<%= request.getContextPath() %>/customCenter.sg">고객센터</a></li>
 				</ul>
 
 				<div id="div_search" data-toggle="modal" data-target="#searchModal">
@@ -354,6 +355,6 @@ a#menu-share:hover > i{
 <ul class="floatingBtnBox">
 	<li style="cursor: pointer;"><a onclick="goHistory()" class="floatingBtn"> <i class="fa fa-history my-float"></i>
 	</a></li>
-	<li><a href="마이페이지 연결할 곳" class="floatingBtn"> <i class="fa fa-user my-float"></i>
+	<li><a href="<%= request.getContextPath() %>/mypage/main.sg" class="floatingBtn"> <i class="fa fa-user my-float"></i>
 	</a></li>
 </ul>

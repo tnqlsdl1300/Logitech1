@@ -17,10 +17,31 @@ public class ProductVO {
 	String detailimg;
 	ProductOptionVO povo;
 	
+	LikeProductVO lpvo;
+	PurchaseProductVO pcvo;
+	
 	
 	// 추가: select용
 	// 판매량
 	int sale;
+	
+	///////////////////////////////////
+	
+	public ProductVO() {}
+	
+	public ProductVO(String productid, String productname, String fk_category, String character, int price,
+			String imgfilename, String carouselimg, String detailimg, ProductOptionVO povo) {
+		
+		this.productid = productid;
+		this.productname = productname;
+		this.fk_category = fk_category;
+		this.character = character;
+		this.price = price;
+		this.imgfilename = imgfilename;
+		this.carouselimg = carouselimg;
+		this.detailimg = detailimg;
+		this.povo = povo;
+	}
 	
 	///////////////////////////////////
 	
@@ -87,4 +108,22 @@ public class ProductVO {
 	public void setSale(int sale) {
 		this.sale = sale;
 	}
+
+	public LikeProductVO getLpvo() {
+		return lpvo;
+	}
+
+	public void setLpvo(LikeProductVO lpvo) {
+		this.lpvo = lpvo;
+	}
+
+	public PurchaseProductVO getPcvo() {
+		return pcvo;
+	}
+
+	public void setPcvo(PurchaseProductVO pcvo) {
+		this.pcvo = pcvo;
+	}
+	
+	
 }

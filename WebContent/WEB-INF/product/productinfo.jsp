@@ -257,7 +257,7 @@ function showSlides(n) {
    <img src="https://www.logitech.com/assets/53849/7/x50-wireless-speaker.jpg"/>
    <span><h2 style="font-weight:bold;">보조 입력</h2></span>
    <br>
-   <span><h4>X50을 블루투스 무선 음악 장치와 페어링하거나 3.5mm 잭을 사용해 다른 플레이어에 연결할 수 있습니다.</h4></span>
+   <span><h4>블루투스 무선 음악 장치와 페어링하거나 3.5mm 잭을 사용해 다른 플레이어에 연결할 수 있습니다.</h4></span>
    <br>
    
    <img src="https://www.logitech.com/assets/53849/9/x50-wireless-speaker.jpg"/>

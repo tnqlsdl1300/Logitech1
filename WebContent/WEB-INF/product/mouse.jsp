@@ -16,7 +16,7 @@
 } 
 body {
     font-family: Arial;
-    padding: 10px;
+    
     background: #f1f1f1;
 }
 /* 헤더 타이틀 */
@@ -103,9 +103,6 @@ body {
 
 
 </style>
-
-
-
 
  
  <div id="myCarousel" class="carousel slide" data-ride="carousel">

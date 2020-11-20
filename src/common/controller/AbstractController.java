@@ -1,7 +1,13 @@
 package common.controller;
 
+import java.sql.SQLException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import manager.model.*;
+import member.model.MemberVO;
 
 public abstract class AbstractController implements InterCommand {
 
@@ -46,6 +52,31 @@ public abstract class AbstractController implements InterCommand {
 		this.viewPage = viewPage;
 	}
 	
+	/////////////////////////////////////////////
+	// @@ 로그인 유무를 검사@@ //
+	// 로그인 했으면 true 를 반환하고,
+	// 로그인 안했으면 false 를 반환한다.
+	public boolean checkLogin(HttpServletRequest request) {
+	HttpSession session = request.getSession();
+	MemberVO loginUser = (MemberVO)session.getAttribute("loginUser");
+	
+	if(loginUser != null) {
+	// 로그인 한 경우
+	return true;
+	} else {
+	// 로그인 안 한 경우
+	return false;
+	}// end of if(loginUser != null){}-----------------------
+	}// end of public boolean checkLogin(HttpServletRequest request){}--------------------
+	
+	
+	// modal 창에서 userid 클릭 시 아이디와 수신 정보를 select 하는 메소드
+	public void checkAgreeStatus(HttpServletRequest request, String userid) throws SQLException {
+	InterManagerDAO mdao = new ManagerDAO();
+	MemberVO mbvo = mdao.checkAgreeStatus(userid);
+	
+	request.setAttribute("mbvo", mbvo);
+	}// end of public void checkAgreeStatus(String userid) throws SQLException {}
 	
 	
 	
