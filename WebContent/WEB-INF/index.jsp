@@ -144,7 +144,7 @@
 		      </c:forEach>
 
 		    </ol>
-		
+		   
 		    <!-- Wrapper for slides -->
 		    <div class="carousel-inner">
 
