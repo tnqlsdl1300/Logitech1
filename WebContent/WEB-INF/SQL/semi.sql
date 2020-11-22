@@ -4,7 +4,7 @@ from joinevent;
 select *
 from tab;
 SELECT * FROM event;
-select * from product;
+select * from ONEQUERY;
 select * from productcategory;
 select * from PURCHASEdetail;
 desc PURCHASEdetail;
@@ -334,8 +334,8 @@ sql=> select productid, productname, fk_category, character, price, imgfilename 
 
 
 
-
-
+select *
+from cart;
 
 
 
