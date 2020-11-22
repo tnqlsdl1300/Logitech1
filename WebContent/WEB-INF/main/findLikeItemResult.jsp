@@ -12,7 +12,7 @@
 	
 	div#likeItemWrap{
 		background-color: #f6f6f6;	
-		min-height: 1000px;
+		min-height: 900px;
 		height: auto;
 	}
 	
@@ -37,22 +37,37 @@
 	div.likeItemChoice{
 		border: solid 0px red;
 		display: inline-block;
+		margin-top: 3%;
 		text-align: left;
 	}
 	
 	div.imgBackground{
+		padding: 30px;
 		border: solid 0px red;
 		background-color: #d4d4d4;
 	}
+	
+	div.contentText{
+		border: solid 0px red;
+		padding: 40px;
+	}
+	
+	div.contentText p{
+		font-size: 15pt;
+		padding-bottom: 1%;
+	}
+	
+	div.btnGroup{
+		margin-top: 25%;
+	}
 
 	
-	button.choiceBtn{
-		width: 100px;
-		height: 50px;
+	a.choiceBtn{
+		border: solid 1px gray;
 		background-color: #919191;
 		color: white;
 		border-radius: 12px;
-		font-size: 10px;
+		font-size: 15px;
 		transition: all 0.5s;
 		cursor: pointer;
 		margin: 5px;
@@ -99,6 +114,10 @@
 		location.href="<%= request.getContextPath() %>/product/productviewpage.sg?productid=" + proid;
 	}
 	
+	function reTest() {
+		location.href="<%= request.getContextPath() %>/product/findLikeItem.sg";
+	}
+	
 
 </script>
 
@@ -127,7 +146,17 @@
 			<hr style="border-top: 4px dashed black;">
 			
 			<c:if test="${ pvo == null }">
-				검색결과 없음
+				<div id="likeItemChoice" class="likeItemChoice" style="display: block;">
+					<div class="well" style="text-align: center; padding: 10%; width: 100%">
+					
+						<h1 class="media-heading" style="font-weight: bold;">검색결과가 없습니다.</h1>
+						<br><br>
+						<div class="btn-group btnGroup" style="margin: 0;">
+							  <a href="#" class="btn choiceBtn" onclick="reTest()" style="font-size: 15pt; width: 200px; height: 50px;"><span>테스트 다시 하기</span></a>
+						</div>
+						
+					</div>
+				</div>
 			</c:if>
 			
 			
@@ -138,14 +167,21 @@
 					    <div class="media-left imgBackground">
 					      <img src="${ pvo.imgfilename }" class="media-object" style="width:500px">
 					    </div>
-					    <div class="media-body well-lg">
-					      <h1 class="media-heading">${ pvo.productid }</h1>
-					      <h1 class="media-heading">${ pvo.productname }</h1>
+					    <div class="media-body contentText">
+					      <h1 class="media-heading" style="font-weight: bold;">${ pvo.productid }</h1>
+					      <br>
+					      <h2 class="media-heading">${ pvo.productname }</h2>
+					      <hr style="border: solid 1px gray">
+					      <br>
 					      <p>카테고리: ${ pvo.fk_category }</p>
 					      <p>특징: ${ pvo.character }</p>
 					      <p>가격: <fmt:formatNumber value="${pvo.price}" pattern="###,###" />원</p>
 					      
-					      <button type="button" class="btn btn-default choiceBtn" onclick="gotoDetail('${ pvo.productid }')"><span>상세페이지로<br>이동</span></button>
+							<div class="btn-group btn-group-justified btnGroup">
+							  <a href="#" class="btn choiceBtn" onclick="gotoDetail('${ pvo.productid }')"><span>상세페이지로<br>이동</span></a>
+							  <a href="#" class="btn choiceBtn" onclick="reTest()"><span>테스트 다시 하기</span></a>
+							</div>
+
 					    </div>
 					</div>
 					

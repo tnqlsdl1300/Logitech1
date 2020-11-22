@@ -170,13 +170,14 @@
     	<li><a href="<%= request.getContextPath() %>/member/pwdFind.sg">비밀번호 찾기</a></li>
         <li id="loginRegisterBtn" onclick="window.parent.goMemberRegister()">회원가입</li>
     </ul>
-    <br>
-    <button type="button" class="btn btn-default loginBtn" id="loginBtn">로그인</button>
+    <br><br><br><br>
+    <button type="button" class="btn btn-default loginBtn" id="loginBtn" style="height: 45px;">로그인</button>
     <br>
     
-    
+    <%--
     <button type="button" class="btn btn-default loginBtn">카카오 로그인</button>
     <button type="button" class="btn btn-default loginBtn">네이버 로그인</button>
+     --%>
   </form>
   
   
