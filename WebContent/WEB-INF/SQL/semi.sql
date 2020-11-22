@@ -22,8 +22,11 @@ String sql = "select productid\n"+
 "from product\n"+
 "where fk_category = 'headset' and character like '%' || ? || '%' and character like '%' || ? || '%'";
 
+update product set character= '가정용,유선'
+where productid = 'MX ERGO' ;
+commit;
 insert into product(productid, productname, fk_category, character, price, imgfilename)
-values('H151 STEREO HEADSET', '인라인 컨트롤이 장착된 헤드셋', 'headset', '가정용,복합수신기', '45000', 'https://www.logitech.com/assets/65396/11/stereo-headset-h151-refresh.png');
+values('ZONE WIRED', '로지텍 ZONE WIRED', 'headset', '교육용,블루투스', '30000', 'https://www.logitech.com/assets/65847/6/logitech-zone-wired-pdp.png');
 
 -- 찜하기 제품아이디별 찜 수량
 select fk_productid, sum(status)

@@ -33,15 +33,26 @@
 		font-weight: bold;
 		padding: 1% 0;
 	}
+	
+	div.likeItemChoice{
+		border: solid 0px red;
+		display: inline-block;
+		text-align: left;
+	}
+	
+	div.imgBackground{
+		border: solid 0px red;
+		background-color: #d4d4d4;
+	}
 
 	
 	button.choiceBtn{
-		width: 270px;
-		height: 120px;
+		width: 100px;
+		height: 50px;
 		background-color: #919191;
 		color: white;
 		border-radius: 12px;
-		font-size: 20pt;
+		font-size: 10px;
 		transition: all 0.5s;
 		cursor: pointer;
 		margin: 5px;
@@ -84,6 +95,10 @@
 		
 	});
 	
+	function gotoDetail(proid) {
+		location.href="<%= request.getContextPath() %>/product/productviewpage.sg?productid=" + proid;
+	}
+	
 
 </script>
 
@@ -116,38 +131,30 @@
 			</c:if>
 			
 			
-			<div id="Choice1" class="likeItemChoice">
-				<div>
-					<button type="button" class="btn btn-default choiceBtn" onclick="goChoice('ch1', 'mouse')"><span>${ pvo.productname }</span></button>
-					<button type="button" class="btn btn-default choiceBtn" value="keyboard" onclick="goChoice('ch1', 'keyboard')"><span>키보드</span></button>
+			<c:if test="${ pvo != null }">
+				<div id="likeItemChoice" class="likeItemChoice">
+				
+					<div class="well">
+					    <div class="media-left imgBackground">
+					      <img src="${ pvo.imgfilename }" class="media-object" style="width:500px">
+					    </div>
+					    <div class="media-body well-lg">
+					      <h1 class="media-heading">${ pvo.productid }</h1>
+					      <h1 class="media-heading">${ pvo.productname }</h1>
+					      <p>카테고리: ${ pvo.fk_category }</p>
+					      <p>특징: ${ pvo.character }</p>
+					      <p>가격: <fmt:formatNumber value="${pvo.price}" pattern="###,###" />원</p>
+					      
+					      <button type="button" class="btn btn-default choiceBtn" onclick="gotoDetail('${ pvo.productid }')"><span>상세페이지로<br>이동</span></button>
+					    </div>
+					</div>
+					
 				</div>
-				<div>
-					<button type="button" class="btn btn-default choiceBtn" value="speaker" onclick="goChoice('ch1', 'speaker')"><span>스피커</span></button>
-					<button type="button" class="btn btn-default choiceBtn" value="headset" onclick="goChoice('ch1', 'headset')"><span>헤드셋</span></button>
-				</div>
-			</div>
+			</c:if>
 			
-			<div id="Choice2" class="likeItemChoice">
-				<div>
-					<button type="button" class="btn btn-default choiceBtn" onclick="goChoice('ch2', '사무용')"><span>사무용</span></button>
-					<button type="button" class="btn btn-default choiceBtn" value="keyboard" onclick="goChoice('ch2', '가정용')"><span>가정용</span></button>
-				</div>
-				<div>
-					<button type="button" class="btn btn-default choiceBtn" value="speaker" onclick="goChoice('ch2', '게이밍')"><span>게이밍</span></button>
-					<button type="button" class="btn btn-default choiceBtn" value="headset" onclick="goChoice('ch2', '교육용')"><span>교육용</span></button>
-				</div>
-			</div>
 			
-			<div id="Choice3" class="likeItemChoice">
-				<div>
-					<button type="button" class="btn btn-default choiceBtn" onclick="goChoice('ch3', 'USB 수신기')"><span>USB 수신기</span></button>
-					<button type="button" class="btn btn-default choiceBtn" value="keyboard" onclick="goChoice('ch3', '블루투스')"><span>블루투스</span></button>
-				</div>
-				<div>
-					<button type="button" class="btn btn-default choiceBtn" value="speaker" onclick="goChoice('ch3', '유선')"><span>유선</span></button>
-					<button type="button" class="btn btn-default choiceBtn" value="headset" onclick="goChoice('ch3', '복합수신기')"><span>복합수신기</span></button>
-				</div>
-			</div>
+			
+			
 
 	
 		</div>
