@@ -947,6 +947,44 @@ WHERE a.sal >= 2000
 		return pvoList;
 	}
 	
+	// 사용자로부터 받은 키워드로 DB의 제품-특성에서 검색
+	@Override
+	public String selectLikeItem(Map<String, String> paraMap) throws SQLException {
+		
+		String productid = null;
+		
+		try {
+			
+			conn = ds.getConnection();
+			
+			// 이벤트기간이 지나지 않은 진행중인 이벤트만 받아오는 sql문
+			String sql = "select productid\n"+
+					"from product\n"+
+					"where fk_category = ? and character like '%' || ? || '%' and character like '%' || ? || '%'";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, paraMap.get("ans1"));
+			pstmt.setString(2, paraMap.get("ans2"));
+			pstmt.setString(3, paraMap.get("ans3"));
+
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				// 검색한 결과가 있을 시
+				productid = rs.getString(1);
+			}
+			// 검색한 결과가 없을 시 productid는 초기값인 null을 반환
+			
+			
+			
+			}finally {
+				close();
+			}
+		
+		return productid;
+		
+	}
+
 	
 	//////////////////////////////////////////////////////////////////////////박수빈:끝/////
 	
@@ -1429,6 +1467,8 @@ WHERE a.sal >= 2000
 	      
 	      return totalpt;
 	   }
+
+	
 	
 	//////////////////////////////////////////////////////////////////////////최은지:끝/////
 

@@ -68,6 +68,9 @@ public interface InterProductDAO {
 	// 로컬스토리지에서 받은 페이지 방문 기록값으로 디비에서 해당 제품들을 받아오는 메서드(최근 본 제품)
 	public List<ProductVO> selectHistoryItem(String history) throws SQLException;
 	
+	// 사용자로부터 받은 키워드로 DB의 제품-특성에서 검색해주는 메서드
+	public String selectLikeItem(Map<String, String> paraMap) throws SQLException;
+	
 	//////////////////////////////////////////////////////////////////////////박수빈:끝/////
 
 	
@@ -119,7 +122,6 @@ public interface InterProductDAO {
 
 	   // 해당 유저의 전체 포인트 가져오기
 	   String selectSumPoint(int usernum) throws SQLException;
-	
 	
 	//////////////////////////////////////////////////////////////////////////최은지:끝/////
 

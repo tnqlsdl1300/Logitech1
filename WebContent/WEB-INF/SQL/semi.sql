@@ -3,8 +3,8 @@ from joinevent;
 
 select *
 from tab;
-SELECT * FROM event;
-select * from ONEQUERY;
+SELECT * FROM keywordsearch;
+select * from product;
 select * from productcategory;
 select * from PURCHASEdetail;
 desc PURCHASEdetail;
@@ -14,10 +14,22 @@ create table productcategory
 ,constraint PK_productcategory primary key(category)
 );
 
+select productid
+from product
+where fk_category = 'headset' and character like '%가정용%' and character like '%복합수신기%';
+--
+String sql = "select productid\n"+
+"from product\n"+
+"where fk_category = 'headset' and character like '%' || ? || '%' and character like '%' || ? || '%'";
+
+insert into product(productid, productname, fk_category, character, price, imgfilename)
+values('H151 STEREO HEADSET', '인라인 컨트롤이 장착된 헤드셋', 'headset', '가정용,복합수신기', '45000', 'https://www.logitech.com/assets/65396/11/stereo-headset-h151-refresh.png');
+
 -- 찜하기 제품아이디별 찜 수량
 select fk_productid, sum(status)
 from LIKEPRODUCT
 group by fk_productid;
+
 
 insert into PURCHASE (PURCHASENO, FK_MEMBERNO, RECEIVER, POSTCODE, ADDRESS, DETAILADDRESS, EXTRAADDRESS, PAYMENT, PURCHASEDAY, TOTALPRICE)
 values(PURCHASE_SEQ.nextval, '2', '박수빈', '21413', '주소1', '주소2', '주소3', 'card', '2020-11-16', '25000');

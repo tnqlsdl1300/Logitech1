@@ -92,10 +92,10 @@
 	var ans2 = "";
 	var ans3 = "";
 	
+	// 버튼을 눌렀을 시 해당 버튼의 값을 변수에 저장해서 보관 해주는 함수
 	function goChoice(whatCh, val) {
 		
 		if (whatCh == "ch1") {
-			alert(val);
 			ans1 = val;
 			allHide();
 			$("h2#qna2").show();
@@ -103,22 +103,40 @@
 		}
 		
 		if (whatCh == "ch2") {
-			alert(val);
 			ans2 = val;
 			allHide();
 			$("h2#qna3").show();
 			$("div#Choice3").show();
 		}
 		
+		// 3번째 선택지(마지막)를 클릭 시 ajax로 검색
 		if (whatCh == "ch3") {
-			alert(val);
 			ans3 = val;
 			allHide();
 			$("h2#qna3").show();
 			$("div#Choice3").show();
 			
 			// ajax 사용해서 하기(받은 밸류 3개 값만 보내기)
+			console.log(ans1);
+			console.log(ans2);
+			console.log(ans3);
 			
+			$.ajax({
+				url: "<%= request.getContextPath() %>/product/findLikeItem.sg",
+				type: "get",
+				data: {"ans1":ans1, "ans2":ans2,"ans3":ans3, "flag":"search"},
+				dataType: "json",
+				success: function(json) {
+					
+					alert(json.productid);
+					
+					
+					
+				},
+				error: function(request, status, error){ 
+	                alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+	            }
+			});
 			
 		}
 		
@@ -165,23 +183,23 @@
 			
 			<div id="Choice2" class="likeItemChoice">
 				<div>
-					<button type="button" class="btn btn-default choiceBtn" onclick="goChoice('ch2', 'office')"><span>사무용</span></button>
-					<button type="button" class="btn btn-default choiceBtn" value="keyboard" onclick="goChoice('ch2', 'home')"><span>가정용</span></button>
+					<button type="button" class="btn btn-default choiceBtn" onclick="goChoice('ch2', '사무용')"><span>사무용</span></button>
+					<button type="button" class="btn btn-default choiceBtn" value="keyboard" onclick="goChoice('ch2', '가정용')"><span>가정용</span></button>
 				</div>
 				<div>
-					<button type="button" class="btn btn-default choiceBtn" value="speaker" onclick="goChoice('ch2', 'gaming')"><span>게임용</span></button>
-					<button type="button" class="btn btn-default choiceBtn" value="headset" onclick="goChoice('ch2', 'edu')"><span>교육용</span></button>
+					<button type="button" class="btn btn-default choiceBtn" value="speaker" onclick="goChoice('ch2', '게이밍')"><span>게이밍</span></button>
+					<button type="button" class="btn btn-default choiceBtn" value="headset" onclick="goChoice('ch2', '교육용')"><span>교육용</span></button>
 				</div>
 			</div>
 			
 			<div id="Choice3" class="likeItemChoice">
 				<div>
-					<button type="button" class="btn btn-default choiceBtn" onclick="goChoice('ch3', 'usb')"><span>USB 수신기</span></button>
-					<button type="button" class="btn btn-default choiceBtn" value="keyboard" onclick="goChoice('ch3', 'bluetooth')"><span>블루투스</span></button>
+					<button type="button" class="btn btn-default choiceBtn" onclick="goChoice('ch3', 'USB 수신기')"><span>USB 수신기</span></button>
+					<button type="button" class="btn btn-default choiceBtn" value="keyboard" onclick="goChoice('ch3', '블루투스')"><span>블루투스</span></button>
 				</div>
 				<div>
-					<button type="button" class="btn btn-default choiceBtn" value="speaker" onclick="goChoice('ch3', 'code')"><span>유선</span></button>
-					<button type="button" class="btn btn-default choiceBtn" value="headset" onclick="goChoice('ch3', 'mix')"><span>복합수신기</span></button>
+					<button type="button" class="btn btn-default choiceBtn" value="speaker" onclick="goChoice('ch3', '유선')"><span>유선</span></button>
+					<button type="button" class="btn btn-default choiceBtn" value="headset" onclick="goChoice('ch3', '복합수신기')"><span>복합수신기</span></button>
 				</div>
 			</div>
 
