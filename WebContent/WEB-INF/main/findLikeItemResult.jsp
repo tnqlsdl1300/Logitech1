@@ -80,75 +80,15 @@
 	
 	$(document).ready(function() {
 		
-		// 1번 외에 다른 질문, 버튼을 안보이게 하기
-		allHide();
 		
-		$("h2#qna1").show();
-		$("div#Choice1").show();
 		
 	});
 	
-	var ans1 = "";
-	var ans2 = "";
-	var ans3 = "";
-	
-	// 버튼을 눌렀을 시 해당 버튼의 값을 변수에 저장해서 보관 해주는 함수
-	function goChoice(whatCh, val) {
-		
-		if (whatCh == "ch1") {
-			ans1 = val;
-			allHide();
-			$("h2#qna2").show();
-			$("div#Choice2").show();
-		}
-		
-		if (whatCh == "ch2") {
-			ans2 = val;
-			allHide();
-			$("h2#qna3").show();
-			$("div#Choice3").show();
-		}
-		
-		// 3번째 선택지(마지막)를 클릭 시 ajax로 검색
-		if (whatCh == "ch3") {
-			ans3 = val;
-			allHide();
-			$("h2#qna3").show();
-			$("div#Choice3").show();
-			
-			// ajax 사용해서 하기(받은 밸류 3개 값만 보내기)
-			console.log(ans1);
-			console.log(ans2);
-			console.log(ans3);
-			
-			$.ajax({
-				url: "<%= request.getContextPath() %>/product/findLikeItem.sg",
-				type: "get",
-				data: {"ans1":ans1, "ans2":ans2,"ans3":ans3, "flag":"search"},
-				dataType: "json",
-				success: function(json) {
-					
-					location.href = "<%= request.getContextPath() %>/product/findLikeItemResult.sg?productid=" + json.productid;
-					
-				},
-				error: function(request, status, error){ 
-	                alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
-	            }
-			});
-			
-		}
-		
-	}
-	
-	function allHide() {
-		$("h2.qnaText").hide();
-		$("div.likeItemChoice").hide();
-	}
 
 </script>
 
 <%-- 취향 맞춤 추천 --%>
-<div class="totalWrap" id="bestItemWrap" onclick="findLikeItem()" style="background-color: #00ead0; height: 100px; cursor: pointer;">
+<div class="totalWrap" id="bestItemWrap" style="background-color: #00ead0; height: 100px;">
 	<div id="wrap" style="text-align: center;">
 		<h3 style="padding: 0; padding-top: 3%; margin: 0; font-weight: bold;">취향 맞춤 추천</h3>
 	</div>
@@ -157,20 +97,28 @@
 <div class="totalWrap" id="likeItemWrap">
 	<div id="wrap">
 		<div class="innerContainer" id="likeItemContainer">
-		
+			
+			
 			<div id="qnaBox">
-				<h2 id="qna1" class="qnaText">Q1. 당신이 찾고있는 제품의 카테고리는?</h2>
-				<h2 id="qna2" class="qnaText">Q2. 당신이 찾고있는 제품 용도는?</h2>
-				<h2 id="qna3" class="qnaText">Q3. 당신이 찾고있는 제품의 연결방식은?</h2>
+				<c:if test="${ sessionScope.loginuser == null }">
+					<h2 id="qna1" class="qnaText">고객님의 검색결과는!!</h2>
+				</c:if>
+				<c:if test="${ sessionScope.loginuser != null }">
+					<h2 id="qna1" class="qnaText">"${ sessionScope.loginuser.name }"님의 검색결과는!!</h2>
+				</c:if>
 			</div>
 			
 			
 			<hr style="border-top: 4px dashed black;">
 			
+			<c:if test="${ pvo == null }">
+				검색결과 없음
+			</c:if>
+			
 			
 			<div id="Choice1" class="likeItemChoice">
 				<div>
-					<button type="button" class="btn btn-default choiceBtn" onclick="goChoice('ch1', 'mouse')"><span>마우스</span></button>
+					<button type="button" class="btn btn-default choiceBtn" onclick="goChoice('ch1', 'mouse')"><span>${ pvo.productname }</span></button>
 					<button type="button" class="btn btn-default choiceBtn" value="keyboard" onclick="goChoice('ch1', 'keyboard')"><span>키보드</span></button>
 				</div>
 				<div>

@@ -71,6 +71,9 @@ public interface InterProductDAO {
 	// 사용자로부터 받은 키워드로 DB의 제품-특성에서 검색해주는 메서드
 	public String selectLikeItem(Map<String, String> paraMap) throws SQLException;
 	
+	// productid를 통해 DB에서 물품을 검색해주는 메서드
+	public ProductVO selectLikeItemOne(String productid) throws SQLException;
+	
 	//////////////////////////////////////////////////////////////////////////박수빈:끝/////
 
 	
@@ -122,7 +125,7 @@ public interface InterProductDAO {
 
 	   // 해당 유저의 전체 포인트 가져오기
 	   String selectSumPoint(int usernum) throws SQLException;
-	
+
 	//////////////////////////////////////////////////////////////////////////최은지:끝/////
 
 }
