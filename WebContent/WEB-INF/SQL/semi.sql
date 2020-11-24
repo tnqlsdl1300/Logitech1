@@ -3,9 +3,9 @@ from joinevent;
 
 select *
 from tab;
-SELECT * FROM keywordsearch;
+SELECT * FROM review;
 select * from product;
-select * from productcategory;
+select * from productoption;
 select * from PURCHASEdetail;
 desc PURCHASEdetail;
 
@@ -25,8 +25,8 @@ String sql = "select productid\n"+
 update product set character= '가정용,유선'
 where productid = 'MX ERGO' ;
 commit;
-insert into product(productid, productname, fk_category, character, price, imgfilename)
-values('ZONE WIRED', '로지텍 ZONE WIRED', 'headset', '교육용,블루투스', '30000', 'https://www.logitech.com/assets/65847/6/logitech-zone-wired-pdp.png');
+insert into productoption(productserialid, fk_productid, color, stock)
+values('H151 STEREO HEADSET_2', 'H151 STEREO HEADSET', 'blue', '0');
 
 -- 찜하기 제품아이디별 찜 수량
 select fk_productid, sum(status)
