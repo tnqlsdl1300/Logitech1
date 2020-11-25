@@ -665,14 +665,14 @@ WHERE a.sal >= 2000
 			
 			conn = ds.getConnection();
 			
-			String sql = "select productid, productname, fk_category, character, price, imgfilename, volume\n"+
+			String sql = "select productid, productname, fk_category, character, price, imgfilename, nvl(volume, 0) as volume\n"+
 					"from\n"+
 					"(\n"+
 					"    select fk_productid,  sum(volume) as volume\n"+
 					"    from PURCHASEdetail\n"+
 					"    group by fk_productid\n"+
 					") C\n"+
-					"inner join product P\n"+
+					"right join product P\n"+
 					"on C.fk_productid = P.productid\n"+
 					" where fk_category = ? "+
 					"order by volume desc";

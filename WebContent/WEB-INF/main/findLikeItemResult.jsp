@@ -122,9 +122,10 @@
 </script>
 
 <%-- 취향 맞춤 추천 --%>
-<div class="totalWrap" id="bestItemWrap" style="background-color: #00ead0; height: 100px;">
+<div class="totalWrap" id="bestItemWrap" onclick="findLikeItem()" style="background-color: #34495e; height: 100px;">
 	<div id="wrap" style="text-align: center;">
-		<h3 style="padding: 0; padding-top: 3%; margin: 0; font-weight: bold;">취향 맞춤 추천</h3>
+		<h2 style="padding: 0; padding-top: 2%; margin: 0; font-weight: bold; color: #f1c40f;">SquadG Teller</h2>
+		<h5 style="padding: 0; padding-top: 1%; margin: 0; color: #f1c40f;">주변기기 추천서비스</h5>
 	</div>
 </div>
 

@@ -1,5 +1,5 @@
 @CHARSET "UTF-8";
-	body{
+	.totalWrap{
 		border: solid 0px red;
 		margin: 0;
 		padding: 0;
@@ -27,7 +27,7 @@
 	
 	header#page_header{
 		border: solid 0px orange;
-		padding-bottom: 10px;
+		padding-bottom: 2%;
 		overflow: hidden;
 		width: 100%;
 	}
@@ -36,7 +36,7 @@
 		border: solid 0px black;
 		float: left;
 		display: inline-block;
-		margin-top: 20px;
+		margin-top: 2.5%;
 	}
 	
 	ul#menu{
