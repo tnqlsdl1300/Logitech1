@@ -14,7 +14,7 @@ create table productcategory
 ,constraint PK_productcategory primary key(category)
 );
 
-select productid
+select *
 from product
 where fk_category = 'headset' and character like '%가정용%' and character like '%복합수신기%';
 --
@@ -22,7 +22,7 @@ String sql = "select productid\n"+
 "from product\n"+
 "where fk_category = 'headset' and character like '%' || ? || '%' and character like '%' || ? || '%'";
 
-update product set character= '가정용,유선'
+update product set character= '마우스,사무용,USB 수신기'
 where productid = 'MX ERGO' ;
 commit;
 insert into productoption(productserialid, fk_productid, color, stock)

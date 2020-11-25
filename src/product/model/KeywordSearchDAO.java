@@ -65,12 +65,19 @@ public class KeywordSearchDAO implements InterKeywordSearch {
 			rs = pstmt.executeQuery();
 			
 			// 행이 있으면(중복) true, 없으면(중복x) false 반환
+			int cnt = 0;
 			while(rs.next()) {
+				
+				if (cnt == 10) {
+					break;
+				}
+				
 				keyword = new KeywordSearchVO();
 				keyword.setKeyword(rs.getString(1));
 				keyword.setSearchcnt(rs.getInt(2));
 				
 				rankingList.add(keyword);
+				cnt++;
 			}
 			
 		} finally {
