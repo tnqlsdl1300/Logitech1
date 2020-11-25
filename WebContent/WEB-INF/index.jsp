@@ -18,6 +18,11 @@
 		background-color: #d4d4d4;
 	}
 	
+	div#bestItemWrap{
+		background-color: #f5f5f5;
+		border: solid 0px red;
+	}
+	
 	div#bestCategoryItemWrap{
 		background-color: white;
 	}
@@ -34,16 +39,16 @@
 		padding:0;
 		margin:0;
 		border: solid 0px red;
-		margin-top: 10%;
 	}
 	
-	div#bestItemTitle{
+	div.bestItemTitle{
 		text-align: center;
 		padding: 0;
 		padding-top: 7%;
+		padding-bottom: 5%;
 	}
 	
-	div#bestItemTitle h1{
+	div.bestItemTitle h1{
 		color: #464d5c;
 		font-size: 33pt;
 	}
@@ -55,14 +60,15 @@
 	}
 	
 	div.categoryTitleBox{
+		border: solid 0px red;
 		text-align: center;
 	}
 	
-	div#bestItemTitle h1{
+	div.bestItemTitle h1{
 		font-weight: bold;
 	}
 	
-	div#bestItemTitle p{
+	div.bestItemTitle p{
 		font-style: italic;
 		font-weight: bold;
 		font-size: 10pt;
@@ -77,6 +83,7 @@
 	div.eachItemImg img{
 		background-color: #f6f6f6;
 		width:80%;
+		height: 310px;
 	}
 	
 	.img-thumbnail{
@@ -116,7 +123,7 @@
 		border: solid 0px black;
 		padding: 0;
 		margin: 0;
-		margin-bottom: 2%;
+		margin-bottom: 10%;
 	}
 	
 	.indexBestItem > .rankText{
@@ -177,7 +184,6 @@
 	<input type="hidden" name="seq_event" value="">
 </form>
 
-	<%-- 전체 Best3 --%>
     <div class="totalWrap" id="carWrap">
 		  <div id="myCarousel" class="carousel slide" data-ride="carousel">
 		    <!-- Indicators -->
@@ -237,10 +243,44 @@
     </div>
 
 	<%-- 취향 맞춤 추천 --%>
-	<div class="totalWrap" id="bestItemWrap" onclick="findLikeItem()" style="background-color: #34495e; height: 100px; cursor: pointer;">
+	<div class="totalWrap" id="findLikeWrap" onclick="findLikeItem()" style="background-color: #34495e; height: 100px; cursor: pointer;">
 		<div id="wrap" style="text-align: center;">
 			<h2 style="padding: 0; padding-top: 2%; margin: 0; font-weight: bold; color: #f1c40f;">SquadG Teller</h2>
 			<h5 style="padding: 0; padding-top: 1%; margin: 0; color: #f1c40f;">주변기기 추천서비스</h5>
+		</div>
+	</div>
+	
+	
+	<!-- 전체 best3 -->
+	<div class="totalWrap" id="bestItemWrap">
+		<div id="wrap">
+			
+			<div class="row" id="indexBestItemBox">
+			
+			<div class="bestItemBox"> 
+			  	<div class="bestItemTitle">
+			  		<h1>Best 3 Items</h1>
+			  		<hr style="border: solid 1px #464d5c; width: 25%;">
+			  	</div>
+		 		<c:forEach var="mousevo" items="${ mouseList }" varStatus="status">
+		 			<div class="col-md-4 eachItemBox">
+			     		<div class="indexBestItem" onclick="gotoDetail('${ mousevo.productid }')">
+			     			<div class="rankText">${ status.count }위</div>
+					    	<div class="eachItemImg">
+					    		<img src="${ mousevo.imgfilename }"  class="img-thumbnail" alt="Image">
+					    	</div>	
+					    	<div class="indexBestItemText">			    	
+						    	<p class="productId">${ mousevo.productid }</p>
+						    	<p class="productName">${ mousevo.productname }</p>
+						    	<p class="productPrice"><fmt:formatNumber value="${ mousevo.price }" pattern="###,###" />원</p>
+					    	</div>
+					    </div>
+		     		</div>
+		 		</c:forEach>
+		    </div>
+			
+			</div>
+			
 		</div>
 	</div>
 	
@@ -250,11 +290,12 @@
 	<div id="wrap">
 	  
 	 <div class="row" id="indexBestItemBox">
-	  	<div id="bestItemTitle">
-	  		<h1>Best3 by Category</h1>
+	  	<div class="bestItemTitle">
+	  		<h1>Best 3 by Category</h1>
+	  		<hr style="border: solid 1px #464d5c; width: 35%;">
 	  	</div>
 	  	
-	  	<hr style="border: solid 1px #464d5c; width: 35%;">
+	  	
 
 		
 	   
@@ -262,7 +303,7 @@
 	  	<div class="bestItemBox"> 
 		  	<div class="categoryTitleBox">
 				<h2 class="categoryTitle">Mouse</h2>
-				<hr style="border: solid 1px #464d5c; margin-top: -0.5%; width: 13%;">
+				<hr style="border: dashed 1px #464d5c; margin-top: -0.5%; width: 13%;">
 			</div>
 	 		<c:forEach var="mousevo" items="${ mouseList }" varStatus="status">
 	 			<div class="col-md-4 eachItemBox">
@@ -286,7 +327,7 @@
 	   <div class="bestItemBox"> 
 		  	<div class="categoryTitleBox">
 				<h2 class="categoryTitle">Speaker</h2>
-				<hr style="border: solid 1px #464d5c; margin-top: -0.5%; width: 13%;">
+				<hr style="border: dashed 1px #464d5c; margin-top: -0.5%; width: 15%;">
 			</div>
 	 		<c:forEach var="speakervo" items="${ speakerList }" varStatus="status">
 	 			<div class="col-md-4 eachItemBox">
@@ -308,7 +349,7 @@
 	   <div class="bestItemBox"> 
 		  	<div class="categoryTitleBox">
 				<h2 class="categoryTitle">Headset</h2>
-				<hr style="border: solid 1px #464d5c; margin-top: -0.5%; width: 13%;">
+				<hr style="border: dashed 1px #464d5c; margin-top: -0.5%; width: 15%;">
 			</div>
 	 		<c:forEach var="headsetvo" items="${ headsetList }" varStatus="status">
 	 			<div class="col-md-4 eachItemBox">
