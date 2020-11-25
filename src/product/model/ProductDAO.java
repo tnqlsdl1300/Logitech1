@@ -453,11 +453,12 @@ WHERE a.sal >= 2000
 				pstmt.setString(1, keyword);
 				
 			}else if ("search".equals(type)) {
-				sql += "where lower(productid) like '%' || lower(?) || '%' or lower(productname) like '%' || lower(?) || '%' ";
+				sql += "where lower(productid) like '%' || lower(?) || '%' or lower(productname) like '%' || lower(?) || '%' or lower(character) like '%' || lower(?) || '%' ";
 
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, keyword);
 				pstmt.setString(2, keyword);
+				pstmt.setString(3, keyword);
 			}
 			
 			rs = pstmt.executeQuery();
@@ -498,14 +499,6 @@ WHERE a.sal >= 2000
 			case "lowPrice":
 				select = " order by price ";
 				break;
-				
-			case "favorite":
-				select = "";
-				break;
-				
-			case "sale":
-				select = "";
-				break;
 		}
 
 		try {
@@ -523,12 +516,13 @@ WHERE a.sal >= 2000
 				pstmt.setString(1, keyword);
 				
 			}else if ("search".equals(type)) {
-				sql += "where lower(productid) like '%' || lower(?) || '%' or lower(productname) like '%' || lower(?) || '%' ";
+				sql += "where lower(productid) like '%' || lower(?) || '%' or lower(productname) like '%' || lower(?) || '%' or lower(character) like '%' || lower(?) || '%' ";
 				sql += select;
 
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, keyword);
 				pstmt.setString(2, keyword);
+				pstmt.setString(3, keyword);
 			}
 
 			rs = pstmt.executeQuery();
@@ -747,12 +741,13 @@ WHERE a.sal >= 2000
 				pstmt.setString(1, keyword);
 
 			}else if ("search".equals(type)) {
-				sql += "where lower(productid) like '%' || lower(?) || '%' or lower(productname) like '%' || lower(?) || '%' ";
+				sql += "where lower(productid) like '%' || lower(?) || '%' or lower(productname) like '%' || lower(?) || '%' or lower(character) like '%' || lower(?) || '%' ";
 				sql += "order by volume desc";
 				
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, keyword);
 				pstmt.setString(2, keyword);
+				pstmt.setString(3, keyword);
 
 			}
 			
@@ -808,12 +803,13 @@ WHERE a.sal >= 2000
 				pstmt.setString(1, keyword);
 
 			}else if ("search".equals(type)) {
-				sql += "where lower(productid) like '%' || lower(?) || '%' or lower(productname) like '%' || lower(?) || '%' ";
+				sql += "where lower(productid) like '%' || lower(?) || '%' or lower(productname) like '%' || lower(?) || '%' or lower(character) like '%' || lower(?) || '%' ";
 				sql += "order by status desc";
 				
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, keyword);
 				pstmt.setString(2, keyword);
+				pstmt.setString(3, keyword);
 
 			}
 			

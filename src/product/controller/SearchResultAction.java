@@ -30,7 +30,7 @@ public class SearchResultAction extends AbstractController {
 			// 검색한 키워드 DB에 cnt + 1 해주기
 			int n = pdao.updateRankingKeyword(keyword);
 		} else {
-			// 사용자가 select를 선택했을 때 검색
+			// 사용자가 select를 선택했을 때 검색(검색결과 페이지에서 정렬)
 
 			if ("highPrice".equals(select) || "lowPrice".equals(select)) {
 				pList = pdao.searchProductSelect(keyword, select, type);
