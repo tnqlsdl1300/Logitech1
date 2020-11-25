@@ -74,6 +74,9 @@ public interface InterProductDAO {
 	// productid를 통해 DB에서 물품을 검색해주는 메서드
 	public ProductVO selectLikeItemOne(String productid) throws SQLException;
 	
+	// 판매순으로 정렬한 각 3개씩의 물품 데이터 DB에서 불러오는 메서드
+	public List<ProductVO> selectBest3Items() throws SQLException;
+	
 	//////////////////////////////////////////////////////////////////////////박수빈:끝/////
 
 	

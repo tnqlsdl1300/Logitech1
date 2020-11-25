@@ -288,7 +288,7 @@ a#menu-share:hover > i{
 					<li><a href="<%= request.getContextPath() %>/customCenter.sg">고객센터</a></li>
 				</ul>
 
-				<div id="div_search" data-toggle="modal" data-target="#searchModal">
+				<div id="div_search" data-toggle="modal" data-target="#searchModal" style="cursor: pointer;">
 					<span>검색</span> <i class="material-icons">search</i>
 				</div>
 			</header>

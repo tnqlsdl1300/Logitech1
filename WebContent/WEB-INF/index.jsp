@@ -262,17 +262,17 @@
 			  		<h1>Best 3 Items</h1>
 			  		<hr style="border: solid 1px #464d5c; width: 25%;">
 			  	</div>
-		 		<c:forEach var="mousevo" items="${ mouseList }" varStatus="status">
+		 		<c:forEach var="pvo" items="${ best3ItemList }" varStatus="status">
 		 			<div class="col-md-4 eachItemBox">
-			     		<div class="indexBestItem" onclick="gotoDetail('${ mousevo.productid }')">
+			     		<div class="indexBestItem" onclick="gotoDetail('${ pvo.productid }')">
 			     			<div class="rankText">${ status.count }위</div>
 					    	<div class="eachItemImg">
-					    		<img src="${ mousevo.imgfilename }"  class="img-thumbnail" alt="Image">
+					    		<img src="${ pvo.imgfilename }"  class="img-thumbnail" style="background-color: #ecebe9;" alt="Image">
 					    	</div>	
 					    	<div class="indexBestItemText">			    	
-						    	<p class="productId">${ mousevo.productid }</p>
-						    	<p class="productName">${ mousevo.productname }</p>
-						    	<p class="productPrice"><fmt:formatNumber value="${ mousevo.price }" pattern="###,###" />원</p>
+						    	<p class="productId">${ pvo.productid }</p>
+						    	<p class="productName">${ pvo.productname }</p>
+						    	<p class="productPrice"><fmt:formatNumber value="${ pvo.price }" pattern="###,###" />원</p>
 					    	</div>
 					    </div>
 		     		</div>

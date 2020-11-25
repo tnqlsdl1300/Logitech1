@@ -1019,6 +1019,62 @@ WHERE a.sal >= 2000
 		return pvo;
 		
 	}
+	
+	// 판매순으로 정렬한 각 3개씩의 물품 데이터 DB에서 불러오는 메서드
+	@Override
+	public List<ProductVO> selectBest3Items() throws SQLException {
+
+		List<ProductVO> pvoList = new ArrayList<>();
+
+		try {
+			
+			conn = ds.getConnection();
+			
+			String sql = "select productid, productname, fk_category, character, price, imgfilename, nvl(volume, 0) as volume\n"+
+					"from\n"+
+					"(\n"+
+					"    select fk_productid,  sum(volume) as volume\n"+
+					"    from PURCHASEdetail\n"+
+					"    group by fk_productid\n"+
+					") C\n"+
+					"right join product P\n"+
+					"on C.fk_productid = P.productid\n"+
+					"order by volume desc";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+
+			int cnt = 0;
+			while(rs.next()){
+				
+				// 판매순 최대 3위까지 받아야 하기때문에 3개만 list에 넣어줌 
+				if (cnt == 3) {
+					break;
+				}
+				
+				ProductVO pvo = new ProductVO();
+				
+				pvo.setProductid(rs.getString(1));
+				pvo.setProductname(rs.getString(2));
+				pvo.setFk_category(rs.getString(3));
+				pvo.setCharacter(rs.getString(4));
+				pvo.setPrice(rs.getInt(5));		
+				pvo.setImgfilename(rs.getString(6));
+				pvo.setSale(rs.getInt(7));
+				
+				pvoList.add(pvo);
+				
+				cnt++;
+			}// end of while -----------------------------
+
+		}finally {
+			close();
+		}
+		
+		return pvoList;
+		
+	}
 
 	
 	//////////////////////////////////////////////////////////////////////////박수빈:끝/////
@@ -1502,7 +1558,7 @@ WHERE a.sal >= 2000
 	      
 	      return totalpt;
 	   }
-	
+
 	//////////////////////////////////////////////////////////////////////////최은지:끝/////
 
 	
