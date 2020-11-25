@@ -41,7 +41,6 @@ public class SearchResultAction extends AbstractController {
 			}else if ("favorite".equals(select)) {
 				pList = pdao.selectFavOrder(keyword, type);
 			}
-			// else if favorite
 			
 		}
 		

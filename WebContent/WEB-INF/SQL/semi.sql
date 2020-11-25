@@ -3,7 +3,7 @@ from joinevent;
 
 select *
 from tab;
-SELECT * FROM review;
+SELECT * FROM keywordsearch;
 select * from product;
 select * from productoption;
 select * from PURCHASEdetail;
@@ -49,14 +49,14 @@ select * from member;
 insert into likeproduct (fk_memberno, fk_productid, status)
 values('121', 'Logitech Pebble M350', 1);
 
-select productid, productname, fk_category, character, price, imgfilename, status
+select productid, productname, fk_category, character, price, imgfilename, nvl(status, 0) as status
 from
 (
     select fk_productid, sum(status) as status
 from likeproduct
 group by fk_productid
 ) C
-inner join product P
+right join product P
 on C.fk_productid = P.productid
 where lower(character) like '%무선%' 
 order by status desc;
@@ -75,14 +75,14 @@ String sql = "select productid, productname, fk_category, character, price, imgf
 
 
 --- 판매수 별 물품
-select productid, productname, fk_category, character, price, imgfilename, volume
+select productid, productname, fk_category, character, price, imgfilename, nvl(volume, 0) as volume
 from
 (
     select fk_productid,  sum(volume) as volume
     from PURCHASEdetail
     group by fk_productid
 ) C
-inner join product P
+right join product P
 on C.fk_productid = P.productid
 order by volume desc;
 -- sql문
@@ -180,7 +180,7 @@ commit;
 
 --- KEYWORDSEARCH 테이블에 키워드 넣는 쿼리
 insert into KEYWORDSEARCH(KEYWORD, SEARCHCNT)
-values('가정용', 0);
+values('복합수신기', 0);
 
 무선
 유선
