@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	String ctxPath = request.getContextPath();
 	//    /MyMVC
@@ -202,18 +203,6 @@ a#menu-share:hover > i{
 
 		
 		$(document).ready(function() {
-
-			// 로그인 상태 관련 버튼 생성
-			if ("${ sessionScope.loginuser }") {
-				$("li#logoutBtn").show();
-				$("li#mypageBtn").show();
-				$("li#loginBtn").hide()
-			}else{
-				// 로그아웃 상태일 때
-				$("li#loginBtn").show()
-				$("li#logoutBtn").hide();
-				$("li#mypageBtn").hide();
-			}
 			
 		});
 		
@@ -262,15 +251,22 @@ a#menu-share:hover > i{
 						<li><a href="#"><span class="navText">제휴3</span></a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li id="loginBtn" data-toggle="modal" data-target="#loginModal"><a
-							href="#"><span class="glyphicon glyphicon-user"></span><span
-								class="navText"> 내계정</span></a></li>
+						<c:if test="${ sessionScope.loginuser != null }">
 						<li id="mypageBtn"><a href="<%= request.getContextPath() %>/mypage/main.sg"><span
 								class="glyphicon glyphicon-user"></span><span class="navText">
 									내계정</span></a></li>
 						<li id="logoutBtn" onclick="goLogout()"><a href="#"><span
 								class="glyphicon glyphicon-log-in"></span><span class="navText">
 									로그아웃</span></a></li>
+						</c:if>
+						
+						<c:if test="${ sessionScope.loginuser == null }">
+							<li id="loginBtn" data-toggle="modal" data-target="#loginModal"><a
+							href="#"><span class="glyphicon glyphicon-user"></span><span
+								class="navText"> 내계정</span></a></li>
+						</c:if>
+						
+						
 					</ul>
 				</div>
 			</nav>
