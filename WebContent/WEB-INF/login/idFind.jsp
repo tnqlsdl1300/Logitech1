@@ -11,23 +11,60 @@
 
 <style>
 	
+	body{
+		overflow: hidden;
+		background-color: #f5f5f5;
+	}
+	
 	.container{
 		width: 80%;
 		margin: 0 auto;
 		padding-top: 5%;
 	}
-
-	.idFindBtn{
+	
+	button.idFindBtn{
+		height: 45px;
+		background-color: #47555e;
+		color: white;
+		font-weight: bold;
 		display: block;
 		width: 100%;
-		line-height: 30px;
 		margin: 0 auto;
+	}
+	
+	.idFindBtn span {
+	  cursor: pointer;
+	  font-size: 13pt;
+	  display: inline-block;
+	  position: relative;
+	  transition: 0.5s;
+	}
+	
+	.idFindBtn span:after {
+	  content: '\00bb';
+	  position: absolute;
+	  opacity: 0;
+	  top: 0;
+	  right: -20px;
+	  transition: 0.5s;
+	  color: #f1c40f;
+	}
+	
+	.idFindBtn:hover span {
+	  padding-right: 25px;
+	  color: #f1c40f;
+	}
+	
+	.idFindBtn:hover span:after {
+	  opacity: 1;
+	  right: 0;
 	}
 	
 	div#titleText{
 		font-size: 20pt;
 		font-weight: bold;
 		text-align: center;
+		color: #3f5a75;
 	}
 	
 	div#resultDiv{
@@ -37,7 +74,7 @@
 	}
 	
 	div#resultDiv span{
-		color: blue;
+		color: #3f5a75;
 	}
 	
 </style>
@@ -104,7 +141,7 @@
 
     <br><br><br>
     
-    <button type="button" class="btn btn-default idFindBtn" onclick="idFind()">찾기</button>
+    <button type="button" class="btn idFindBtn" onclick="idFind()"><span>찾기</span></button>
   </form>
   
   

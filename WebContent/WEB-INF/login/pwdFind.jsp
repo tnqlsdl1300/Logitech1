@@ -10,6 +10,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <style>
+
+	body{
+		overflow: hidden;
+		background-color: #f5f5f5;
+	}
 	
 	.container{
 		width: 80%;
@@ -24,10 +29,49 @@
 		margin: 0 auto;
 	}
 	
+	button.pwdBtn{
+		height: 40px;
+		background-color: #47555e;
+		color: white;
+		font-weight: bold;
+		display: block;
+		width: 100%;
+		margin: 0 auto;
+	}
+	
+	.pwdBtn span {
+	  cursor: pointer;
+	  font-size: 13pt;
+	  display: inline-block;
+	  position: relative;
+	  transition: 0.5s;
+	}
+	
+	.pwdBtn span:after {
+	  content: '\00bb';
+	  position: absolute;
+	  opacity: 0;
+	  top: 0;
+	  right: -20px;
+	  transition: 0.5s;
+	  color: #f1c40f;
+	}
+	
+	.pwdBtn:hover span {
+	  padding-right: 25px;
+	  color: #f1c40f;
+	}
+	
+	.pwdBtn:hover span:after {
+	  opacity: 1;
+	  right: 0;
+	}
+	
 	div#titleText{
 		font-size: 20pt;
 		font-weight: bold;
 		text-align: center;
+		color: #3f5a75;
 	}
 	
 	label.error{
@@ -173,7 +217,7 @@
   	<div id="titleText">
  		<label>비밀번호 찾기</label>
  	</div>
-    <br><br>
+    <br>
   	<label>아이디</label>
     <input id="userid" type="text" class="form-control" name="userid" placeholder="아이디" >
     <br>
@@ -190,11 +234,11 @@
    		<label class="error" id="codeNotFindError">잘못된 인증번호입니다. 인증번호를 확인한 다음 다시 입력해주세요.</label>
 	</div>
 
-    <br><br>
+    <br>
     
-    <button type="button" id="pwdFindBtn" class="btn btn-default pwdBtn" onclick="goFindPwd()">찾기</button>
-    <button type="button" id="rePwdFindBtn" class="btn btn-default pwdBtn" onclick="goFindPwd()">인증번호 재전송</button>
-    <button type="button" id="pwdChangeBtn" class="btn btn-default pwdBtn" onclick="gotoChangeBtn()">비밀번호 변경</button>
+    <button type="button" id="pwdFindBtn" class="btn pwdBtn" onclick="goFindPwd()"><span>찾기</span></button>
+    <button type="button" id="rePwdFindBtn" class="btn pwdBtn" style="margin-bottom: 1%;" onclick="goFindPwd()"><span>인증번호 재전송</span></button>
+    <button type="button" id="pwdChangeBtn" class="btn pwdBtn" onclick="gotoChangeBtn()"><span>비밀번호 변경</span></button>
   </form>
   
   

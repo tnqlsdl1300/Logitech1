@@ -29,7 +29,7 @@
 	
 	div#searchRankingBox h3{
 		font-weight: bold;
-		color: #34495e;
+		color: #3f5a75;;
 	}
 	
 	div.input-group{

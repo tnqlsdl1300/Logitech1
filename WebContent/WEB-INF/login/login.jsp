@@ -211,7 +211,7 @@
         <li id="loginRegisterBtn" onclick="window.parent.goMemberRegister()">회원가입</li>
     </ul>
     <br><br><br><br>
-    <button type="button" class="btn  loginBtn" id="loginBtn"><span>로그인</span></button>
+    <button type="button" class="btn loginBtn" id="loginBtn"><span>로그인</span></button>
     <br>
 
   </form>

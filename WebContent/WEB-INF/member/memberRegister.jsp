@@ -10,12 +10,13 @@
 <style>
 	
 	div#registerWrap{
-
+		background-color: #f6f6f6;
 	}
 	
 	h2#h2_registerTitle{
 		font-weight: bold;
 		text-align: center;
+		color: #3f5a75;
 	}
 	
 	.emailText{
@@ -276,8 +277,8 @@
 		    </div>
 		    <div class="form-group">
 		      <input type="text" class="form-control requireInput" id="userid" placeholder="아이디" name="userid">
-		      <label class="errorText">띄어쓰기 없이 영문자+숫자 6~15글자 이하로 입력해주세요.</label>
-		      <button type="button" onclick="isExistUseridCheck()">아이디 중복확인</button>
+		      <label class="errorText">띄어쓰기 없이 6~15글자 이하로 입력해주세요.</label>
+		      <button type="button" class="btn btn-default" onclick="isExistUseridCheck()">아이디 중복확인</button>
 		    </div>
 		    <div class="form-group">
 		      <input type="password" class="form-control requireInput" id="pwd" placeholder="비밀번호" name="pwd">
@@ -295,7 +296,7 @@
 		    <div class="form-group">
 		      <input type="text" class="form-control requireInput" id="email" placeholder="이메일 주소" name="email">
 		      <label class="errorText">이메일 형식에 맞춰 입력해주세요.</label>
-		      <button type="button" onclick="isExistEmailCheck()">이메일 중복확인</button>
+		      <button type="button" class="btn btn-default" onclick="isExistEmailCheck()">이메일 중복확인</button>
 		    </div>
 		    <div class="form-group">
 		      <label id="birthText">생년월일</label>

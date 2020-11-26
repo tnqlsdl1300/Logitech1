@@ -10,7 +10,7 @@
 <style>
 	
 	div#agreeRegisterWrap{
-		
+		background-color: #f6f6f6;
 	}
 
 	.registerBtn{
@@ -56,7 +56,7 @@
 				$("label.errorText").show();
 				return false;
 			}
-
+			goRegister();
 		});
 		
 	});
@@ -102,7 +102,7 @@
 				
 	
 				<div id="btnWrapper">
-				    <button type="button" class="btn btn-default registerBtn" id="submitBtn" onclick="goRegister()">동의하고 회원가입</button>
+				    <button type="button" class="btn btn-default registerBtn" id="submitBtn">동의하고 회원가입</button>
 				    <button type="button" class="btn btn-default registerBtn" id="cancelBtn">처음으로</button>
 			    </div>
 			  </form>
