@@ -12,6 +12,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <style>
+
+	body{
+		overflow: hidden;
+		background-color: #f5f5f5;
+	}
 	
 	.container{
 		width: 100%;
@@ -19,11 +24,12 @@
 	}
 	
 	div#searchRankingBox{
-		padding-top: 30px;
+		padding-top: 1%;
 	}
 	
 	div#searchRankingBox h3{
 		font-weight: bold;
+		color: #34495e;
 	}
 	
 	div.input-group{
@@ -33,6 +39,26 @@
 	
 	div#searchRankingBox a{
 		cursor: pointer;
+	}
+	
+	a.ranking{
+		border: solid 1px #cfcfcf;
+		height: 40px;
+		background-color: #f5f5f5;
+		font-size: 11pt;
+	}
+	
+	a.ranking:hover{
+		background-color: #d4d4d4;
+		color: #34495e;
+		font-weight: bold;
+		font-size: 12pt;
+	}
+	
+	label.rankingNum{
+		font-weight: bold;
+		font-size: 13pt;
+		color: #34495e;
 	}
 	
 </style>
@@ -76,7 +102,7 @@
 </script>
 
   
-  <form>
+  <form style="overflow: hidden;">
   	
     <div class="container">
     	
@@ -96,7 +122,7 @@
     	
 	    	<div class="list-group">
 	    	  <c:forEach var="keywordVO" items="${ rankingList }" varStatus="status">
-	    	  	<a onclick="goRank('${ keywordVO.keyword }')" class="list-group-item">${status.count}&nbsp;&nbsp;${ keywordVO.keyword }</a>
+	    	  	<a onclick="goRank('${ keywordVO.keyword }')" class="list-group-item ranking"><label class="rankingNum">${status.count}</label>&nbsp;&nbsp;${ keywordVO.keyword }</a>
 	    	  </c:forEach>
 			</div>
 		</div>

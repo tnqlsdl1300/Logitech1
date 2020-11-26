@@ -16,14 +16,14 @@ create table productcategory
 
 select *
 from product
-where fk_category = 'headset' and character like '%가정용%' and character like '%복합수신기%';
+where lower(productid) like '%' || lower(?) || '%' or lower(productname) like '%' || lower(?) || '%' 
 --
 String sql = "select productid\n"+
 "from product\n"+
 "where fk_category = 'headset' and character like '%' || ? || '%' and character like '%' || ? || '%'";
 
-update product set character= '마우스,사무용,USB 수신기'
-where productid = 'MX ERGO' ;
+update product set character= replace(character,'게임용','게이밍')
+where productid = 'ZONE WIRED' ;
 commit;
 insert into productoption(productserialid, fk_productid, color, stock)
 values('H151 STEREO HEADSET_2', 'H151 STEREO HEADSET', 'blue', '0');
@@ -180,7 +180,7 @@ commit;
 
 --- KEYWORDSEARCH 테이블에 키워드 넣는 쿼리
 insert into KEYWORDSEARCH(KEYWORD, SEARCHCNT)
-values('복합수신기', 0);
+values('키보드', 0);
 
 무선
 유선

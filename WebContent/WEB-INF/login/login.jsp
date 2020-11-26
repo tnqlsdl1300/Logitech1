@@ -11,6 +11,11 @@
 
 <style>
 	
+	body{
+		overflow: hidden;
+		background-color: #f5f5f5;
+	}
+	
 	.container{
 		width: 80%;
 		margin: 0 auto;
@@ -21,10 +26,43 @@
 		list-style-type: none;
 	}
 	
-	.loginBtn{
+
+	button.loginBtn{
+		height: 45px;
+		background-color: #47555e;
+		color: white;
+		font-weight: bold;
 		display: block;
 		width: 100%;
 		margin: 0 auto;
+	}
+	
+	.loginBtn span {
+	  cursor: pointer;
+	  font-size: 13pt;
+	  display: inline-block;
+	  position: relative;
+	  transition: 0.5s;
+	}
+	
+	.loginBtn span:after {
+	  content: '\00bb';
+	  position: absolute;
+	  opacity: 0;
+	  top: 0;
+	  right: -20px;
+	  transition: 0.5s;
+	  color: #f1c40f;
+	}
+	
+	.loginBtn:hover span {
+	  padding-right: 25px;
+	  color: #f1c40f;
+	}
+	
+	.loginBtn:hover span:after {
+	  opacity: 1;
+	  right: 0;
 	}
 	
 	
@@ -34,8 +72,13 @@
 	}
 	
 	#accountFind li{
+		color: #47555e;
 		display: inline-block;
 		padding-right: 50px;
+	}
+	#accountFind li a{
+		color: #47555e;
+		text-decoration: none;
 	}
 	
 	#accountFind li:last-child {
@@ -43,10 +86,11 @@
 	}
 
 	h4#loginTitle{
-		font-size: 20pt;
+		font-size: 30pt;
 		font-weight: bold;
 		text-align: center;
 		padding: 20px 0;
+		color: #3f5a75;
 	}
 	
 	li#loginRegisterBtn{
@@ -81,11 +125,7 @@
 				goLogin();
 			}	
 		});
-		
-		$("#loginTitle").click(function() {
-			window.parent.goMemberRegister();
-		});
-		
+
 	});	
 	
 	
@@ -151,7 +191,7 @@
   
   <form name="loginFrm">
   
-	<h4 id="loginTitle">로그인</h4>
+	<h4 id="loginTitle">SquadG</h4>
 
     <div class="input-group">
       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -171,13 +211,9 @@
         <li id="loginRegisterBtn" onclick="window.parent.goMemberRegister()">회원가입</li>
     </ul>
     <br><br><br><br>
-    <button type="button" class="btn btn-default loginBtn" id="loginBtn" style="height: 45px;">로그인</button>
+    <button type="button" class="btn  loginBtn" id="loginBtn"><span>로그인</span></button>
     <br>
-    
-    <%--
-    <button type="button" class="btn btn-default loginBtn">카카오 로그인</button>
-    <button type="button" class="btn btn-default loginBtn">네이버 로그인</button>
-     --%>
+
   </form>
   
   

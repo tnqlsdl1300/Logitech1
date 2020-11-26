@@ -71,6 +71,20 @@
 		background-color: #222222;
 	}
 	
+	div.modal-content{
+		background-color: #f5f5f5;
+	}
+	
+	div.modal-body{
+		border-top: dashed 3px #34495e;
+	}
+	
+	h4.modal-title{
+		font-size: 15pt;
+		font-weight: bold;
+		color: #34495e;
+	}
+	
 
 .label-container{
 	position:fixed;
@@ -238,6 +252,16 @@ a#menu-share:hover > i{
 			location.href = "<%= request.getContextPath() %>/history.sg?history=" + history; 
 		}
 		
+		function goMypage() {
+			
+			if (${ sessionScope.loginuser != null }) {
+				location.href="<%= request.getContextPath() %>/mypage/main.sg";
+			}else{
+				alert("로그인 시 이용가능한 컨텐츠입니다.");
+			}
+			
+		}
+		
 		
 	</script>
 	<div class="totalWrap" id="navWrap">
@@ -314,7 +338,7 @@ a#menu-share:hover > i{
       <div class="modal-body">
         <div id="login">
         <%-- 임시 모달 꼭 변경 --%>
-             <iframe style="border: none; width: 100%; height: 500px;" src="<%= request.getContextPath() %>/member/login.sg">
+             <iframe style="border: none; width: 100%; height: 470px;" src="<%= request.getContextPath() %>/member/login.sg">
              </iframe>
         </div>
       </div>
@@ -335,7 +359,7 @@ a#menu-share:hover > i{
       </div>
       <div class="modal-body">
         <div id="register">
-             <iframe style="border: none; width: 100%; height: 500px;" src="<%= request.getContextPath() %>/product/searchModal.sg">
+             <iframe style="border: none; width: 100%; height: 500px; overflow: hidden;" src="<%= request.getContextPath() %>/product/searchModal.sg">
              </iframe>
         </div>
       </div>
@@ -351,6 +375,6 @@ a#menu-share:hover > i{
 <ul class="floatingBtnBox">
 	<li style="cursor: pointer;"><a onclick="goHistory()" class="floatingBtn"> <i class="fa fa-history my-float"></i>
 	</a></li>
-	<li><a href="<%= request.getContextPath() %>/mypage/main.sg" class="floatingBtn"> <i class="fa fa-user my-float"></i>
+	<li><a style="cursor: pointer;" class="floatingBtn" onclick="goMypage()"> <i class="fa fa-user my-float"></i>
 	</a></li>
 </ul>
