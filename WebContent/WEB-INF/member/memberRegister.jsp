@@ -19,6 +19,10 @@
 		color: #3f5a75;
 	}
 	
+	div.innerContainer{
+		padding: 5% 0;
+	}
+	
 	.emailText{
 		list-style-type: none;
 	}
@@ -89,6 +93,12 @@
 	// 아이디 중복검사 버튼
 	function isExistUseridCheck() {
 
+		
+		if ($("input#userid").val() == "") {
+			alert("아이디를 입력해주세요.");
+			return false;
+		}
+		
 		// 버튼을 눌렀을 때 ajax(비동기)를 통해 data를 url 페이지로 post방식으로 보내준다
   		 $.ajax({
   			url:"<%= ctxPath %>/member/useridDuplicateCheck.sg",	// 보낼 주소
@@ -99,14 +109,14 @@
   				if(json.isExists){	// 객체명.key값 == value값
   					// 입력한 userid가 이미 사용중 이라면
   					//$("span#idcheckResult").html($("input#userid").val() + "은 사용불가능한 아이디입니다").css({"color":"red"});
-  					alert("사용불가능 아이디");
+  					alert("사용이 불가능한 아이디 입니다.");
   					$("input#userid").val("");
   					$("input#userid").focus();
   					useridFlag = false;
   				}else{
   					// 입력한 userid 가 DB 테이블에 존재하지 않는 경우라면
   					//$("span#idcheckResult").html("사용가능한 아이디입니다.").css({"color":"navy"});
-  					alert("사용가능 아이디");
+  					alert("사용이 가능한 아이디입니다.");
   					useridFlag = true;
   				}
   			},
@@ -118,6 +128,11 @@
 	
 	// 이메일 중복검사 버튼
 	function isExistEmailCheck() {
+		
+		if ($("input#email").val() == "") {
+			alert("이메일을 입력해주세요.");
+			return false;
+		}
 
 		// 버튼을 눌렀을 때 ajax(비동기)를 통해 data를 url 페이지로 post방식으로 보내준다
   		 $.ajax({
@@ -129,14 +144,14 @@
   				if(json.isExists){	// 객체명.key값 == value값
   					// 입력한 userid가 이미 사용중 이라면
   					//$("span#idcheckResult").html($("input#userid").val() + "은 사용불가능한 아이디입니다").css({"color":"red"});
-  					alert("사용불가능 이메일");
+  					alert("사용이 불가능한 이메일 입니다.");
   					$("input#email").val("");
   					$("input#email").focus();
   					emailFlag = false;
   				}else{
   					// 입력한 userid 가 DB 테이블에 존재하지 않는 경우라면
   					//$("span#idcheckResult").html("사용가능한 아이디입니다.").css({"color":"navy"});
-  					alert("사용가능 이메일");
+  					alert("사용이 가능한 이메일 입니다.");
   					emailFlag = true;
   				}
   			},
