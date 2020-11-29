@@ -10,8 +10,11 @@
 
 <style>
 	
+	body{
+		background-color: #f6f6f6;
+	}
+	
 	div#searchResultWrap{
-		background-color: #ffffff;	
 		min-height: 1000px;
 		height: auto;
 	}
@@ -22,13 +25,13 @@
 	}
 	
 	h1#searchResultTitle{
+		color: #34495e;
 		font-weight: bold;
 		padding: 1% 0;
 	}
 	
-	select#searchResultOrderBy{
-		float: right;
-		
+	span#historyCnt{
+		color: #887575;
 	}
 	
 	div#resultItemContainer{
@@ -62,7 +65,7 @@
 		border: solid 0px red;
 		padding: 0;
 		width: 100%;
-		height: 100%;
+		height: 110%;
 	}
 	
 </style>
@@ -85,19 +88,19 @@
 	<div id="wrap">
 		<div class="innerContainer" id="searchResultContainer">
 		
-			<h1 id="searchResultTitle">최근 본 상품(${ pvoList.size() })건</h1>
-			<hr style="border-top: 4px dashed black;">
+			<h1 id="searchResultTitle">최근 본 상품(<span id="historyCnt">${ pvoList.size() }</span>)건</h1>
+			<hr style="border-top: 4px dashed #34495e;">
 			
 			<div id="resultItemContainer">
 			<%-- 물품 넣을 때 주소에 get방식으로 productid를 붙여서 보내주면 됨 --%>
 			  <div class="row">
-
+			
 				<%-- 검색한 결과가 있을 때 --%>
 			  	<c:if test="${ pvoList.size() != 0 }">
 			  		<c:forEach var="pvo" items="${ pvoList }">
 				  		<div class="col-sm-3 eachItem" onclick="gotoDetail('${ pvo.productid }')">
 					    	<div class="eachItemImg">
-					    		<img src="${ pvo.imgfilename }">
+					    		<img style="background-color: #ecebe9;" src="${ pvo.imgfilename }">
 					    	</div>				    	
 					    	<p class="productId">${ pvo.productid }</p>
 					    	<p class="productName">${ pvo.productname }</p>

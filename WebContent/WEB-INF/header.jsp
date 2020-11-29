@@ -301,7 +301,7 @@ a#menu-share:hover > i{
 		<div id="wrap">
 			<header id="page_header">
 				<div id="logo">
-					<a href="<%= request.getContextPath() %>/index.sg"><img alt="daum" src="<%=ctxPath%>/images/logitech_logo.png" width="170px"></a>
+					<a href="<%= request.getContextPath() %>/index.sg"><img src="<%=ctxPath%>/images/squadgLogo.png" width="200px"></a>
 				</div>
 
 				<ul id="menu">

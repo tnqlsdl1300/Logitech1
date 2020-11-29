@@ -66,8 +66,8 @@
 	
 	#titleSemiText{
 		border-bottom: 2px solid black;
-		font-size: 20pt;
-		font-style: italic;
+		font-size: 19pt;
+		
 	}
 	
 	input[type="text"]:disabled{

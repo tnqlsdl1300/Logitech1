@@ -36,14 +36,16 @@
 		border: solid 0px black;
 		float: left;
 		display: inline-block;
-		margin-top: 2.5%;
+		margin-top: 1%;
+		margin-bottom: -1%;
+		margin-left: 1%;
 	}
 	
 	ul#menu{
 		border: solid 0px red;
 		list-style-type: none;
 		margin-top: 40px;
-		margin-left: 12%;
+		margin-left: 8%;
 		float: left;
 	}
 	
