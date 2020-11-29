@@ -7,6 +7,7 @@ import javax.sql.*;
 
 import member.model.PointVO;
 import myshop.model.*;
+import product.model.ProductVO;
 
 
 
@@ -1066,6 +1067,54 @@ WHERE a.sal >= 2000
 				pvoList.add(pvo);
 				
 				cnt++;
+			}// end of while -----------------------------
+
+		}finally {
+			close();
+		}
+		
+		return pvoList;
+		
+	}
+	
+	// 전체 물품의 판매순 정렬 보여주는 메서드
+	@Override
+	public List<ProductVO> searchAllBestProductSale() throws SQLException {
+		
+		List<ProductVO> pvoList = new ArrayList<>();
+
+		try {
+			
+			conn = ds.getConnection();
+			
+			String sql = "select productid, productname, fk_category, character, price, imgfilename, nvl(volume, 0) as volume\n"+
+					"from\n"+
+					"(\n"+
+					"    select fk_productid,  sum(volume) as volume\n"+
+					"    from PURCHASEdetail\n"+
+					"    group by fk_productid\n"+
+					") C\n"+
+					"right join product P\n"+
+					"on C.fk_productid = P.productid\n"+
+					"order by volume desc";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+
+			while(rs.next()){
+				ProductVO pvo = new ProductVO();
+				
+				pvo.setProductid(rs.getString(1));
+				pvo.setProductname(rs.getString(2));
+				pvo.setFk_category(rs.getString(3));
+				pvo.setCharacter(rs.getString(4));
+				pvo.setPrice(rs.getInt(5));		
+				pvo.setImgfilename(rs.getString(6));
+				pvo.setSale(rs.getInt(7));
+				
+				pvoList.add(pvo);
+
 			}// end of while -----------------------------
 
 		}finally {

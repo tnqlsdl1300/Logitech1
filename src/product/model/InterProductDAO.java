@@ -77,6 +77,9 @@ public interface InterProductDAO {
 	// 판매순으로 정렬한 각 3개씩의 물품 데이터 DB에서 불러오는 메서드
 	public List<ProductVO> selectBest3Items() throws SQLException;
 	
+	// 전체 물품의 판매순 정렬 보여주는 메서드
+	public List<ProductVO> searchAllBestProductSale() throws SQLException;
+	
 	//////////////////////////////////////////////////////////////////////////박수빈:끝/////
 
 	
@@ -128,6 +131,7 @@ public interface InterProductDAO {
 
 	   // 해당 유저의 전체 포인트 가져오기
 	   String selectSumPoint(int usernum) throws SQLException;
+
 
 	//////////////////////////////////////////////////////////////////////////최은지:끝/////
 

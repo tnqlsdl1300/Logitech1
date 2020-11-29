@@ -270,9 +270,9 @@ a#menu-share:hover > i{
 			<nav class="navbar navbar-inverse">
 				<div class="container-fluid">
 					<ul class="nav navbar-nav navbar-left">
-						<li><a href="#"><span class="navText">제휴1</span></a></li>
-						<li><a href="#"><span class="navText">제휴2</span></a></li>
-						<li><a href="#"><span class="navText">제휴3</span></a></li>
+						<li><a href="https://www.logitechg.com/ko-kr" target="_blank"><span class="navText">LogitechG</span></a></li>
+						<li><a href="https://www.jaybirdsport.com/ko-kr" target="_blank"><span class="navText">jaybird</span></a></li>
+						<li><a href="https://www.bluemic.com/ko-kr/" target="_blank"><span class="navText">Blue</span></a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<c:if test="${ sessionScope.loginuser != null }">

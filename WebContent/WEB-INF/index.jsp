@@ -53,10 +53,11 @@
 		font-size: 33pt;
 	}
 	
-	h2.categoryTitle{
+	label.categoryTitle{
 		border: solid 0px red;
 		color: #3c414b;
-		font-size: 33pt;
+		font-size: 32pt;
+		cursor: pointer;
 	}
 	
 	div.categoryTitleBox{
@@ -176,6 +177,16 @@
 		location.href="<%= request.getContextPath() %>/product/findLikeItem.sg"
 	}
 	
+	// 베스트3 카테고리 메뉴 클릭 시 해당 카테고리 페이지로 이동
+	function goDetail(category) {
+		location.href = "<%= request.getContextPath() %>/product/" + category + ".sg";
+	}
+	
+	// 전체 베스트3 항목의 더보기 버튼 클릭 시 전체 판매순 검색페이지로 이동
+	function goBestAll() {
+		location.href = "<%= request.getContextPath() %>/product/searchResult.sg?all=all";
+	}
+	
 	
 	
 </script>
@@ -257,27 +268,30 @@
 			
 			<div class="row" id="indexBestItemBox">
 			
-			<div class="bestItemBox"> 
-			  	<div class="bestItemTitle">
-			  		<h1>Best 3 Items</h1>
-			  		<hr style="border: solid 1px #464d5c; width: 25%;">
-			  	</div>
-		 		<c:forEach var="pvo" items="${ best3ItemList }" varStatus="status">
-		 			<div class="col-md-4 eachItemBox">
-			     		<div class="indexBestItem" onclick="gotoDetail('${ pvo.productid }')">
-			     			<div class="rankText">${ status.count }위</div>
-					    	<div class="eachItemImg">
-					    		<img src="${ pvo.imgfilename }"  class="img-thumbnail" style="background-color: #ecebe9;" alt="Image">
-					    	</div>	
-					    	<div class="indexBestItemText">			    	
-						    	<p class="productId">${ pvo.productid }</p>
-						    	<p class="productName">${ pvo.productname }</p>
-						    	<p class="productPrice"><fmt:formatNumber value="${ pvo.price }" pattern="###,###" />원</p>
-					    	</div>
-					    </div>
-		     		</div>
-		 		</c:forEach>
-		    </div>
+				<div class="bestItemBox"> 
+				  	<div class="bestItemTitle">
+				  		<h1>Best 3 Items</h1>
+				  		<hr style="border: solid 1px #464d5c; width: 25%;">
+				  	</div>
+			 		<c:forEach var="pvo" items="${ best3ItemList }" varStatus="status">
+			 			<div class="col-md-4 eachItemBox">
+				     		<div class="indexBestItem" onclick="gotoDetail('${ pvo.productid }')">
+				     			<div class="rankText">${ status.count }위</div>
+						    	<div class="eachItemImg">
+						    		<img src="${ pvo.imgfilename }"  class="img-thumbnail" style="background-color: #ecebe9;" alt="Image">
+						    	</div>	
+						    	<div class="indexBestItemText">			    	
+							    	<p class="productId">${ pvo.productid }</p>
+							    	<p class="productName">${ pvo.productname }</p>
+							    	<p class="productPrice"><fmt:formatNumber value="${ pvo.price }" pattern="###,###" />원</p>
+						    	</div>
+						    </div>
+			     		</div>
+			 		</c:forEach>
+			 		<div style="text-align: right; padding-right: 3.5%; margin-top: -3%;">
+			 			<label style="color: #464d5c; cursor: pointer;" onclick="goBestAll()">더보기</label>
+			 		</div>
+			    </div>
 			
 			</div>
 			
@@ -302,7 +316,7 @@
 	    
 	  	<div class="bestItemBox"> 
 		  	<div class="categoryTitleBox">
-				<h2 class="categoryTitle">Mouse</h2>
+				<label class="categoryTitle" onclick="goDetail('mouse')">Mouse</label>
 				<hr style="border: dashed 1px #464d5c; margin-top: -0.5%; width: 13%;">
 			</div>
 	 		<c:forEach var="mousevo" items="${ mouseList }" varStatus="status">
@@ -320,13 +334,17 @@
 				    </div>
 	     		</div>
 	 		</c:forEach>
+	 		<!-- 레이아웃이 틀어져서 문제를 해결하기 위한 데이터..ㅠ -->
+	 		<div style="text-align: right; padding-right: 4%; padding-top: -2000px;">
+	 			<label style="padding-top: -20%; color: #ecebe9;">.</label>
+	 		</div>
 	   </div>
 	   
 	   
 	   
 	   <div class="bestItemBox"> 
 		  	<div class="categoryTitleBox">
-				<h2 class="categoryTitle">Speaker</h2>
+				<label class="categoryTitle" onclick="goDetail('speaker')">Speaker</label>
 				<hr style="border: dashed 1px #464d5c; margin-top: -0.5%; width: 15%;">
 			</div>
 	 		<c:forEach var="speakervo" items="${ speakerList }" varStatus="status">
@@ -344,11 +362,14 @@
 				    </div>
 	     		</div>
 	 		</c:forEach>
+	 		<div style="text-align: right; padding-right: 4%; padding-top: -2000px;">
+	 			<label style="padding-top: -20%; color: #ecebe9;">.</label>
+	 		</div>
 	   </div>
 	   
 	   <div class="bestItemBox"> 
 		  	<div class="categoryTitleBox">
-				<h2 class="categoryTitle">Headset</h2>
+				<label class="categoryTitle" onclick="goDetail('headset')">Headset</label>
 				<hr style="border: dashed 1px #464d5c; margin-top: -0.5%; width: 15%;">
 			</div>
 	 		<c:forEach var="headsetvo" items="${ headsetList }" varStatus="status">
@@ -366,13 +387,16 @@
 				    </div>
 	     		</div>
 	 		</c:forEach>
+	 		<div style="text-align: right; padding-right: 4%; padding-top: -2000px;">
+	 			<label style="padding-top: -20%; color: #ecebe9;">.</label>
+	 		</div>
 	   </div>
 	   
 	   <%-- 키보드 --%>
 	   <div class="bestItemBox"> 
 		  	<div class="categoryTitleBox">
-				<h2 class="categoryTitle">Keyboard</h2>
-				<hr style="border: dashed 1px #464d5c; margin-top: -0.5%; width: 15%;">
+				<label class="categoryTitle" onclick="goDetail('keyboard')">Keyboard</label>
+				<hr style="border: dashed 1px #464d5c; margin-top: -0.5%; width: 18%;">
 			</div>
 	 		<c:forEach var="keyboardvo" items="${ keyboardList }" varStatus="status">
 	 			<div class="col-md-4 eachItemBox">
@@ -389,6 +413,9 @@
 				    </div>
 	     		</div>
 	 		</c:forEach>
+	 		<div style="text-align: right; padding-right: 4%; padding-top: -2000px;">
+	 			<label style="padding-top: -20%; color: #ecebe9;">.</label>
+	 		</div>
 	   </div>
 	   
 	   

@@ -11,7 +11,7 @@
 <style>
 	
 	div#searchResultWrap{
-		background-color: #ffffff;	
+		background-color: #f5f5f5;	
 		min-height: 1000px;
 		height: auto;
 	}
@@ -21,7 +21,7 @@
 		padding: 3% 0;
 	}
 	
-	h1#searchResultTitle{
+	h1.searchResultTitle{
 		color: #34495e;
 		font-weight: bold;
 		padding: 1% 0;
@@ -48,13 +48,13 @@
 	
 	div#resultItemContainer div.eachItem{
 		cursor: pointer;
-		margin-bottom: 3%;
+		margin-bottom: 5%;
 	}
 	
 	div#resultItemContainer .eachItemImg{
 		text-align: center;
 		border: solid 0px red;
-		background-color: #f4f4f4;
+		background-color: #ecebe9;
 		padding: 0 0;
 		width: 250px;
 		height: 250px;
@@ -127,18 +127,26 @@
 	<div id="wrap">
 		<div class="innerContainer" id="searchResultContainer">
 		
-			<h1 id="searchResultTitle">"${ keyword }" 검색결과</h1>
+			<c:if test="${ all != 'all' }">
+				<h1 class="searchResultTitle">"${ keyword }" 검색결과</h1>
+			</c:if>
+			
+			<c:if test="${ all == 'all' }">
+				<h1 class="searchResultTitle">Best Items</h1>
+			</c:if>
+			
 			<hr style="border-top: 4px dashed #34495e;">
 			
-			<select class="form-control" id="searchResultOrderBy" style="width: 120px;">
-		      <option value="" selected disabled hidden="hidden">정렬</option>
-		      <%-- 여기 option의 value는 나중에 DB 컬럼과 일치하게 해야함 --%>
-		      <option value="highPrice">가격높은순</option>
-		      <option value="lowPrice">가격낮은순</option>
-		      <option value="favorite">인기순</option>
-		      <option value="sale">판매순</option>
-		    </select>
-			
+			<c:if test="${ all != 'all' }">
+				<select class="form-control" id="searchResultOrderBy" style="width: 120px;">
+			      <option value="" selected disabled hidden="hidden">정렬</option>
+			      <%-- 여기 option의 value는 나중에 DB 컬럼과 일치하게 해야함 --%>
+			      <option value="highPrice">가격높은순</option>
+			      <option value="lowPrice">가격낮은순</option>
+			      <option value="favorite">인기순</option>
+			      <option value="sale">판매순</option>
+			    </select>
+			</c:if>
 			
 			<div id="resultItemContainer">
 			<%-- 물품 넣을 때 주소에 get방식으로 productid를 붙여서 보내주면 됨 --%>

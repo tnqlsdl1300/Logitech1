@@ -4,10 +4,15 @@ from joinevent;
 select *
 from tab;
 SELECT * FROM keywordsearch;
-select * from product;
+select * from event;
 select * from productoption;
 select * from PURCHASEdetail;
 desc PURCHASEdetail;
+
+select seq_event, eventname, fk_productid, to_char(stARTDAY, 'YYYY.MM.DD') as startday, to_char(ENDDAY, 'YYYY.MM.DD') as endday, carouselimg
+from event
+WHERE trunc(sysdate) BETWEEN TO_DATE(STARTDAY, 'YY/MM/DD') AND
+                                TO_DATE(ENDDAY, 'YY/MM/DD');
 
 create table productcategory
 (category   varchar2(10) not null

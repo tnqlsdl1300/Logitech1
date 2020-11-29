@@ -41,8 +41,6 @@ public class IndexController extends AbstractController {
 		List<ProductVO> speakerList = pdao.selectBestCategoryOrder("speaker");
 		///// 끝: 카테고리별 판매순으로 정렬한 각 3개씩의 물품 데이터 DB에서 불러오기
 		
-		// DB에 mouse와 speaker 값만 있고 그 외 나머지는 값이 없음
-		
 		request.setAttribute("best3ItemList", best3ItemList);
 		
 		request.setAttribute("mouseList", mouseList);
