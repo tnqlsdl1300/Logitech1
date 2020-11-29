@@ -29,7 +29,8 @@
 		text-align: left;
 	}
 	
-	h1#likeItemTitle{
+	h2.qnaText{
+		color: #34495e;
 		font-weight: bold;
 		padding: 1% 0;
 	}
@@ -64,7 +65,7 @@
 	
 	a.choiceBtn{
 		border: solid 1px gray;
-		background-color: #919191;
+		background-color: #47555e;
 		color: white;
 		border-radius: 12px;
 		font-size: 15px;
@@ -88,10 +89,12 @@
 	  top: 0;
 	  right: -20px;
 	  transition: 0.5s;
+	  color: #f1c40f;
 	}
 	
 	.choiceBtn:hover span {
 	  padding-right: 25px;
+	  color: #f1c40f;
 	}
 	
 	.choiceBtn:hover span:after {
@@ -136,15 +139,15 @@
 			
 			<div id="qnaBox">
 				<c:if test="${ sessionScope.loginuser == null }">
-					<h2 id="qna1" class="qnaText">고객님의 검색결과는!!</h2>
+					<h2 id="qna1" class="qnaText">고객님의 검색결과는..</h2>
 				</c:if>
 				<c:if test="${ sessionScope.loginuser != null }">
-					<h2 id="qna1" class="qnaText">"${ sessionScope.loginuser.name }"님의 검색결과는!!</h2>
+					<h2 id="qna1" class="qnaText">"${ sessionScope.loginuser.name }"님의 검색결과는..</h2>
 				</c:if>
 			</div>
 			
 			
-			<hr style="border-top: 4px dashed black;">
+			<hr style="border-top: 4px dashed #34495e;">
 			
 			<c:if test="${ pvo == null }">
 				<div id="likeItemChoice" class="likeItemChoice" style="display: block;">
@@ -171,8 +174,8 @@
 					    <div class="media-body contentText">
 					      <h1 class="media-heading" style="font-weight: bold;">${ pvo.productid }</h1>
 					      <br>
-					      <h2 class="media-heading">${ pvo.productname }</h2>
-					      <hr style="border: solid 1px gray">
+					      <h2 class="media-heading" style="font-size: 20pt;">${ pvo.productname }</h2>
+					      <hr style="border: solid 1px #34495e">
 					      <br>
 					      <p>카테고리: ${ pvo.fk_category }</p>
 					      <p>특징: ${ pvo.character }</p>

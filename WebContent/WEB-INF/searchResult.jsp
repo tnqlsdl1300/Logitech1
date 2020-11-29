@@ -22,6 +22,7 @@
 	}
 	
 	h1#searchResultTitle{
+		color: #34495e;
 		font-weight: bold;
 		padding: 1% 0;
 	}
@@ -47,13 +48,14 @@
 	
 	div#resultItemContainer div.eachItem{
 		cursor: pointer;
+		margin-bottom: 3%;
 	}
 	
 	div#resultItemContainer .eachItemImg{
 		text-align: center;
 		border: solid 0px red;
 		background-color: #f4f4f4;
-		padding: 10% 0;
+		padding: 0 0;
 		width: 250px;
 		height: 250px;
 	}
@@ -61,8 +63,38 @@
 	div#resultItemContainer div.eachItem img{
 		border: solid 0px red;
 		padding: 0;
-		width: 100%;
-		height: 100%;
+		margin-top: 3%;
+		width: 90%;
+		height: 90%;
+	}
+	
+	p.productId{
+		border: solid 0px red;
+		margin-top: 1%;
+		font-weight: bold;
+		font-size: 16pt;
+	}
+	
+	p.productName{
+		font-style: italic;
+		padding:0;
+		margin: 0;
+		padding-bottom: 1%;
+		font-size: 11pt;
+	}
+	
+	p.productPrice{
+		font-weight: bold;
+	}
+	
+	div#noResultItemContainer{
+		text-align: center;
+		padding-top: 15%;
+	}
+	
+	div#noResultItemContainer span{
+		font-size: 20pt;
+		font-weight: bold;
 	}
 	
 </style>
@@ -96,7 +128,7 @@
 		<div class="innerContainer" id="searchResultContainer">
 		
 			<h1 id="searchResultTitle">"${ keyword }" 검색결과</h1>
-			<hr style="border-top: 4px dashed black;">
+			<hr style="border-top: 4px dashed #34495e;">
 			
 			<select class="form-control" id="searchResultOrderBy" style="width: 120px;">
 		      <option value="" selected disabled hidden="hidden">정렬</option>

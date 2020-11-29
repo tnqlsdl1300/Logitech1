@@ -322,7 +322,7 @@
 	 		</c:forEach>
 	   </div>
 	   
-	   <%-- 키보드 --%>
+	   
 	   
 	   <div class="bestItemBox"> 
 		  	<div class="categoryTitleBox">
@@ -368,7 +368,29 @@
 	 		</c:forEach>
 	   </div>
 	   
-	   <%-- DB에 데이터를 모두 넣은 뒤 헤드셋, 키보드 까지 넣으면 됨 --%>
+	   <%-- 키보드 --%>
+	   <div class="bestItemBox"> 
+		  	<div class="categoryTitleBox">
+				<h2 class="categoryTitle">Keyboard</h2>
+				<hr style="border: dashed 1px #464d5c; margin-top: -0.5%; width: 15%;">
+			</div>
+	 		<c:forEach var="keyboardvo" items="${ keyboardList }" varStatus="status">
+	 			<div class="col-md-4 eachItemBox">
+		     		<div class="indexBestItem" onclick="gotoDetail('${ keyboardvo.productid }')">
+		     			<div class="rankText">${ status.count }위</div>
+				    	<div class="eachItemImg">
+				    		<img src="${ keyboardvo.imgfilename }"  class="img-thumbnail" alt="Image">
+				    	</div>	
+				    	<div class="indexBestItemText">			    	
+					    	<p class="productId">${ keyboardvo.productid }</p>
+					    	<p class="productName">${ keyboardvo.productname }</p>
+					    	<p class="productPrice"><fmt:formatNumber value="${ keyboardvo.price }" pattern="###,###" />원</p>
+				    	</div>
+				    </div>
+	     		</div>
+	 		</c:forEach>
+	   </div>
+	   
 	   
 	</div>
 

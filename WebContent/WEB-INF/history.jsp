@@ -39,17 +39,15 @@
 		padding: 3% 0;
 	}
 	
-	div#searchResultContainer select{
-		width: 10%;
-	}
-	
 	div#resultItemContainer .row{
 		margin: 0 auto;
 		padding-bottom: 2%;
 	}
 	
 	div#resultItemContainer div.eachItem{
+		border: solid 0px red;
 		cursor: pointer;
+		margin-bottom: 3%;
 	}
 	
 	div#resultItemContainer .eachItemImg{
@@ -65,7 +63,36 @@
 		border: solid 0px red;
 		padding: 0;
 		width: 100%;
-		height: 110%;
+		height: 130%;
+	}
+	
+	p.productId{
+		border: solid 0px red;
+		margin-top: 15%;
+		font-weight: bold;
+		font-size: 16pt;
+	}
+	
+	p.productName{
+		font-style: italic;
+		padding:0;
+		margin: 0;
+		padding-bottom: 1%;
+		font-size: 11pt;
+	}
+	
+	p.productPrice{
+		font-weight: bold;
+	}
+	
+	div#noResultItemContainer{
+		text-align: center;
+		padding-top: 15%;
+	}
+	
+	div#noResultItemContainer span{
+		font-size: 20pt;
+		font-weight: bold;
 	}
 	
 </style>
@@ -106,7 +133,6 @@
 					    	<p class="productName">${ pvo.productname }</p>
 					    	<p class="productPrice"><fmt:formatNumber value="${pvo.price}" pattern="###,###" />원</p>
 					    </div>
-				  		
 				  	</c:forEach>
 			  	</c:if>
 			  	

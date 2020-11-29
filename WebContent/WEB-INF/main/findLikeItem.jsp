@@ -29,16 +29,16 @@
 		text-align: left;
 	}
 	
-	h1#likeItemTitle{
+	h2.qnaText{
 		font-weight: bold;
-		padding: 1% 0;
+		color: #34495e;
 	}
 
 	
 	button.choiceBtn{
 		width: 270px;
 		height: 120px;
-		background-color: #919191;
+		background-color: #47555e;
 		color: white;
 		border-radius: 12px;
 		font-size: 20pt;
@@ -62,10 +62,12 @@
 	  top: 0;
 	  right: -20px;
 	  transition: 0.5s;
+	  color: #f1c40f;
 	}
 	
 	.choiceBtn:hover span {
 	  padding-right: 25px;
+	  color: #f1c40f;
 	}
 	
 	.choiceBtn:hover span:after {
@@ -165,42 +167,44 @@
 			</div>
 			
 			
-			<hr style="border-top: 4px dashed black;">
+			<hr style="border-top: 4px dashed #34495e;">
 			
+			<div class="well" style="text-align: center; padding: 10%; width: 100%">
 			
-			<div id="Choice1" class="likeItemChoice">
-				<div>
-					<button type="button" class="btn btn-default choiceBtn" onclick="goChoice('ch1', 'mouse')"><span>마우스</span></button>
-					<button type="button" class="btn btn-default choiceBtn" value="keyboard" onclick="goChoice('ch1', 'keyboard')"><span>키보드</span></button>
+				<div id="Choice1" class="likeItemChoice">
+					<div>
+						<button type="button" class="btn choiceBtn" onclick="goChoice('ch1', 'mouse')"><span>마우스</span></button>
+						<button type="button" class="btn choiceBtn" value="keyboard" onclick="goChoice('ch1', 'keyboard')"><span>키보드</span></button>
+					</div>
+					<div>
+						<button type="button" class="btn choiceBtn" value="speaker" onclick="goChoice('ch1', 'speaker')"><span>스피커</span></button>
+						<button type="button" class="btn choiceBtn" value="headset" onclick="goChoice('ch1', 'headset')"><span>헤드셋</span></button>
+					</div>
 				</div>
-				<div>
-					<button type="button" class="btn btn-default choiceBtn" value="speaker" onclick="goChoice('ch1', 'speaker')"><span>스피커</span></button>
-					<button type="button" class="btn btn-default choiceBtn" value="headset" onclick="goChoice('ch1', 'headset')"><span>헤드셋</span></button>
+				
+				<div id="Choice2" class="likeItemChoice">
+					<div>
+						<button type="button" class="btn choiceBtn" onclick="goChoice('ch2', '사무용')"><span>사무용</span></button>
+						<button type="button" class="btn choiceBtn" value="keyboard" onclick="goChoice('ch2', '가정용')"><span>가정용</span></button>
+					</div>
+					<div>
+						<button type="button" class="btn choiceBtn" value="speaker" onclick="goChoice('ch2', '게이밍')"><span>게이밍</span></button>
+						<button type="button" class="btn choiceBtn" value="headset" onclick="goChoice('ch2', '교육용')"><span>교육용</span></button>
+					</div>
 				</div>
-			</div>
-			
-			<div id="Choice2" class="likeItemChoice">
-				<div>
-					<button type="button" class="btn btn-default choiceBtn" onclick="goChoice('ch2', '사무용')"><span>사무용</span></button>
-					<button type="button" class="btn btn-default choiceBtn" value="keyboard" onclick="goChoice('ch2', '가정용')"><span>가정용</span></button>
+				
+				<div id="Choice3" class="likeItemChoice">
+					<div>
+						<button type="button" class="btn choiceBtn" onclick="goChoice('ch3', 'USB 수신기')"><span>USB 수신기</span></button>
+						<button type="button" class="btn choiceBtn" value="keyboard" onclick="goChoice('ch3', '블루투스')"><span>블루투스</span></button>
+					</div>
+					<div>
+						<button type="button" class="btn choiceBtn" value="speaker" onclick="goChoice('ch3', '유선')"><span>유선</span></button>
+						<button type="button" class="btn choiceBtn" value="headset" onclick="goChoice('ch3', '복합수신기')"><span>복합수신기</span></button>
+					</div>
 				</div>
-				<div>
-					<button type="button" class="btn btn-default choiceBtn" value="speaker" onclick="goChoice('ch2', '게이밍')"><span>게이밍</span></button>
-					<button type="button" class="btn btn-default choiceBtn" value="headset" onclick="goChoice('ch2', '교육용')"><span>교육용</span></button>
-				</div>
-			</div>
-			
-			<div id="Choice3" class="likeItemChoice">
-				<div>
-					<button type="button" class="btn btn-default choiceBtn" onclick="goChoice('ch3', 'USB 수신기')"><span>USB 수신기</span></button>
-					<button type="button" class="btn btn-default choiceBtn" value="keyboard" onclick="goChoice('ch3', '블루투스')"><span>블루투스</span></button>
-				</div>
-				<div>
-					<button type="button" class="btn btn-default choiceBtn" value="speaker" onclick="goChoice('ch3', '유선')"><span>유선</span></button>
-					<button type="button" class="btn btn-default choiceBtn" value="headset" onclick="goChoice('ch3', '복합수신기')"><span>복합수신기</span></button>
-				</div>
-			</div>
 
+			</div>
 	
 		</div>
 	</div>

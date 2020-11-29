@@ -22,11 +22,15 @@ String sql = "select productid\n"+
 "from product\n"+
 "where fk_category = 'headset' and character like '%' || ? || '%' and character like '%' || ? || '%'";
 
-update product set character= replace(character,'게임용','게이밍')
-where productid = 'ZONE WIRED' ;
+update product set IMGFILENAME= 'https://assets.logitech.com/assets/64879/21/k375s-multidevice-keyboard.png'
+where productid = 'K375s MULTI-DEVICE' ;
 commit;
+select * from product;
+desc product;
+insert into product(PRODUCTID, PRODUCTNAME, FK_CATEGORY, CHARACTER, PRICE, IMGFILENAME)
+values('H150 STEREO HEADSET', '듀얼 플러그 컴퓨터 헤드셋', 'headset', '헤드셋,게이밍,블루투스', 120000, 'https://www.logitech.com/assets/38329/stereo-headset-h150-cloud-white-glamour-image-lg.png');
 insert into productoption(productserialid, fk_productid, color, stock)
-values('H151 STEREO HEADSET_2', 'H151 STEREO HEADSET', 'blue', '0');
+values('H150 STEREO HEADSET_1', 'H150 STEREO HEADSET', 'white', '0');
 
 -- 찜하기 제품아이디별 찜 수량
 select fk_productid, sum(status)

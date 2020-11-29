@@ -36,7 +36,7 @@
 		border: solid 0px black;
 		float: left;
 		display: inline-block;
-		margin-top: 1%;
+		margin-top: 1.5%;
 		margin-bottom: -1%;
 		margin-left: 1%;
 	}
@@ -44,8 +44,8 @@
 	ul#menu{
 		border: solid 0px red;
 		list-style-type: none;
-		margin-top: 40px;
-		margin-left: 8%;
+		margin-top: 4%;
+		margin-left: 6%;
 		float: left;
 	}
 	
@@ -53,20 +53,24 @@
 		border: solid 0px blue;
 		display: inline-block;
 		padding: 0 20px;
-		
 	}
 	
 	ul#menu > li a{
 		text-decoration: none;
 		color: #222222;
 		font-weight: bold;
-		font-size: 13pt;
+		font-size: 16pt;
+	}
+	
+	ul#menu li a:hover{
+		color: #3f5a75;
+		border-bottom: dashed 2px #3f5a75;
 	}
 	
 	div#div_search{
 		border: solid 0px red;
 		border-bottom: solid 1px black;
-		margin-top: 35px;
+		margin-top: 3%;
 		float: right;
 		
 	}
